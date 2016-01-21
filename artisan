@@ -13,6 +13,9 @@
 |
 */
 
+//added from stack overflow comment to allow me to add a artisan tool
+if (isset($argv[1]) && $argv[1] === '-V') { die('Symfony version 3.0.0'); }
+
 require __DIR__.'/bootstrap/autoload.php';
 
 $app = require_once __DIR__.'/bootstrap/app.php';
