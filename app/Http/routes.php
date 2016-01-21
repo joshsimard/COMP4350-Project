@@ -29,3 +29,25 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+Route::get('login', function()
+{
+    return View::make('login');
+});
+
+Route::post('login', function()
+{
+    $rules = [
+    'user_name' => 'required',
+    'password' => 'required|confirmed'
+    ];
+
+    $validator = Validator::make(Input::all(), $rules);
+
+    if ($validator->fails())
+    {
+        return Redirect::to('login')->withInput()->withErrors($validator);
+    }
+
+    return 'Form passed validation!';
+});
