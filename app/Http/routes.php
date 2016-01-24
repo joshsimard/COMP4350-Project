@@ -32,11 +32,6 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::get('login', function()
-{
-    return View::make('login');
-});
-
 Route::get('auth/calendar', function()
 {
     return View::make('auth/calendar');
@@ -66,9 +61,13 @@ Route::get('auth/home', 'DoctorHomeController@create');
 Route::post('auth/home', 'DoctorHomeController@store');
 
 Route::group(['middleware' => ['web']], function () {
-    // your routes here
+    //register
     Route::get('register', 'RegistrationController@create');
     Route::post('register', 'RegistrationController@store');
+
+    //login
+    Route::get('login', 'LoginController@create');
+    Route::post('login', 'LoginController@store');
 });
 
 Route::get('home', function() {

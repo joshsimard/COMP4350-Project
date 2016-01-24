@@ -9,16 +9,16 @@
                 <h3 class="panel-title">Please Login</h3>
             </div>
             <div class="panel-body">
-                @if(Session::get('errors'))
+                @if(count($errors)>0)
                     <div class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5>There were errors during registration:</h5>
-                        @foreach($errors->all('<li>:message</li>') as $message)
-                            {{$message}}
+                        <h5>There were errors during login:</h5>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
                         @endforeach
                     </div>
                 @endif
-                {!! Form::open() !!}
+                {!! Form::open(array('url' => 'login')) !!}
                     <div class="form-group">
                         {!! Form::text('user_name', null, array('class'=>'form-control input-sm','placeholder'=>'Username')) !!}
                     </div>
