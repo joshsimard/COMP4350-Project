@@ -11,7 +11,8 @@
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/superhero/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS for Login Page -->
-    <link href="/vendor/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo asset('vendor/login .css') ?>" type="text/css">
+
 </head>
 <body>
 

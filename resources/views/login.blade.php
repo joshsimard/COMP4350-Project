@@ -9,24 +9,31 @@
                 <h3 class="panel-title">Please Login</h3>
             </div>
             <div class="panel-body">
-                {{ Form::open() }}
+                @if(Session::get('errors'))
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5>There were errors during registration:</h5>
+                        @foreach($errors->all('<li>:message</li>') as $message)
+                            {{$message}}
+                        @endforeach
+                    </div>
+                @endif
+                {!! Form::open() !!}
                     <div class="form-group">
-                        {{ Form::text('user_name', null, array('class'=>'form-control input-sm','\
-                        placeholder'=>'Username')) }}
+                        {!! Form::text('user_name', null, array('class'=>'form-control input-sm','placeholder'=>'Username')) !!}
                     </div>
                     <div class="form-group">
-                        {{ Form::password('password', array('class'=>'form-control input-sm','p\
-                        placeholder'=>'Password')) }}
+                        {!! Form::password('password', array('class'=>'form-control input-sm','placeholder'=>'Password')) !!}
                     </div>
 
                     <div class="checkbox">
                         <label>
-                            {{ Form::checkbox('remember', 'Remember Me') }}Remember Me
+                            {!! Form::checkbox('remember', 'Remember Me') !!}Remember Me
                             <a href="/forgot" class="pull-right">Forgot Password?</a>
                         </label>
                     </div>
-                    {{ Form::submit('Login', array('class'=>'btn btn-info btn-block')) }}
-                {{ Form::close() }}
+                    {!! Form::submit('Login', array('class'=>'btn btn-info btn-block')) !!}
+                {!! Form::close() !!}
             </div>
         </div>
         <div class="text-center">

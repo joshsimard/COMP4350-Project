@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Input;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,19 +37,12 @@ Route::get('login', function()
     return View::make('login');
 });
 
-Route::post('login', function()
-{
-    $rules = [
-    'user_name' => 'required',
-    'password' => 'required|confirmed'
-    ];
+Route::group(['middleware' => ['web']], function () {
+    // your routes here
+    Route::get('register', 'RegistrationController@create');
+    Route::post('register', 'RegistrationController@store');
+});
 
-    $validator = Validator::make(Input::all(), $rules);
-
-    if ($validator->fails())
-    {
-        return Redirect::to('login')->withInput()->withErrors($validator);
-    }
-
-    return 'Form passed validation!';
+Route::get('home', function() {
+    return View::make('home');
 });
