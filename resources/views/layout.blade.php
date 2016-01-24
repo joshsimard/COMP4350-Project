@@ -11,11 +11,21 @@
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/superhero/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS for Login Page -->
-    <link rel="stylesheet" href="<?php echo asset('vendor/login .css') ?>" type="text/css">
+    <link rel="stylesheet" href="assets/css/login.css" type="text/css">
 
+    <style>
+        body {
+            background-image: url('../../public/img/stardust.png');
+        }
+
+        .top-buffer {
+            margin-top: 60px;
+        }
+    </style>
 </head>
 <body>
 
+<div class="top-buffer"></div>
 <div class="container">
     @yield('content')
 </div>

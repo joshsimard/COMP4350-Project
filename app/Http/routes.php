@@ -37,6 +37,34 @@ Route::get('login', function()
     return View::make('login');
 });
 
+Route::get('auth/calendar', function()
+{
+    return View::make('auth/calendar');
+});
+
+Route::get('auth/clientlist', function()
+{
+    return View::make('auth/clientlist');
+});
+
+Route::get('auth/notes', function()
+{
+    return View::make('auth/notes');
+});
+
+Route::get('auth/orders', function()
+{
+    return View::make('auth/orders');
+});
+
+Route::get('auth/settings', function()
+{
+    return View::make('auth/settings');
+});
+
+Route::get('auth/home', 'DoctorHomeController@create');
+Route::post('auth/home', 'DoctorHomeController@store');
+
 Route::group(['middleware' => ['web']], function () {
     // your routes here
     Route::get('register', 'RegistrationController@create');

@@ -1,5 +1,5 @@
 body {
-    background: url("../../../../public/img/stardust.png");
+    background-image: url("../../../../public/img/stardust.png");
 }
 
 .panel-heading > h3 {
