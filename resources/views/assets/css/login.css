@@ -1,5 +1,14 @@
 body {
-    background: url("../../../public/img/stardust.png");
+    background: url("../../../../public/img/stardust.png");
+}
+
+.panel-heading > h3 {
+    text-shadow: #4e5d6c;
+    font-size: 15px;
+}
+
+.container {
+    margin-top: 60px;
 }
 
 .centered-form .panel{
