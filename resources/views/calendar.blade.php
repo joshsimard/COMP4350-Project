@@ -11,8 +11,8 @@
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/superhero/bootstrap.min.css" rel="stylesheet">
 
     <!-- Pickadate CSS -->
-    <link href="../vendor/Pickadate/css/default.css" rel="stylesheet">
-    <link href="../vendor/Pickadate/css/default.date.css" rel="stylesheet">
+    <link href="vendor/Pickadate/css/default.css" rel="stylesheet">
+    <link href="vendor/Pickadate/css/default.date.css" rel="stylesheet">
 
     <style>
         .top-buffer {
@@ -59,8 +59,8 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
     <!-- Pickadate JS -->
-    <script src="../vendor/Pickadate/js/picker.date.js"></script>
-    <script src="../vendor/Pickadate/js/picker.js"></script>
+    <script src="vendor/Pickadate/js/picker.date.js"></script>
+    <script src="vendor/Pickadate/js/picker.js"></script>
 
     <!-- After including the date picker scripts -->
     <script>$(function() {/* Enable Pickadate on an input field*/ $('#date').pickadate();});</script>

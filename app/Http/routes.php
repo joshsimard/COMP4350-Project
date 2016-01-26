@@ -14,7 +14,8 @@
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return Redirect::to('auth/login');
 });
 
 /*
@@ -32,44 +33,49 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::get('auth/calendar', function()
+Route::get('/calendar', function()
 {
-    return View::make('auth/calendar');
+    return View::make('/calendar');
 });
 
-Route::get('auth/clientlist', function()
+Route::get('/clientlist', function()
 {
-    return View::make('auth/clientlist');
+    return View::make('/clientlist');
 });
 
-Route::get('auth/notes', function()
+Route::get('/notes', function()
 {
-    return View::make('auth/notes');
+    return View::make('/notes');
 });
 
-Route::get('auth/orders', function()
+Route::get('/orders', function()
 {
-    return View::make('auth/orders');
+    return View::make('/orders');
 });
 
-Route::get('auth/settings', function()
+Route::get('/settings', function()
 {
-    return View::make('auth/settings');
+    return View::make('/settings');
 });
 
-Route::get('auth/home', 'DoctorHomeController@create');
-Route::post('auth/home', 'DoctorHomeController@store');
+Route::get('home', 'DoctorHomeController@create');
+Route::post('home', 'DoctorHomeController@store');
+
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('forgot', function(){
+    echo 'Did you forget your password? No big deal. Click here to change your password to "password"!';
+});
 
 Route::group(['middleware' => ['web']], function () {
-    //register
-    Route::get('register', 'RegistrationController@create');
-    Route::post('register', 'RegistrationController@store');
 
     //login
-    Route::get('login', 'LoginController@create');
-    Route::post('login', 'LoginController@store');
-});
-
-Route::get('home', function() {
-    return View::make('home');
+    //Route::get('login', 'LoginController@create');
+    //Route::post('login', 'LoginController@post');
+    //Route::get('logout', 'LoginController@logout');
 });

@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create a New Patient Record</title>
+    <title>Portal | Home</title>
+
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap CSS served from a CDN -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +19,7 @@
 
     <style>
         body {
-            background-image: url('../../public/img/stardust.png');
+            background-image: url("http://books.maxoffsky.com/img/stardust.png");
         }
 
         .top-buffer {

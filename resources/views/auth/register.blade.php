@@ -9,25 +9,24 @@
                     <h3 class="panel-title">Please sign up <small>It's free!</small></h3>
                 </div>
                 <div class="panel-body">
-                    @if(count($errors)>0)
-                        <div class="alert alert-danger alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5>There were errors during registration:</h5>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </div>
-                    @endif
-                    {!! Form::open(array('url' => 'register')) !!}
-                    <div class="row">
+                    {!! Form::open(array('url' => 'auth/register')) !!}
+                    <!--<div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                {!!  Form::text('first_name', null, array('class'=>'form-control input-sm','placeholder'=>'First Name'))!!}
+                                Form::text('first_name', null, array('class'=>'form-control input-sm','placeholder'=>'First Name'))
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                {!! Form::text('last_name', null, array('class'=>'form-control input-sm','placeholder'=>'Last Name'))!!}
+                                Form::text('last_name', null, array('class'=>'form-control input-sm','placeholder'=>'Last Name'))
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {!! Form::text('name', null, array('class'=>'form-control input-sm', 'placeholder'=>'Full Name')) !!}
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class DoctorHomeController extends Controller {
     /**
@@ -12,7 +13,9 @@ class DoctorHomeController extends Controller {
      * @return Response
      */
     public function create() {
-        return View('doctor_home');
+
+            return View('doctor_home');
+
     }
 
     /**

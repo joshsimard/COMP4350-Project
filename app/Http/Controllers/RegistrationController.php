@@ -4,8 +4,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Registrar;
 
 class RegistrationController extends Controller {
+    protected $registrar;
     /**
      * Show the form for creating a new resource.
      *
@@ -24,6 +27,7 @@ class RegistrationController extends Controller {
         // Getting all data after success validation.
         //print_r($request->all());die;
         // do your stuff here.
+        $validator = $this->validator($request->rules());
         $this->validate($request, $request->rules());
         return redirect()->guest('auth/home');
     }
