@@ -1,27 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Calendar</title>
+@extends('layout')
 
-    <!-- Bootstrap CSS served from a CDN -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/superhero/bootstrap.min.css" rel="stylesheet">
+@section('title')
+    <title>Portal | Calendar</title>
+@stop
 
-    <!-- Pickadate CSS -->
-    <link href="vendor/Pickadate/css/default.css" rel="stylesheet">
-    <link href="vendor/Pickadate/css/default.date.css" rel="stylesheet">
-
+@section('custom_css')
     <style>
+        body {
+            background-image: url("http://books.maxoffsky.com/img/stardust.png");
+        }
+
         .top-buffer {
             margin-top: 60px;
         }
     </style>
-</head>
-<body>
-    <div class="top-buffer"></div>
+
+    <!-- Pickadate CSS -->
+    <link href="vendor/Pickadate/css/default.css" rel="stylesheet">
+    <link href="vendor/Pickadate/css/default.date.css" rel="stylesheet">
+@stop
+
+
+@section('content')
+
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
@@ -52,17 +53,13 @@
         </div>
     </div>
 
-    <!-- jQuery JS -->
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+@stop
 
-    <!-- Bootstrap JS served from a CDN -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
+@section('custom_js')
     <!-- Pickadate JS -->
-    <script src="vendor/Pickadate/js/picker.date.js"></script>
-    <script src="vendor/Pickadate/js/picker.js"></script>
+    {!! HTML::script('vendor/Pickadate/js/picker.date.js') !!}
+    {!! HTML::script('vendor/Pickadate/js/picker.js') !!}
 
     <!-- After including the date picker scripts -->
     <script>$(function() {/* Enable Pickadate on an input field*/ $('#date').pickadate();});</script>
-</body>
-</html>
+@stop

@@ -1,5 +1,22 @@
 @extends('layout')
 
+@section('title')
+    <title>Portal | Login</title>
+@stop
+
+@section('custom_css')
+    <style>
+        body {
+            background-image: url("http://books.maxoffsky.com/img/stardust.png");
+        }
+
+        .top-buffer {
+            margin-top: 60px;
+        }
+    </style>
+@stop
+
+
 @section('content')
 
 <div class="row">

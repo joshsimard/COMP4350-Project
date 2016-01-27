@@ -1,12 +1,27 @@
 @extends('layout')
 
-@section('content')
+@section('title')
+    <title>Portal | Home</title>
+@stop
+
+@section('custom_css')
     <style>
-        .logout-button {
+        body {
+            background-image: url("http://books.maxoffsky.com/img/stardust.png");
+        }
+
+        .top-buffer {
+            margin-top: 60px;
+        }
+
+        .logout-button  {
             text-align: right;
             float: right;
         }
     </style>
+@stop
+
+@section('content')
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
