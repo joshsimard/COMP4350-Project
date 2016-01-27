@@ -57,8 +57,8 @@
 
 @section('custom_js')
     <!-- Pickadate JS -->
-    {!! HTML::script('vendor/Pickadate/js/picker.date.js') !!}
-    {!! HTML::script('vendor/Pickadate/js/picker.js') !!}
+    <script src='vendor/Pickadate/js/picker.date.js'></script>
+    <script src='vendor/Pickadate/js/picker.js'></script>
 
     <!-- After including the date picker scripts -->
     <script>$(function() {/* Enable Pickadate on an input field*/ $('#date').pickadate();});</script>
