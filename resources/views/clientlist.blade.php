@@ -28,7 +28,8 @@
                     "309721" =>"Amber Rose",
                     "895321" =>"Drake",
                     "314252" =>"Nadia Buhari",
-                    "912955" =>"Edmond Lazlo"
+                    "912955" =>"Edmond Lazlo",
+                    "000951" =>"Kevi Hart"
             );
 
             foreach($clients as $id => $patient)
