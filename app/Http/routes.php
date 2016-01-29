@@ -61,6 +61,26 @@ Route::get('/settings', function()
     return View::make('/settings');
 });
 
+Route::get('/c_home', function()
+{
+    return View::make('/client_home');
+});
+
+Route::get('/viewAppoinments', function()
+{
+    return View::make('/client_appointments');
+});
+
+Route::get('/scheduleAppointment', function()
+{
+    return View::make('/client_make_appimt');
+});
+
+Route::get('/editInfo', function()
+{
+    return View::make('/edit_info');
+});
+
 Route::get('home', 'DoctorHomeController@create');
 Route::post('home', 'DoctorHomeController@store');
 
