@@ -18,6 +18,12 @@ Route::get('/', function () {
     return Redirect::to('auth/login');
 });
 
+
+Route::get('/db', function () {
+    //return db test
+    return DB::table('users')->get();
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -38,10 +44,7 @@ Route::get('/calendar', function()
     return View::make('/calendar');
 });
 
-Route::get('/clientlist', function()
-{
-    return View::make('/clientlist');
-});
+Route::get('/clientlist', 'ClientListController@index');
 
 Route::get('/notes', function()
 {
