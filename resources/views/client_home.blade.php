@@ -1,5 +1,15 @@
 @extends('layout')
 
+@section('custom_css')
+    <style>
+        body
+        {
+            background-image: url(" {{ asset('img/stardust.png') }}");
+        }
+
+    </style>
+@stop
+
 @section('content')
     <style>
         .logout-button {
@@ -19,6 +29,7 @@
                     <ul>
                         <li><a href="/viewAppoinments">View Appoinments</a></li>
                         <li><a href="/scheduleAppointment">Schedule Appointment</a></li>
+                        <li><a href="/editInfo">Edit Information</a></li>
                     </ul>
                 </div>
             </div>
