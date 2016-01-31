@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('head')
     <title>Client Information</title>
@@ -26,7 +26,7 @@
 @section('content')
     <div class="container-fluid">
         <h1>Client Information</h1>
-        fill out the form with client information.
+        Edit client information.
         <hr>
         {!! Form::open(array('url' => 'auth/register')) !!}
 
@@ -55,8 +55,8 @@
             <div class="col-xs-6 col-sm-6 col-md-6"><div class="form-group">
                     <div class='input-group date' id='dob'>
                         {!! Form::text('dob', null, array('class'=>'form-control input-md', 'placeholder'=>'Date of Birth')) !!}
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                        {{--<span class="input-group-addon">--}}
+                        {{--<span class="glyphicon glyphicon-calendar"></span>--}}
                     </span>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
         </div>
 
 
-        {!! Form::submit('Register', array('class'=>'btn btn-default'))!!}
+        {!! Form::submit('Save', array('class'=>'btn btn-default'))!!}
 
         {!! Form::close() !!}
     </div>
