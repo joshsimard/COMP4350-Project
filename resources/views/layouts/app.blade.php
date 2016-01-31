@@ -22,6 +22,10 @@
         /*Color brand name and bold it*/
         .navbar-brand .brand-name{color: #deb887;font-weight: bold;}
 
+        .navbar-toggle {
+            margin: 10px 0;
+        }
+
     </style>
 
 </head>

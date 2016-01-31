@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+<style>
+    .top-buffer {
+        margin-top: 60px;
+    }
+</style>
 @section('content')
 <div class="container">
     <div class="row">
