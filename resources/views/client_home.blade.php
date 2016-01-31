@@ -1,13 +1,27 @@
-@extends('layout')
+@extends('layouts.app')
+
+@section('title')
+    <title>Portal | Home</title>
+@stop
 
 @section('custom_css')
     <style>
-        body
-        {
-            background-image: url(" {{ asset('img/stardust.png') }}");
+
+        .top-buffer {
+            margin-top: 60px;
         }
 
+        .logout-button  {
+            text-align: right;
+            float: right;
+        }
     </style>
+@stop
+
+@section('header_links')
+    {{--insert name of link--}}
+    <?php $nav_link = "home";?>
+    @include('inc.navigation_link')
 @stop
 
 @section('content')
@@ -21,8 +35,8 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel panel-heading">
-                    <span class="panel-title">
-                        <h5>Welcome, Jane Doe<div class="logout-button"><a href="auth/logout"><span class="glyphicon glyphicon-log-out"></span></a></div></h5>
+                   <span class="panel-title">
+                        <h5>Welcome, {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</h5>
                     </span>
                 </div>
                 <div class="panel panel-body">

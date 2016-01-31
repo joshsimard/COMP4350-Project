@@ -48,7 +48,9 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            @yield('header_links')
+            <ul class="nav navbar-nav">
+                @yield('header_links')
+            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
