@@ -1,25 +1,29 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
-    <title>Portal | Calendar</title>
+    <title>Portal | Home</title>
 @stop
 
 @section('custom_css')
     <style>
-        body {
-            background-image: url("http://books.maxoffsky.com/img/stardust.png");
-        }
 
         .top-buffer {
             margin-top: 60px;
         }
-    </style>
 
-    <!-- Pickadate CSS -->
-    <link href="vendor/Pickadate/css/default.css" rel="stylesheet">
-    <link href="vendor/Pickadate/css/default.date.css" rel="stylesheet">
+        .logout-button  {
+            text-align: right;
+            float: right;
+        }
+    </style>
 @stop
 
+@section('header_links')
+    {{--insert name of link--}}
+    <?php $nav_link = "home";?>
+    @include('inc.navigation_link')
+    @include('inc.doctors_nav_links')
+@stop
 
 @section('content')
 
