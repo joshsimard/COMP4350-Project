@@ -41,19 +41,6 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::password('password', array('class'=>'form-control input-md', 'placeholder'=>'Password'))!!}
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::password('confirm_password', array('class'=>'form-control input-md', 'placeholder'=>'Confirm Password'))!!}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
                     {!! Form::text('first_name', null, array('class'=>'form-control input-md', 'placeholder'=>'First Name')) !!}
                 </div>
             </div>
