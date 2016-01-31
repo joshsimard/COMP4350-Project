@@ -18,10 +18,6 @@
     @yield('custom_css')
 
     <style>
-        body
-        {
-            /*padding-top: 70px;*/
-        }
 
         /*Color brand name and bold it*/
         .navbar-brand .brand-name{color: #deb887;font-weight: bold;}
@@ -45,31 +41,29 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Laravel
+            <a class="navbar-brand brand-name" href="{{ url('/') }}">
+                <h4 class="brand-name">DC</h4>
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/home') }}">Home</a></li>
-            </ul>
+            @yield('header_links')
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}"><h5>Login</h5></a></li>
+                    <li><a href="{{ url('/register') }}"><h5>Register</h5></a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->firstName }} <span class="caret"></span>
+                           <h5>{{ Auth::user()->firstName }} <span class="caret"></span></h5>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i><h5>Logout</h5></a></li>
                         </ul>
                     </li>
                 @endif

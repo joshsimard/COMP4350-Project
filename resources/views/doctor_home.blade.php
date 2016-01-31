@@ -6,9 +6,6 @@
 
 @section('custom_css')
     <style>
-        body {
-            background-image: url("http://books.maxoffsky.com/img/stardust.png");
-        }
 
         .top-buffer {
             margin-top: 60px;
@@ -33,7 +30,7 @@
             <div class="panel panel-default">
                 <div class="panel panel-heading">
                     <span class="panel-title">
-                        <h5><?php $user?> Welcome, Dr. Josh Simard, PHD</h5>
+                        <h5>Welcome, Dr. {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}, PHD</h5>
                     </span>
                 </div>
                 <div class="panel panel-body">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -24,11 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::user()->admin == true)
+            return View('doctor_home');
+        else
+            return View('client_home');
     }
 
-    public function d_Home()
-    {
-        return View('doctor_home');
-    }
+
 }

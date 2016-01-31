@@ -1,11 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('custom_css')
     <style>
-        body
-        {
-            background-image: url(" {{ asset('img/stardust.png') }}");
-        }
 
          /*Color list background and text*/
         .list-group-item{background-color: #dddddd;}
@@ -28,7 +24,7 @@
             //populate
             foreach($clients as $patient)
             {
-               echo '<a href="#" class="list-group-item"><h4 class="items">'.$patient["name"].'</h4><span class="left items">ID#: '.$patient["id"].'</span></a>';
+               echo '<a href="#" class="list-group-item"><h4 class="items">'.$patient["firstName"].' '.$patient["lastName"].'</h4><span class="left items">ID#: '.$patient["id"].'</span></a>';
             }
 
         ?>

@@ -9,13 +9,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class DoctorHomeController extends Controller {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create() {
-            $user = Auth::user();
+            $user = Auth::user()->firstName;
             return View('doctor_home')->withUser($user);
 
     }
@@ -29,4 +40,6 @@ class DoctorHomeController extends Controller {
         // Getting all data after success validation.
 
     }
+
+
 }
