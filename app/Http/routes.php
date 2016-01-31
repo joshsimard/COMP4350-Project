@@ -49,6 +49,11 @@ Route::get('/settings', function()
     return View::make('/settings');
 });
 
+Route::get('/client_form', function()
+{
+    return View::make('/client_form');
+});
+
 
 
 //links in client home
