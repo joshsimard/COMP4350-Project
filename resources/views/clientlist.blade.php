@@ -21,7 +21,7 @@
     <div class="list-group col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
 
         <?php
-         if(count($clients) > 1)
+         if(count($clients) < 1)
              echo '<a href="#" class="list-group-item"><h4 class="items">No Clients!</h4><span class="left items"></span></a>';
          else
          {
