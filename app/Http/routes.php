@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
     //return view('welcome');
-    return Redirect::to('auth/login');
+    return Redirect::to('login');
 });
 
 
@@ -81,24 +81,31 @@ Route::get('/editInfo', function()
     return View::make('/edit_info');
 });
 
-Route::get('home', 'DoctorHomeController@create');
-Route::post('home', 'DoctorHomeController@store');
+//Route::get('home', 'DoctorHomeController@create');
+//Route::post('home', 'DoctorHomeController@store');
 
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//Route::get('auth/register', 'Auth\AuthController@getRegister');
+//Route::post('auth/register', 'Auth\AuthController@postRegister');
+//
+//Route::get('auth/login', 'Auth\AuthController@getLogin');
+//Route::post('auth/login', 'Auth\AuthController@postLogin');
+//Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('forgot', function(){
     echo 'Did you forget your password? No big deal. Click here to change your password to "password"!';
 });
 
-Route::group(['middleware' => ['web']], function () {
+//Route::group(['middleware' => ['web']], function () {
+//
+//    //login
+//    //Route::get('login', 'LoginController@create');
+//    //Route::post('login', 'LoginController@post');
+//    //Route::get('logout', 'LoginController@logout');
+//});
 
-    //login
-    //Route::get('login', 'LoginController@create');
-    //Route::post('login', 'LoginController@post');
-    //Route::get('logout', 'LoginController@logout');
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@d_Home');
+
 });

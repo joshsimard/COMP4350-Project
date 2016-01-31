@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+use App\Models\ClientList;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
@@ -13,8 +15,8 @@ class DoctorHomeController extends Controller {
      * @return Response
      */
     public function create() {
-
-            return View('doctor_home');
+            $user = Auth::user();
+            return View('doctor_home')->withUser($user);
 
     }
 

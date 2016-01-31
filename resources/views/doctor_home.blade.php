@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
     <title>Portal | Home</title>
@@ -33,7 +33,7 @@
             <div class="panel panel-default">
                 <div class="panel panel-heading">
                     <span class="panel-title">
-                        <h5>Welcome, Dr. Josh Simard, PHD</h5>
+                        <h5><?php $user?> Welcome, Dr. Josh Simard, PHD</h5>
                     </span>
                 </div>
                 <div class="panel panel-body">
