@@ -58,6 +58,8 @@ Route::get('/settings', function()
     return View::make('/settings');
 });
 
+Route::get('add/event', 'AddEventController@create');
+
 Route::get('home', 'DoctorHomeController@create');
 Route::post('home', 'DoctorHomeController@store');
 
@@ -78,4 +80,7 @@ Route::group(['middleware' => ['web']], function () {
     //Route::get('login', 'LoginController@create');
     //Route::post('login', 'LoginController@post');
     //Route::get('logout', 'LoginController@logout');
+
+    //add event
+
 });

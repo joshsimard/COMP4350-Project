@@ -27,7 +27,7 @@ class LoginController extends Controller {
         //print_r($request->all());die;
         // do your stuff here.
         $this->validate($request, $request->rules());
-        return redirect()->guest('auth/home');
+        return redirect()->guest('home');
     }
 
     public function logout() {

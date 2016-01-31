@@ -160,6 +160,8 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
+
+        Webpatser\Countries\CountriesServiceProvider::class,
     ],
 
     /*
@@ -212,6 +214,7 @@ return [
 
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+        'Countries' => Webpatser\Countries\CountriesFacade,
     ],
 
 ];

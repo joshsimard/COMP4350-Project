@@ -60,6 +60,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/webpatser/laravel-countries" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -124,6 +125,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
+          <root url="file://$MODULE_DIR$/vendor/webpatser/laravel-countries" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />
@@ -184,6 +186,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
+          <root url="file://$MODULE_DIR$/vendor/webpatser/laravel-countries" />
         </SOURCES>
       </library>
     </orderEntry>
