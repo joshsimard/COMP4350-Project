@@ -29,6 +29,8 @@ Route::get('/db', function () {
 
 
 //Links in doctors home
+Route::get('add/event','AddEventController@create');
+
 Route::get('/calendar', function()
 {
     return View::make('/calendar');
@@ -49,10 +51,13 @@ Route::get('/settings', function()
     return View::make('/settings');
 });
 
-Route::get('/client_form', function()
-{
-    return View::make('/client_form');
-});
+//Route::get('/client_form', function()
+//{
+    //return View::make('/client_form');
+
+//});
+
+
 
 
 
@@ -67,11 +72,13 @@ Route::get('/scheduleAppointment', function()
     return View::make('/client_make_appimt');
 });
 
-Route::get('/editInfo', function()
-{
-    return View::make('/edit_info');
-});
+//Route::get('/editInfo', function()
+//{
+//    return View::make('/edit_info');
+//});
+//Route::post('/client_form', 'ClientFormController@store');
 
+//Route::resource('client_form', 'ClientFormEditController');
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +97,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
     Route::get('/clientlist', 'ClientListController@index');
+    Route::get('/client_form', 'ClientFormEditController@index');
+    Route::resource('client_info', 'ClientFormEditController');
 
 
 });

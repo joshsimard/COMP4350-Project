@@ -28,12 +28,12 @@
         <h1>Client Information</h1>
         Edit client information.
         <hr>
-        {!! Form::open(array('url' => 'auth/register')) !!}
+        {!! Form::open(array('action' => 'ClientFormEditController@store')) !!}
 
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
-                    {!! Form::text('email', null, array('class'=>'form-control input-md', 'placeholder'=>'email address')) !!}
+                    {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md')) !!}
                 </div>
             </div>
         </div>
@@ -41,12 +41,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('first_name', null, array('class'=>'form-control input-md', 'placeholder'=>'First Name')) !!}
+                    {!! Form::text('first_name', $patient["firstName"], array('class'=>'form-control input-md', )) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('last_name', null, array('class'=>'form-control input-md', 'placeholder'=>'Last Name')) !!}
+                    {!! Form::text('last_name', $patient["lastName"], array('class'=>'form-control input-md', )) !!}
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6"><div class="form-group">
                     <div class='input-group date' id='dob'>
-                        {!! Form::text('dob', null, array('class'=>'form-control input-md', 'placeholder'=>'Date of Birth')) !!}
+                        {!! Form::text('dob', $patient["dob"], array('class'=>'form-control input-md', 'placeholder'=>'Date of Birth')) !!}
                         {{--<span class="input-group-addon">--}}
                         {{--<span class="glyphicon glyphicon-calendar"></span>--}}
                     </span>
@@ -68,7 +68,7 @@
             </script>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('gender', null, array('class'=>'form-control input-md', 'placeholder'=>'Male/Female')) !!}
+                    {!! Form::text('gender', $patient["gender"], array('class'=>'form-control input-md', 'placeholder'=>'Male/Female')) !!}
                 </div>
             </div>
         </div>
@@ -76,12 +76,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('height', null, array('class'=>'form-control input-md', 'placeholder'=>'height(ft)')) !!}
+                    {!! Form::text('height', $patient["height"], array('class'=>'form-control input-md', 'placeholder'=>'height(ft)')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('weight', null, array('class'=>'form-control input-md', 'placeholder'=>'weight(kg)')) !!}
+                    {!! Form::text('weight', $patient["weight"], array('class'=>'form-control input-md', 'placeholder'=>'weight(kg)')) !!}
                 </div>
             </div>
         </div>
@@ -89,12 +89,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('phone', null, array('class'=>'form-control input-md', 'placeholder'=>'Phone Number')) !!}
+                    {!! Form::text('phone', $patient["mobileNum"], array('class'=>'form-control input-md', 'placeholder'=>'Phone Number')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('home_phone', null, array('class'=>'form-control input-md', 'placeholder'=>'Home Phone')) !!}
+                    {!! Form::text('home_phone', $patient["homeNum"], array('class'=>'form-control input-md', 'placeholder'=>'Home Phone')) !!}
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    {!! Form::text('street_address', null, array('class'=>'form-control input-md', 'placeholder'=>'P.O. Box, Apt #, Street Address.')) !!}
+                    {!! Form::text('address', $patient["address"], array('class'=>'form-control input-md', 'placeholder'=>'P.O. Box, Apt #, Street Address.')) !!}
                 </div>
             </div>
         </div>
@@ -110,12 +110,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('city', null, array('class'=>'form-control input-md', 'placeholder'=>'city')) !!}
+                    {!! Form::text('city', $patient["city"], array('class'=>'form-control input-md', 'placeholder'=>'city')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('postal_code', null, array('class'=>'form-control input-md', 'placeholder'=>'postal/zip code')) !!}
+                    {!! Form::text('postal_code', $patient["postalCode"], array('class'=>'form-control input-md', 'placeholder'=>'postal/zip code')) !!}
                 </div>
             </div>
         </div>
@@ -123,12 +123,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('state', null, array('class'=>'form-control input-md', 'placeholder'=>'State/Province/Region')) !!}
+                    {!! Form::text('state', $patient["state"], array('class'=>'form-control input-md', 'placeholder'=>'State/Province/Region')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('country', null, array('class'=>'form-control input-md', 'placeholder'=>'Country')) !!}
+                    {!! Form::text('country', $patient["country"], array('class'=>'form-control input-md', 'placeholder'=>'Country')) !!}
                 </div>
             </div>
         </div>
@@ -136,7 +136,7 @@
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
-                    {!! Form::text('occupation', null, array('class'=>'form-control input-md', 'placeholder'=>'Occupation')) !!}
+                    {!! Form::text('occupation', $patient["occupation"], array('class'=>'form-control input-md', 'placeholder'=>'Occupation')) !!}
                 </div>
             </div>
         </div>
@@ -144,12 +144,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('status', null, array('class'=>'form-control input-md', 'placeholder'=>'Marital Status')) !!}
+                    {!! Form::text('status', $patient["maritalStatus"], array('class'=>'form-control input-md', 'placeholder'=>'Marital Status')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('next_kin', null, array('class'=>'form-control input-md', 'placeholder'=>'Next of Kin')) !!}
+                    {!! Form::text('next_kin', $patient["nextOfKin"], array('class'=>'form-control input-md', 'placeholder'=>'Next of Kin')) !!}
                 </div>
             </div>
         </div>
