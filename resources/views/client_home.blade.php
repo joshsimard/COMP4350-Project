@@ -43,7 +43,7 @@
                     <ul>
                         <li><a href="/viewAppoinments">View Appoinments</a></li>
                         <li><a href="/scheduleAppointment">Schedule Appointment</a></li>
-                        <li><a href="/editInfo">Edit Information</a></li>
+                        <li><a href="/client_form">Edit Information</a></li>
                     </ul>
                 </div>
             </div>

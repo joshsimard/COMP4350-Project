@@ -1,0 +1,1 @@
+<li class="<?php if($nav_link =="clientlist"){ echo "active"; }?>"><a href="clientlist"><h5>Clients</h5></a></li>
