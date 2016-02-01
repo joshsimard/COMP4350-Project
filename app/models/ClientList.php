@@ -11,5 +11,15 @@ class ClientList extends Model
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'clients';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'firstName', 'lastName', 'email', 'gender', 'height', 'weight', 'mobileNum', 'homeNum',
+        'address', 'city', 'postalCode', 'state', 'country', 'occupation', 'maritalStatus', 'nextOfKin',
+    ];
 }

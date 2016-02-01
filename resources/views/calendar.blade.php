@@ -1,29 +1,30 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Portal | Home</title>
+    <title>Portal | Calendar</title>
 @stop
 
 @section('custom_css')
     <style>
+        body {
+            /*background-image: url("http://books.maxoffsky.com/img/stardust.png");*/
+        }
 
         .top-buffer {
             margin-top: 60px;
         }
 
-        .logout-button  {
+        .add-button  {
             text-align: right;
             float: right;
         }
     </style>
+
+    <!-- Pickadate CSS -->
+    <link href="vendor/Pickadate/css/default.css" rel="stylesheet">
+    <link href="vendor/Pickadate/css/default.date.css" rel="stylesheet">
 @stop
 
-@section('header_links')
-    {{--insert name of link--}}
-    <?php $nav_link = "home";?>
-    @include('inc.navigation_link')
-    @include('inc.doctors_nav_links')
-@stop
 
 @section('content')
 
@@ -31,7 +32,7 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel panel-heading">
-                    <h1 class="panel-title">Pick a date:</h1>
+                    <h1 class="panel-title">Pick a date:<div class="add-button"><a href="/add/event"><span class="glyphicon glyphicon-plus"></span></a></div></h1>
                 </div>
                 <div class="panel panel-body">
                     <div class="row">
@@ -61,8 +62,8 @@
 
 @section('custom_js')
     <!-- Pickadate JS -->
-    <script src='vendor/Pickadate/js/picker.date.js'></script>
-    <script src='vendor/Pickadate/js/picker.js'></script>
+    <script src='{{asset('vendor/Pickadate/js/picker.date.js') }}'></script>
+    <script src='{{asset('vendor/Pickadate/js/picker.js') }}'></script>
 
     <!-- After including the date picker scripts -->
     <script>$(function() {/* Enable Pickadate on an input field*/ $('#date').pickadate();});</script>
