@@ -26,7 +26,15 @@ class ClientListController extends Controller
     public function index()
     {
         //get client list
-        $clients = ClientList::all();
+        $users = ClientList::all();
+        $clients = [];
+
+        foreach($users as $patient)
+        {
+            //check if the user is apatient
+            if(!$patient["admin"])
+                $clients[] = $patient;
+        }
 
         return \View::make('clientlist')->with('clients',$clients);
     }

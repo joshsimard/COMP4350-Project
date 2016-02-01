@@ -29,8 +29,7 @@
              //populate
              foreach($clients as $patient)
              {
-                 if(!$patient["admin"])
-                    echo '<a href="#" class="list-group-item"><h4 class="items">'.$patient["firstName"].' '.$patient["lastName"].'</h4><span class="left items">ID#: '.$patient["id"].'</span></a>';
+                 echo '<a href="#" class="list-group-item"><h4 class="items">'.$patient["firstName"].' '.$patient["lastName"].'</h4><span class="left items">ID#: '.$patient["id"].'</span></a>';
              }
          }
 
