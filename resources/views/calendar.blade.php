@@ -63,7 +63,7 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script>
         $(function() {
-            $( "#date" ).datepicker();
+            $( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
         });
     </script>
 @stop
