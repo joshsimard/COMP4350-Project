@@ -29,7 +29,6 @@ Route::get('/db', function () {
 
 
 //Links in doctors home
-Route::get('add/event','AddEventController@create');
 
 Route::get('/notes', function()
 {
@@ -95,6 +94,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/client_form', 'ClientFormEditController@index');
     Route::resource('client_info', 'ClientFormEditController');
     Route::get('calendar', 'CalendarController@create');
+    Route::get('add/event','AddEventController@create');
     /*Route::resource('calendar', 'CalendarController');*/
 
 });

@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('custom_css')
+    <style>
+        .btn-circle {
+            border-radius: 4px;
+        }
+
+        .form-control {
+            border-radius: 4px;
+        }
+    </style>
+@stop
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -81,7 +93,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info btn-block btn-circle">
                                     <i class="fa fa-btn fa-user"></i>Register
                                 </button>
                             </div>
