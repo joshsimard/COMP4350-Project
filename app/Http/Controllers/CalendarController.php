@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AddEventController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -36,7 +36,8 @@ class AddEventController extends Controller
      */
     public function create()
     {
-        return View('add/add_event');
+        //
+        return \View::make('/calendar');
     }
 
     /**
