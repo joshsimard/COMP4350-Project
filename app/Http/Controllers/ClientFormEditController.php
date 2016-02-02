@@ -85,7 +85,7 @@ class ClientFormEditController extends Controller
             $clientCheck = ClientList::where('email', '=', Auth::user()->email)->firstOrFail();
             ClientList::where('email', Auth::user()->email)
                 ->update($list);
-        }catch(\Illuminate\Database\QueryException $e){
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
             $client = ClientList::firstOrCreate($list);
 
             //change auth::firstedit to true !!!
