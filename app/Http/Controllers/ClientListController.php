@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\ClientList;
+use App\models\users;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,7 +27,7 @@ class ClientListController extends Controller
     public function index()
     {
         //get client list
-        $users = ClientList::all();
+        $users = users::all();
         $clients = [];
 
         foreach($users as $patient)

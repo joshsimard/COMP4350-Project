@@ -11,6 +11,17 @@
         .list-group-item{background-color: #dddddd;}
         .list-group-item .items{color: #000000;}
 
+        /*make border rounded*/
+        .list-special .list-group-item:first-child {
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+
+        .list-special .list-group-item:last-child {
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
     </style>
 @stop
 
@@ -23,7 +34,7 @@
 
 @section('content')
 
-    <div class="list-group col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+    <div class="list-group col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4 list-special">
 
         <?php
          if(count($clients) < 1)
