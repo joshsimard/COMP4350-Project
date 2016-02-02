@@ -1,0 +1,29 @@
+.ui-datepicker td {
+    padding:10px;
+}
+.ui-datepicker
+{
+    background: #333;
+    border: 1px solid #555;
+    color: #EEE;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+.ui-datepicker-prev {
+    float: left;
+    background-position: center -30px;
+}
+.ui-datepicker-next {
+    float: right;
+    background-position: center 0px;
+}
+
+.ui-datepicker-title {
+    text-align: center;
+}
+
+#ui-datepicker-div{
+    display: none;
+}
+

@@ -6,10 +6,6 @@
 
 @section('custom_css')
     <style>
-        body {
-            /*background-image: url("http://books.maxoffsky.com/img/stardust.png");*/
-        }
-
         .top-buffer {
             margin-top: 60px;
         }
@@ -20,9 +16,9 @@
         }
     </style>
 
-    <!-- Pickadate CSS -->
-    <link href="vendor/Pickadate/css/default.css" rel="stylesheet">
-    <link href="vendor/Pickadate/css/default.date.css" rel="stylesheet">
+    <!-- datepicker CSS -->
+    <link href="{{ 'css/date_picker.css' }}" rel="stylesheet">
+
 @stop
 
 
@@ -61,10 +57,13 @@
 @stop
 
 @section('custom_js')
-    <!-- Pickadate JS -->
-    <script src='{{asset('vendor/Pickadate/js/picker.date.js') }}'></script>
-    <script src='{{asset('vendor/Pickadate/js/picker.js') }}'></script>
 
-    <!-- After including the date picker scripts -->
-    <script>$(function() {/* Enable Pickadate on an input field*/ $('#date').pickadate();});</script>
+    <!-- date picker scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( "#date" ).datepicker();
+        });
+    </script>
 @stop
