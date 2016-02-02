@@ -20,7 +20,13 @@
             background-color: white;
             min-height: 250px;
         }
+
+
     </style>
+
+    <!-- datepicker CSS -->
+    <link href="{{ 'css/date_picker.css' }}" rel="stylesheet">
+
 @stop
 
 @section('content')
@@ -54,18 +60,11 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6"><div class="form-group">
                     <div class='input-group date' id='dob'>
-                        {!! Form::text('dob', $patient["dob"], array('class'=>'form-control input-md', 'placeholder'=>'Date of Birth')) !!}
-                        {{--<span class="input-group-addon">--}}
-                        {{--<span class="glyphicon glyphicon-calendar"></span>--}}
+                        {!! Form::text('dob', $patient["dob"], array('id' => 'datepicker','class'=>'form-control input-md', 'placeholder'=>'Date of Birth')) !!}
                     </span>
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-                $(function () {
-                    $("#dob").datetimepicker();
-                });
-            </script>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     {!! Form::text('gender', $patient["gender"], array('class'=>'form-control input-md', 'placeholder'=>'Male/Female')) !!}
@@ -163,5 +162,11 @@
 
 @section('custom_js')
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/public/assets/js/jquery-birthday-picker.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker();
+        });
+    </script>
+
 @stop
