@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
-                    {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md')) !!}
+                    {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md', 'disabled')) !!}
                 </div>
             </div>
         </div>
@@ -47,12 +47,12 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('first_name', $patient["firstName"], array('class'=>'form-control input-md', )) !!}
+                    {!! Form::text('first_name', $patient["firstName"], array('class'=>'form-control input-md', 'disabled')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('last_name', $patient["lastName"], array('class'=>'form-control input-md', )) !!}
+                    {!! Form::text('last_name', $patient["lastName"], array('class'=>'form-control input-md', 'disabled')) !!}
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6"><div class="form-group">
                     <div class='input-group date' id='dob'>
-                        {!! Form::text('dob', $patient["dob"], array('id' => 'datepicker','class'=>'form-control input-md', 'placeholder'=>'Date of Birth')) !!}
+                        {!! Form::text('dob', $patient["dob"], array('id' => 'datepicker','class'=>'form-control input-md', 'placeholder'=>'DOB (YYYY-MM-DD)')) !!}
                     </span>
                     </div>
                 </div>

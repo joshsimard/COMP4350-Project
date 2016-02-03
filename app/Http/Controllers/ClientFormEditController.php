@@ -61,11 +61,13 @@ class ClientFormEditController extends Controller
      */
     public function store(Request $request)
     {
+        $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
+
         $list = [
-            'firstName' => $request->first_name,
-            'lastName' => $request->last_name,
+            'firstName' => $patient["firstName"],
+            'lastName' => $patient["lastName"],
             'dob' => $request->dob,
-            'email' => $request->email,
+            'email' => $patient["email"],
             'gender' => $request->gender,
             'height' => $request->height,
             'weight' => $request->weight,
