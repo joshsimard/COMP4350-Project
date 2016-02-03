@@ -33,10 +33,10 @@
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <h1 class="panel-title">Pick a date:<div class="add-button"><a href="/add/event"><span class="glyphicon glyphicon-plus"></span></a></div></h1>
+                <div class="panel-heading">
+                    <h1 class="panel-title">Pick a date:<div class="add-button"><a href="/add/event"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h1>
                 </div>
-                <div class="panel panel-body">
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">

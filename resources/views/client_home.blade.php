@@ -34,16 +34,16 @@
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
-                <div class="panel panel-heading">
+                <div class="panel-heading">
                    <span class="panel-title">
                         <h5>Welcome, {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</h5>
                     </span>
                 </div>
-                <div class="panel panel-body">
+                <div class="panel-body">
                     <ul>
-                        <li><a href="/viewAppoinments">View Appoinments</a></li>
-                        <li><a href="/scheduleAppointment">Schedule Appointment</a></li>
-                        <li><a href="/client_form">Edit Information</a></li>
+                        <li><a href="/appointments_list" style="color: rgb(0, 0, 0)">View Appointments</a></li>
+                        <li><a href="/add/appointment" style="color: rgb(0, 0, 0)">Schedule Appointment</a></li>
+                        <li><a href="/client_form" style="color: rgb(0, 0, 0)">Edit Information</a></li>
                     </ul>
                 </div>
             </div>

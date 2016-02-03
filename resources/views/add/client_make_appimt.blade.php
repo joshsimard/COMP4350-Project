@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Portal | Home</title>
+    <title>Portal | Make Appointments</title>
 @stop
 
 @section('custom_css')
@@ -22,7 +22,6 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    @include('inc.doctors_nav_links')
 @stop
 
 @section('content')
@@ -30,17 +29,10 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="panel-title">
-                        <h5>Welcome, Dr. {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}, PHD</h5>
-                    </span>
+                    <h5 class="panel-title">Sorry</h5>
                 </div>
                 <div class="panel-body">
-                    <ul>
-                        <li><a href="/calendar" style="color: rgb(0, 0, 0)">Calendar</a></li>
-                        <li><a href="/orders" style="color: rgb(0, 0, 0)">Order Medication</a></li>
-                        <li><a href="/notes" style="color: rgb(0, 0, 0)">Notes and Messages</a></li>
-                        <li><a href="/settings" style="color: rgb(0, 0, 0)">Account Settings</a></li>
-                    </ul>
+                    <h3>Make Appointments is not currently implemented.</h3>
                 </div>
             </div>
         </div>

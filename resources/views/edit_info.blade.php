@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Portal | Home</title>
+    <title>Portal | Edit Info</title>
 @stop
 
 @section('custom_css')

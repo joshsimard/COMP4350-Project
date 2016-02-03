@@ -24,40 +24,6 @@ Route::get('/db', function () {
     return DB::table('users')->get();
 });
 
-
-
-
-
-//Links in doctors home
-
-Route::get('/notes', function()
-{
-    return View::make('/notes');
-});
-
-Route::get('/orders', function()
-{
-    return View::make('/orders');
-});
-
-Route::get('/settings', function()
-{
-    return View::make('/settings');
-});
-
-
-
-
-
-
-//Route::get('/editInfo', function()
-//{
-//    return View::make('/edit_info');
-//});
-//Route::post('/client_form', 'ClientFormController@store');
-
-//Route::resource('client_form', 'ClientFormEditController');
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -69,7 +35,6 @@ Route::get('/settings', function()
 |
 */
 
-
 //Handle Authentication
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
@@ -79,18 +44,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('client_info', 'ClientFormEditController');
     Route::get('calendar', 'CalendarController@create');
     Route::get('add/event','AddEventController@create');
-    /*Route::resource('calendar', 'CalendarController');*/
-
-    //links in client home
-    Route::get('/viewAppoinments', function()
-    {
-        return View::make('/client_appointments');
-    });
-
-    Route::get('/scheduleAppointment', function()
-    {
-        return View::make('/client_make_appimt');
-    });
-
+    Route::get('/appointments_list', 'ViewAppointmentsController@create');
+    Route::get('/add/appointment', 'ScheduleAppointmentController@create');
+    Route::get('/orders', 'OrdersController@create');
+    Route::get('/notes', 'NotesController@create');
+    Route::get('/settings', 'SettingsController@create');
 
 });

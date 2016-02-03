@@ -7,13 +7,15 @@
 
     @yield('title')
 
-            <!-- Favicon Link -->
+    <!-- Favicon Link -->
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap CSS served from a CDN -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/superhero/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 
     @yield('custom_css')
 
@@ -24,6 +26,13 @@
 
         .navbar-toggle {
             margin: 10px 0;
+        }
+
+        .centered-form .panel{
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+            color: #4e5d6c;
+            border-radius: 4px;
         }
 
     </style>
@@ -69,7 +78,8 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i><h5>Logout</h5></a></li>
+                            <li><a href="{{ url('/settings') }}"><h5><i class="fa fa-btn fa-gear"> Settings</i></h5></a></li>
+                            <li><a href="{{ url('/logout') }}"><h5><i class="fa fa-btn fa-sign-out"> Logout</i></h5></a></li>
                         </ul>
                     </li>
                 @endif
