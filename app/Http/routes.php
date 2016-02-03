@@ -45,26 +45,10 @@ Route::get('/settings', function()
     return View::make('/settings');
 });
 
-//Route::get('/client_form', function()
-//{
-    //return View::make('/client_form');
-
-//});
 
 
 
 
-
-//links in client home
-Route::get('/viewAppoinments', function()
-{
-    return View::make('/client_appointments');
-});
-
-Route::get('/scheduleAppointment', function()
-{
-    return View::make('/client_make_appimt');
-});
 
 //Route::get('/editInfo', function()
 //{
@@ -96,5 +80,17 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('calendar', 'CalendarController@create');
     Route::get('add/event','AddEventController@create');
     /*Route::resource('calendar', 'CalendarController');*/
+
+    //links in client home
+    Route::get('/viewAppoinments', function()
+    {
+        return View::make('/client_appointments');
+    });
+
+    Route::get('/scheduleAppointment', function()
+    {
+        return View::make('/client_make_appimt');
+    });
+
 
 });

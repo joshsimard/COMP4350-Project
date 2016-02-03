@@ -29,6 +29,12 @@
 
 @stop
 
+@section('header_links')
+    {{--insert name of link--}}
+    <?php $nav_link = "home";?>
+    @include('inc.navigation_link')
+@stop
+
 @section('content')
     <div class="container-fluid">
         <h1>Client Information</h1>
