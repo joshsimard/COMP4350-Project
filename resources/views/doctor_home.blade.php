@@ -39,7 +39,6 @@
                         <li><a href="/calendar" style="color: rgb(0, 0, 0)">Calendar</a></li>
                         <li><a href="/orders" style="color: rgb(0, 0, 0)">Order Medication</a></li>
                         <li><a href="/notes" style="color: rgb(0, 0, 0)">Notes and Messages</a></li>
-                        <li><a href="/settings" style="color: rgb(0, 0, 0)">Account Settings</a></li>
                     </ul>
                 </div>
             </div>
