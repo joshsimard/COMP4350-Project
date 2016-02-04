@@ -31,7 +31,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <span class="panel-title">
-                        <h5>Welcome, Dr. {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}, PHD</h5>
+                        <h5>Welcome, Dr. {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}, PhD</h5>
                     </span>
                 </div>
                 <div class="panel-body">

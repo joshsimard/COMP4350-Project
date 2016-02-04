@@ -22,7 +22,11 @@
     <style>
 
         /*Color brand name and bold it*/
-        .navbar-brand .brand-name{color: #deb887;font-weight: bold;}
+        .navbar-brand .brand-name{
+            color: #000000;
+            font-weight: bold;
+            height: auto;
+        }
 
         .navbar-toggle {
             margin: 10px 0;
@@ -33,6 +37,11 @@
             box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
             color: #4e5d6c;
             border-radius: 4px;
+        }
+
+        #home-button {
+            font-size: 1.5em;
+            margin: 5px 1px;
         }
 
     </style>
@@ -54,8 +63,8 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand brand-name" href="{{ url('/') }}">
-                <h4 class="brand-name">DC</h4>
+            <a class="navbar-brand brand-name" href="{{ url('/') }}">D
+                <i id="home-button" class="fa fa-stethoscope"></i>C
             </a>
         </div>
 

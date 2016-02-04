@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ScheduleAppointmentController extends Controller
+class AddNoteController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -36,8 +36,7 @@ class ScheduleAppointmentController extends Controller
      */
     public function create()
     {
-        //
-        return \View::make('/add/add_appointment');
+        return View('add/add_note');
     }
 
     /**

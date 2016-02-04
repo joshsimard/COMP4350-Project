@@ -14,10 +14,8 @@
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
-    //return view('welcome');
     return Redirect::to('login');
 });
-
 
 Route::get('/db', function () {
     //return db test
@@ -48,6 +46,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/add/appointment', 'ScheduleAppointmentController@create');
     Route::get('/orders', 'OrdersController@create');
     Route::get('/notes', 'NotesController@create');
+    Route::get('/add/note', 'AddNoteController@create');
     Route::get('/settings', 'SettingsController@create');
-
 });
