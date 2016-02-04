@@ -14,16 +14,7 @@
         }
         .list-group-item .items{color: #000000;}
 
-        /*make border rounded*/
-        .list-special .list-group-item:first-child {
-            border-top-right-radius: 4px;
-            border-top-left-radius: 4px;
-        }
-
-        .list-special .list-group-item:last-child {
-            border-bottom-right-radius: 4px;
-            border-bottom-left-radius: 4px;
-        }
+        .right-align{text-align: right;}
 
     </style>
 @stop
@@ -53,7 +44,11 @@
                          //populate
                          foreach($clients as $patient)
                          {
-                             echo '<a href="#" class="list-group-item"><h4 class="items">'.$patient["firstName"].' '.$patient["lastName"].'</h4><span class="left items">ID#: '.$patient["id"].'</span></a>';
+                             echo '<a href="#" class="list-group-item">
+                                    <h4 class="left items right-align">ID: '.$patient["id"].'</h4>
+                                    <h4 class="items">Name: '.$patient["firstName"].' '.$patient["lastName"].'</h4>
+                                    <h4 class="items"> Email: '.$patient["email"].'</h4>
+                                    </a>';
                          }
                      }
 
