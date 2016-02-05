@@ -158,21 +158,43 @@ class UserTest extends TestCase
             ->press('Login')
             ->seePageIs('/home')
 
-            //now test all the links
+        //test the settings
+            ->click('Settings')
+            ->seePageIs('/settings');
+
+        //now test all the links
+        $this->visit('/home')
             ->click('Calendar')
             ->seePageIs('/calendar')
             ->click("add")
             ->seePageIs('/add/event');
 
-        $this->visit('/')
+        $this->visit('/home')
             ->click('Order Medication')
             ->seePageIs('/orders');
 
-        $this->visit('/')
+        $this->visit('/home')
             ->click('Notes and Messages')
-            ->seePageIs('/notes');
+            ->seePageIs('/notes')
+            ->click("add_note")
+            ->seePageIs('/add/note')
+            ->click('Logout')
+            ->seePageIs('/login');
 
         //test client links
+        $this->visit('/')
+            ->type('jane@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+
+        //now test all the links
+            ->click('View Appointments')
+            ->seePageIs('/appointments_list');
+
+        $this->visit('/home')
+            ->click('Schedule Appointment')
+            ->seePageIs('/add/appointment');
     }
 
 }
