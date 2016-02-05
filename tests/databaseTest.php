@@ -34,7 +34,7 @@ class databaseTest extends TestCase
      *
      * @return void
      */
-    public function testseeInDatabase()
+    public function testSeeInDatabase()
     {
         // Make call to application...
 
@@ -60,7 +60,7 @@ class databaseTest extends TestCase
         $this->assertEquals(1, $testUser->admin);
     }
 
-    public function testdelete()
+    public function testDelete()
     {
 
         $list = [
