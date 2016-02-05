@@ -34,7 +34,7 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-title">Pick a date:<div class="add-button"><a href="/add/event"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h1>
+                    <h1 class="panel-title">Pick a date:<div class="add-button"><a href="/add/event" name="add"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h1>
                 </div>
                 <div class="panel-body">
                     <div class="row">

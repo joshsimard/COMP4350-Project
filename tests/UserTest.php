@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Auth;
 use App\models\users;
 use App\models\ClientList;
 
@@ -63,6 +62,11 @@ class UserTest extends TestCase
             ->seePageIs('/home')
             ->click('Logout')
             ->seePageIs('/login');
+
+        //find in database
+        $this->seeInDatabase('users', ['firstName' => 'Test']);
+        $this->seeInDatabase('users', ['lastName' => 'user']);
+        $this->seeInDatabase('users', ['email' => 'test@user.com']);
     }
 
 
@@ -82,7 +86,11 @@ class UserTest extends TestCase
             ->press('Login')
             ->seePageIs('/home')
             ->click('Clients')
-            ->seePageIs('/clientlist');
+            ->seePageIs('/clientlist')
+
+            //Jane doe is a basic user. We can check to see if she shows up
+            ->see('Name: Jane Doe')
+            ->see('Email: jane@doe.com');
     }
 
 
@@ -120,7 +128,9 @@ class UserTest extends TestCase
             ->type('Single', 'status')
             ->type('Mom', 'next_kin')
             ->press('Save')
-            ->seePageIs('/home');
+            ->seePageIs('/home')
+            ->click('Logout')
+            ->seePageIs('/login');
 
         //check the database
         $this->seeInDatabase('clients', ['gender' => 'female']);
@@ -139,6 +149,30 @@ class UserTest extends TestCase
         $this->seeInDatabase('clients', ['nextOfKin' => 'Mom']);
     }
 
+    public function testNavigation()
+    {
+        //test doctor links
+        $this->visit('/')
+            ->type('john@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
 
+            //now test all the links
+            ->click('Calendar')
+            ->seePageIs('/calendar')
+            ->click("add")
+            ->seePageIs('/add/event');
+
+        $this->visit('/')
+            ->click('Order Medication')
+            ->seePageIs('/orders');
+
+        $this->visit('/')
+            ->click('Notes and Messages')
+            ->seePageIs('/notes');
+
+        //test client links
+    }
 
 }

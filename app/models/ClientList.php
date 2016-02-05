@@ -19,7 +19,7 @@ class ClientList extends Model
      * @var array
      */
     protected $fillable = [
-        'firstName', 'lastName', 'email', 'gender', 'height', 'weight', 'mobileNum', 'homeNum',
+        'firstName', 'lastName', 'dob', 'email', 'gender', 'height', 'weight', 'mobileNum', 'homeNum',
         'address', 'city', 'postalCode', 'state', 'country', 'occupation', 'maritalStatus', 'nextOfKin',
     ];
 }
