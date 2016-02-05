@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\models\users;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -24,9 +24,21 @@ class AddNoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        //get client list
+        $users = users::all();
+        $clients = [];
+
+        foreach($users as $patient)
+        {
+            //check if the user is apatient
+            if(!$patient["admin"])
+                $clients[] = $patient;
+        }
+
+        return \View::make('add/add_note')->with('clients',$clients);
     }
 
     /**
@@ -36,7 +48,7 @@ class AddNoteController extends Controller
      */
     public function create()
     {
-        return View('add/add_note');
+//        return View('add/add_note');
     }
 
     /**

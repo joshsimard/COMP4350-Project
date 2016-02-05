@@ -52,9 +52,13 @@
                             <label for="tags">Tag Patient</label>
                             <select id="tags-menu" name="tags[]" multiple="multiple">
                                 <option value="">Add tags to this post...</option>
-                                <option value="id1" >Jane Doe</option>
-                                <option value="id2" selected="selected">Josh Simard</option>
-                                <option value="id3" selected="selected">Edmond Cotterell</option>
+                                <?php
+                                //populate
+                                foreach($clients as $patient)
+                                {
+                                    echo '<option value="#" selected="selected">'.$patient["firstName"].' '.$patient["lastName"].'</option>';
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -72,7 +76,9 @@
     <script type="text/javascript">
         $(function() {
             // Enable Selectize with an option to create new tags and add the remove button for tags
-            $('#tags-menu').selectize({ plugins: ['remove_button']});
+            $('#tags-menu').selectize({
+                plugins: ['remove_button']
+            })
         });
     </script>
 @stop
