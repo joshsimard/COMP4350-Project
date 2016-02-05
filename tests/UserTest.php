@@ -21,6 +21,10 @@ class UserTest extends TestCase
     /**
      * A basic test for login.
      *
+     * User Story: Enable authentication of Clients and
+     *             Doctors to through login page and database
+     *             records.
+     *
      * @return void
      */
     public function testLogin()
@@ -36,7 +40,9 @@ class UserTest extends TestCase
     }
 
     /**
-     * A basic test for login.
+     * A basic test for Register.
+     *
+     * User Story: Add clients through user interface to database.
      *
      * @return void
      */
@@ -56,24 +62,13 @@ class UserTest extends TestCase
             ->seePageIs('/home')
             ->click('Logout')
             ->seePageIs('/login');
-
-       // $this->seeInDatabase('users', ['email' => 'test@user.com']);
     }
 
-    /**
-     * test for seeing user was properly added
-     *
-     * @return void
-     */
-    public function testseeInDatabase()
-    {
-        // Make call to application...
-
-        $this->seeInDatabase('users', ['email' => 'test@user.com']);
-    }
 
     /**
      * view clients form doctorsPage.
+     *
+     * User Story: Enable doctors to view list of client records.
      *
      * @return void
      */
@@ -87,6 +82,31 @@ class UserTest extends TestCase
             ->seePageIs('/home')
             ->click('Clients')
             ->seePageIs('/clientlist');
+    }
+
+
+    /**
+     * edit clients form clientPage.
+     * updated jane doe's gender to female
+     *
+     * User Story: Enable editing of client records created,
+     *             such as editing name, medication and appointment.
+     *
+     * @return void
+     */
+    public function testEditClients()
+    {
+
+        $this->visit('/')
+            ->type('jane@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+            ->click('Edit Information')
+            ->seePageIs('/client_form')
+            ->type('female', 'gender')
+            ->press('Save')
+            ->seePageIs('/home');
     }
 
 
