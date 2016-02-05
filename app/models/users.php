@@ -12,4 +12,13 @@ class users extends Model
      * @var string
      */
     protected $table = 'users';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'firstName', 'lastName', 'email', 'password', 'admin', 'firstEdit'
+    ];
 }
