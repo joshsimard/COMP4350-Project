@@ -30,6 +30,18 @@ class UserTest extends TestCase
     public function testLogin()
     {
         $this->visit('/')
+
+            //bad login
+            ->press('Login')
+            ->seePageIs('/login')
+
+            //wrong password
+            ->type('john@doe.com', 'email')
+            ->type('123', 'password')
+            ->press('Login')
+            ->seePageIs('/login')
+
+            //good login
             ->type('john@doe.com', 'email')
             ->type('password', 'password')
             ->press('Login')
@@ -51,6 +63,22 @@ class UserTest extends TestCase
         //clear user
         DB::table('users')->where('email', '=', 'test@user.com')->delete();
 
+        //try to register w/o all the fields
+        $this->visit('/')
+            ->click('Register')
+            ->press('Register')
+            ->seePageIs('/register')
+
+            //mismatched password
+            ->type('Test', 'firstName')
+            ->type('user', 'lastName')
+            ->type('test@user.com', 'email')
+            ->type('password', 'password')
+            ->type('123', 'password_confirmation')
+            ->press('Register')
+            ->seePageIs('/register');
+
+        //good register
         $this->visit('/')
             ->click('Register')
             ->type('Test', 'firstName')
