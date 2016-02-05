@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    {!! Form::text('height', $patient["height"], array('class'=>'form-control input-md', 'placeholder'=>'height(ft)')) !!}
+                    {!! Form::text('height', $patient["height"], array('class'=>'form-control input-md', 'placeholder'=>'height(cm)')) !!}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
