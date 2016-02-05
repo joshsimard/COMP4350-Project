@@ -1,3 +1,0 @@
-%to run all acceptance tests, type in command line
-
-php codecept.phar run
