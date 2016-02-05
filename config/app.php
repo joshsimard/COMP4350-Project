@@ -159,7 +159,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
+        //Illuminate\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -207,11 +207,11 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
 
-        //'Form' => Collective\Html\FormFacade::class,
-        //'HTML' => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'HTML' => Collective\Html\HtmlFacade::class,
 
-        'HTML'      => Illuminate\Html\HtmlFacade::class,
-        'Form'      => Illuminate\Html\FormFacade::class,
+        //'HTML'      => Illuminate\Html\HtmlFacade::class,
+        //'Form'      => Illuminate\Html\FormFacade::class,
     ],
 
 ];
