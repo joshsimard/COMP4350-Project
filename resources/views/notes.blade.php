@@ -20,6 +20,14 @@
             text-align: right;
             float: right;
         }
+
+        .list-group-item {
+            background-color: #dddddd;
+            width: inherit;
+            margin-bottom: 5px;
+        }
+        .list-group-item .items{color: #000000;}
+
     </style>
 @stop
 
@@ -33,12 +41,37 @@
 @section('content')
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h5 class="panel-title">Sorry<div class="add-button"><a href="/add/note" name="add_note"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h5>
+                    <h5 class="panel-title">Notes<div class="add-button"><a href="/add/note" name="add_note"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h5>
                 </div>
-                <div class="panel-body">
-                    <h3>Notes is not currently implemented.</h3>
+                <div class="panel-body" style="background-color: #2e3436; ">
+                    {!! Form::open(['method'=>'GET','url'=>'notes','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default-sm" type="submit">
+                                <i class="fa fa-search"><!--<span class="hiddenGrammarError" pre="" data-mce-bogus="1"--></i>
+                            </button>
+                        </span>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body" style="background-color: #2e3436">
+                    @if(count($clients) < 1)
+                        <a href="#" class="list-group-item"><h4 class="items">No Clients!</h4><span class="left items"></span></a>
+                    @else
+                        @foreach($clients as $patient)
+                            <a href="#" class="list-group-item">
+                                <p class="items">{!! $patient["firstName"].' '.$patient["lastName"]!!}</p>
+                            </a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
