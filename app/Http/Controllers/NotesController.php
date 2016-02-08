@@ -43,7 +43,9 @@ class NotesController extends Controller
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = ClientList::where('firstName', 'LIKE', '%'.$query.'%')->get();
+            $results = ClientList::where('firstName', 'LIKE', '%'.$query.'%')
+                ->orWhere('lastName', 'LIKE', '%'.$query.'%')
+                ->get();
 
             return \View::make('notes')->with('clients', $results);
         }
