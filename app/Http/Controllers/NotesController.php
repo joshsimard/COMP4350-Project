@@ -43,16 +43,9 @@ class NotesController extends Controller
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            echo $query;
-            $results = ClientList::where('firstName', 'LIKE', '\'%'.$query.'%\'')->get();
+            $results = ClientList::where('firstName', 'LIKE', '%'.$query.'%')->get();
 
-            echo $results->count();
-
-//            if ($results->count() > 0) {
             return \View::make('notes')->with('clients', $results);
-//            } else {
-//                return '<h3>Sorry, No results for ' . $query . ' </h3>';
-//            }
         }
         return \View::make('notes')->with('clients',$clients);
 
