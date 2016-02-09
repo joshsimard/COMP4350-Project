@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +19,6 @@ class Note extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'body',
+        'id', 'doctor_id', 'name', 'body', 'timestamp'
     ];
 }

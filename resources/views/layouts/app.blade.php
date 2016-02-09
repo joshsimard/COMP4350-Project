@@ -45,6 +45,10 @@
             margin: 5px 1px;
         }
 
+        .btn-circle {
+            border-radius: 4px;
+        }
+
     </style>
 
 </head>

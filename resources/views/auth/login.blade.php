@@ -5,9 +5,6 @@
     .top-buffer {
         margin-top: 60px;
     }
-     .btn-circle {
-         border-radius: 4px;
-     }
 
     .form-control {
         border-radius: 4px;

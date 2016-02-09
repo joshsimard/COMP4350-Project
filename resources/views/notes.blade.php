@@ -28,6 +28,11 @@
         }
         .list-group-item .items{color: #000000;}
 
+        .reset-btn {
+            margin-left: 5px;
+            float:right;
+        }
+
     </style>
 @stop
 
@@ -56,6 +61,11 @@
                                 <i class="fa fa-search"><!--<span class="hiddenGrammarError" pre="" data-mce-bogus="1"--></i>
                             </button>
                         </span>
+                        <div class="reset-btn">
+                            <button class="btn btn-xs btn-info btn-circle" onclick="reset()">
+                                Reset
+                            </button>
+                        </div>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -76,4 +86,13 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('custom_js')
+    <script>
+        function reset()
+        {
+            location.reload(true);
+        }
+    </script>
 @stop
