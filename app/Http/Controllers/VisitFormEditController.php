@@ -40,7 +40,7 @@ class VisitFormEditController extends Controller
         //get client list
         //$clients = ClientList::all();
 
-        return \View::make('doctor_client_form')->with('patient',$patient);
+        return \View::make('visit_form')->with('patient',$patient);
     }
 
     /**

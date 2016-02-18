@@ -39,7 +39,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/clientlist', 'ClientListController@index');
     Route::get('/client_form', 'ClientFormEditController@index');
-    Route::get('/doctor_client_form', 'DoctorClientFormEditController@index');
+    Route::get('/visit_form', 'VisitFormEditController@index');
     Route::resource('client_info', 'ClientFormEditController');
     Route::get('calendar', 'CalendarController@create');
     Route::get('add/event','AddEventController@create');
