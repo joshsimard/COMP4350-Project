@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class DoctorClientFormEditController extends Controller
+class VisitFormEditController extends Controller
 {
     /**
      * Create a new controller instance.
