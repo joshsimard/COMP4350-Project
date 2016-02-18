@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('head')
-    <title>Client Information</title>
+@section('title')
+    <title>Client Information | {{ $patient["firstName"] }} {{ $patient["lastName"] }}</title>
 @stop
 
 @section('custom_css')
@@ -16,7 +16,7 @@
         .container-fluid {
             padding : 50px;
             color: black;
-            width: 75%;
+            width: 80%;
             background-color: white;
             min-height: 250px;
         }
@@ -66,7 +66,10 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6"><div class="form-group">
                     <div class='input-group date' id='dob'>
-                        {!! Form::text('dob', $patient["dob"], array('id' => 'datepicker','class'=>'form-control input-md', 'placeholder'=>'DOB (YYYY-MM-DD)')) !!}
+                        <label id="year">Date of birth:&emsp;</label>
+                        {{ Form::selectYear('year', null, []) }}
+                        {{ Form::selectMonth('month', null, [], '%B') }}
+                        {{ Form::selectRange('day', 1, 31, null, []) }}
                     </span>
                     </div>
                 </div>
