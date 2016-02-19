@@ -41,7 +41,6 @@
             padding : 10px;
             color: black;
             width: 80%;
-            background-color: white;
             min-height: 250px;
         }
         #visits {
