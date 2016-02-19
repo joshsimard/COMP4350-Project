@@ -53,6 +53,7 @@ class VisitFormEditController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -64,8 +65,23 @@ class VisitFormEditController extends Controller
         $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
 
         $list = [
+            'firstName' => $patient["firstName"],
+            'lastName' => $patient["lastName"],
+            'dob' => $request->dob,
+            'email' => $patient["email"],
+            'gender' => $request->gender,
             'height' => $request->height,
             'weight' => $request->weight,
+            'mobileNum' => $request->phone,
+            'homeNum' => $request->home_phone,
+            'address' => $request->address,
+            'city' => $request->city,
+            'postalCode' => $request->postal_code,
+            'state' => $request->state,
+            'country' => $request->country,
+            'occupation' => $request->occupation,
+            'maritalStatus' => $request->status,
+            'nextOfKin' => $request->next_kin
         ];
 
         try {

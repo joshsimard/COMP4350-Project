@@ -14,7 +14,7 @@
 
     <!-- Bootstrap CSS served from a CDN -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/superhero/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/sandstone/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
@@ -28,7 +28,9 @@
             font-weight: bold;
             height: auto;
         }
-
+        .navbar{
+            z-index: 2;
+        }
         .navbar-toggle {
             margin: 10px 0;
         }
@@ -45,13 +47,18 @@
             margin: 5px 1px;
         }
 
+        #content{
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
     </style>
 
 </head>
 <body>
 
 {{--Navigation Bar--}}
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -84,7 +91,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                           <h5>{{ Auth::user()->firstName }} <span class="caret"></span></h5>
+                           <h4>{{ Auth::user()->firstName }} <span class="caret"></span></h4>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
@@ -99,7 +106,7 @@
 </nav>
 
 <div class="top-buffer"></div>
-<div class="container">
+<div class="container" id="content">
     @yield('content')
 </div>
 

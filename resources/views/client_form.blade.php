@@ -14,19 +14,20 @@
             width: 50%;
         }
         .container-fluid {
-            padding : 50px;
+            padding : 10px;
             color: black;
             width: 80%;
             background-color: white;
             min-height: 250px;
         }
-
+        .row{
+            padding: 6px;
+        }
 
     </style>
 
     <!-- datepicker CSS -->
     <link href="{{ 'css/date_picker.css' }}" rel="stylesheet">
-
 @stop
 
 @section('header_links')
@@ -41,130 +42,97 @@
         Edit client information.
         <hr>
         {!! Form::open(array('action' => 'ClientFormEditController@store')) !!}
-
         <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                    {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md', 'disabled')) !!}
-                </div>
+            <div class="col-sm-6">
+                {!! Form::text('first_name', $patient["firstName"], array('class'=>'form-control input-md', 'disabled')) !!}
+            </div>
+            <div class="col-sm-6">
+                {!! Form::text('last_name', $patient["lastName"], array('class'=>'form-control input-md', 'disabled')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md', 'disabled')) !!}
+            </div>
+            <div class="col-xs-6">
+
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('first_name', $patient["firstName"], array('class'=>'form-control input-md', 'disabled')) !!}
-                </div>
+            <div class="col-xs-6">
+                <label id="year">Date of birth:&emsp;</label>
+                {{ Form::selectYear('year', null, []) }}
+                {{ Form::selectMonth('month', null, [], '%B') }}
+                {{ Form::selectRange('day', 1, 31, null, []) }}
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('last_name', $patient["lastName"], array('class'=>'form-control input-md', 'disabled')) !!}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6"><div class="form-group">
-                    <div class='input-group date' id='dob'>
-                        <label id="year">Date of birth:&emsp;</label>
-                        {{ Form::selectYear('year', null, []) }}
-                        {{ Form::selectMonth('month', null, [], '%B') }}
-                        {{ Form::selectRange('day', 1, 31, null, []) }}
-                    </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('gender', $patient["gender"], array('class'=>'form-control input-md', 'placeholder'=>'Male/Female')) !!}
-                </div>
+            <div class="col-xs-6">
+                @if ($patient["gender"] === 1)
+                    {{ Form::radio('sex', 'male', true) }}&ensp;Male&emsp;&emsp;
+                    {{ Form::radio('sex', 'female') }}Female
+                @else
+                    {{ Form::radio('sex', 'male') }}&ensp;Male&emsp;&emsp;
+                    {{ Form::radio('sex', 'female', true) }}&ensp;Female
+                @endif
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('height', $patient["height"], array('class'=>'form-control input-md', 'placeholder'=>'height(cm)')) !!}
-                </div>
+            <div class="col-sm-6">
+                {!! Form::text('height', $patient["height"], array('class'=>'form-control input-md', 'placeholder'=>'height(cm)')) !!}
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('weight', $patient["weight"], array('class'=>'form-control input-md', 'placeholder'=>'weight(kg)')) !!}
-                </div>
+            <div class="col-sm-6">
+                {!! Form::text('weight', $patient["weight"], array('class'=>'form-control input-md', 'placeholder'=>'weight(kg)')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                {!! Form::text('phone', $patient["mobileNum"], array('class'=>'form-control input-md', 'placeholder'=>'Phone Number')) !!}
+            </div>
+            <div class="col-sm-6">
+                {!! Form::text('home_phone', $patient["homeNum"], array('class'=>'form-control input-md', 'placeholder'=>'Home Phone')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                {!! Form::text('address', $patient["address"], array('class'=>'form-control input-md', 'placeholder'=>'P.O. Box, Apt #, Street Address.')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                {!! Form::text('city', $patient["city"], array('class'=>'form-control input-md', 'placeholder'=>'city')) !!}
+            </div>
+            <div class="col-sm-4">
+                {!! Form::text('postal_code', $patient["postalCode"], array('class'=>'form-control input-md', 'placeholder'=>'postal/zip code')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                {!! Form::text('state', $patient["state"], array('class'=>'form-control input-md', 'placeholder'=>'State/Province/Region')) !!}
+            </div>
+            <div class="col-sm-4">
+                {!! Form::text('country', $patient["country"], array('class'=>'form-control input-md', 'placeholder'=>'Country')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                {!! Form::text('occupation', $patient["occupation"], array('class'=>'form-control input-md', 'placeholder'=>'Occupation')) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                {!! Form::text('status', $patient["maritalStatus"], array('class'=>'form-control input-md', 'placeholder'=>'Marital Status')) !!}
+            </div>
+            <div class="col-sm-4">
+                {!! Form::text('next_kin', $patient["nextOfKin"], array('class'=>'form-control input-md', 'placeholder'=>'Next of Kin')) !!}
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('phone', $patient["mobileNum"], array('class'=>'form-control input-md', 'placeholder'=>'Phone Number')) !!}
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('home_phone', $patient["homeNum"], array('class'=>'form-control input-md', 'placeholder'=>'Home Phone')) !!}
-                </div>
+            <div class="col-sm-4" style="z-index: 2;float:right;">
+                {!! Form::submit('Save', array('class'=>'btn btn-default','style'=>"float:right; width:100px; border-radius:0; box-shadow: 2px 3px 3px 1px #888888;"))!!}
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {!! Form::text('address', $patient["address"], array('class'=>'form-control input-md', 'placeholder'=>'P.O. Box, Apt #, Street Address.')) !!}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('city', $patient["city"], array('class'=>'form-control input-md', 'placeholder'=>'city')) !!}
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('postal_code', $patient["postalCode"], array('class'=>'form-control input-md', 'placeholder'=>'postal/zip code')) !!}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('state', $patient["state"], array('class'=>'form-control input-md', 'placeholder'=>'State/Province/Region')) !!}
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('country', $patient["country"], array('class'=>'form-control input-md', 'placeholder'=>'Country')) !!}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                    {!! Form::text('occupation', $patient["occupation"], array('class'=>'form-control input-md', 'placeholder'=>'Occupation')) !!}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('status', $patient["maritalStatus"], array('class'=>'form-control input-md', 'placeholder'=>'Marital Status')) !!}
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    {!! Form::text('next_kin', $patient["nextOfKin"], array('class'=>'form-control input-md', 'placeholder'=>'Next of Kin')) !!}
-                </div>
-            </div>
-        </div>
-
-
-        {!! Form::submit('Save', array('class'=>'btn btn-default'))!!}
-
         {!! Form::close() !!}
     </div>
 @stop
