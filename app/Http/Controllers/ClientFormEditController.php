@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Business\DataAccess;
 use App\models\ClientList;
 use App\models\users;
 use Illuminate\Http\Request;
@@ -29,14 +30,19 @@ class ClientFormEditController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->firstEdit)
-        {
-            $patient = ClientList::where('email','=', Auth::user()->email)->firstOrFail();
-        }
-        else
-        {
-            $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
-        }
+        $dataAccess = new DataAccess();
+        $patient = $dataAccess->getPatient(Auth::user()->email);
+
+//        if(Auth::user()->firstEdit)
+//        {
+//
+//            $patient = $dataAccess->getPatient(Auth::user()->email);
+//            //$patient = ClientList::where('email','=', Auth::user()->email)->firstOrFail();
+//        }
+//        else
+//        {
+//            //$patient = users::where('email','=', Auth::user()->email)->firstOrFail();
+//        }
         //get client list
         //$clients = ClientList::all();
 
@@ -61,7 +67,9 @@ class ClientFormEditController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
+       // $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
+        $dataAccess = new DataAccess();
+        $patient = $dataAccess->getPatient(Auth::user()->email);
 
         $list = [
             'firstName' => $patient["firstName"],
@@ -83,19 +91,20 @@ class ClientFormEditController extends Controller
             'nextOfKin' => $request->next_kin
         ];
 
-        try {
-            $clientCheck = ClientList::where('email', '=', Auth::user()->email)->firstOrFail();
-            ClientList::where('email', Auth::user()->email)
-                ->update($list);
-        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-            $client = ClientList::firstOrCreate($list);
-
-            //change auth::firstedit to true !!!
-
-            $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
-            $user->firstEdit = 1;
-            $user->save();
-        }
+        $dataAccess->clientInfoSave($list, Auth::user()->email);
+//        try {
+//            $clientCheck = ClientList::where('email', '=', Auth::user()->email)->firstOrFail();
+//            ClientList::where('email', Auth::user()->email)
+//                ->update($list);
+//        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+//            $client = ClientList::firstOrCreate($list);
+//
+//            //change auth::firstedit to true !!!
+//
+//            $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
+//            $user->firstEdit = 1;
+//            $user->save();
+//        }
 
 
 
