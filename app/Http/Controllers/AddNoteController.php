@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\models\users;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Business\DataAccess;
 
 class AddNoteController extends Controller
 {
@@ -28,15 +29,18 @@ class AddNoteController extends Controller
     public function index()
     {
         //get client list
-        $users = users::all();
-        $clients = [];
+//        $users = users::all();
+//        $clients = [];
+//
+//        foreach($users as $patient)
+//        {
+//            //check if the user is apatient
+//            if(!$patient["admin"])
+//                $clients[] = $patient;
+//        }
 
-        foreach($users as $patient)
-        {
-            //check if the user is apatient
-            if(!$patient["admin"])
-                $clients[] = $patient;
-        }
+        $dataAccess = new DataAccess();
+        $clients = $dataAccess->getClientsFromUsers();
 
         return \View::make('add/add_note')->with('clients',$clients);
     }
