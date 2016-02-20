@@ -1,0 +1,1 @@
+<li class="<?php if($nav_link =="notes"){ echo "active"; }?>"><a href="/notes"><h5>notes and messages</h5></a></li>
