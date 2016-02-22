@@ -19,6 +19,6 @@ class calendar extends Model
      * @var array
      */
     protected $fillable = [
-        'event_id', 'title', 'start_time', 'end_time', 'client_id',
+        'event_id', 'title', 'start_time', 'end_time', 'client_id', 'client_name'
     ];
 }
