@@ -73,8 +73,8 @@ $(document).ready(function() {
                     );
 
                     //send event to controller
-                    $.post('http://localhost:8000/calendar', {
-                            _token: $('meta[name=csrf-token]').attr('content'),
+                    $.post('calendar', {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
                             data: id +'&'+ title+'&'+ start +'&'+ end,
                         })
                         .done(function(data) {
