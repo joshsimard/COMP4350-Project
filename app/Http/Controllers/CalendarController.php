@@ -48,7 +48,11 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->input('data');
+        list($id, $title, $start, $end) = explode("&", $data);
+        //echo $title;
+
     }
 
     /**

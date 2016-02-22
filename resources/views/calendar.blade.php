@@ -5,6 +5,13 @@
 @stop
 
 @section('custom_css')
+
+
+    {{--Calendar style--}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.9/jquery.timepicker.min.css" rel="stylesheet">
+
     <style>
         .top-buffer {
             margin-top: 60px;
@@ -14,10 +21,14 @@
             text-align: right;
             float: right;
         }
+
+        /*Current day styling*/
+        .fc-unthemed .fc-today {
+            color:#000000;
+        }
+
     </style>
 
-    <!-- datepicker CSS -->
-    <link href="{{ 'css/date_picker.css' }}" rel="stylesheet">
 
 @stop
 
@@ -30,46 +41,100 @@
 
 @section('content')
 
-    <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h1 class="panel-title">Pick a date:<div class="add-button"><a href="/add/event" name="add"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h1>
+    <div id='calendar'></div>
+
+    <div id="fullCalModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h4 id="modalTitle" class="modal-title"></h4>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <form>
-                                    <input id="date" name="date" type="text" placeholder="Choose a date...">
-                                </form>
-                            </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            {{--Choose Doctor--}}
+                            <label for="doctor-choice" class="control-label">Choose Doctor:</label>
+                            <select class="form-control" id="doctor-choice">
+                                <option>Any</option>
+                                <option>Dr. Joe</option>
+                                <option>Dr. Frankinstein</option>
+                                <option>Dr. Einstein</option>
+                                <option>Dr. Lakus</option>
+                            </select>
+
+                            <label for="recipient-name" class="control-label">Title:</label>
+                            <input type="text" class="form-control" id="event-title">
+                            <label for="recipient-name" class="control-label">Start Time:</label>
+                            <input type="text" class="form-control" id="start-time">
+                            <label for="recipient-name" class="control-label">End Time:</label>
+                            <input type="text" class="form-control" id="end-time">
+                            {{--<label for="recipient-name" class="control-label">Doctor:</label>--}}
+                            {{--<input type="text" class="form-control" id="recipient-name">--}}
+
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <form>
-                                    <input type="submit" value="submit" class="btn btn-info btn-block">
-                                </form>
-                            </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Description:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id ="save-button" type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                    {{--<button type="button"><a id="eventUrl" target="_blank">Save</a></button>--}}
                 </div>
             </div>
         </div>
     </div>
 
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class='col-sm-6'>--}}
+                {{--<div class="form-group">--}}
+                    {{--<div class='input-group date' id='datetimepicker3'>--}}
+                        {{--<input type='text' class="form-control" />--}}
+                    {{--<span class="input-group-addon">--}}
+                        {{--<span class="glyphicon glyphicon-time"></span>--}}
+                    {{--</span>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<script type="text/javascript">--}}
+                {{--$(function () {--}}
+{{--//                    $('#datetimepicker3').datetimepicker({--}}
+{{--//                        format: 'LT'--}}
+{{--//                    });--}}
+                    {{--$('#datetimepicker3').timepicker();--}}
+                {{--});--}}
+            {{--</script>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
 @stop
 
 @section('custom_js')
 
-    <!-- date picker scripts -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Calender scripts -->
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script>
-        $(function() {
-            $( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.11.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
+
+    {{-- DatePicker Scripts--}}
+    {{--<script href="https://cdn.jsdelivr.net/jquery.transition/1.7.2/jquery.transition.js"></script>--}}
+    {{--<script href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/umd/collapse.js"></script>--}}
+    {{--<script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"></script>--}}
+            {{--<!-- Latest compiled and minified JavaScript -->--}}
+    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>--}}
+
+    {{--<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>--}}
+    {{--<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>--}}
+    {{--<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>--}}
+    {{--<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>--}}
+
+
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.9/jquery.timepicker.min.js"></script>
+    <script src="{{ 'js/calender.js' }}"></script>
+
 @stop
