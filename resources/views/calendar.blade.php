@@ -36,10 +36,19 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    @include('inc.doctors_nav_links')
 @stop
 
 @section('content')
+    <?php
+        $user_info = array( Auth::user()->firstName, Auth::user()->lastName);
+    ?>
+
+    <!-- Convert php arrays to javascript   -->
+    <script type="text/javascript">
+        // pass PHP array to JavaScript array
+        var events = <?php echo json_encode($events) ?>;
+        var user_info = <?php echo json_encode($user_info) ?>;
+    </script>
 
     <div id='calendar'></div>
 

@@ -16,6 +16,7 @@ class CalendarController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -28,7 +29,8 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        //
+        //$dataAccess = new DataAccess();
+
     }
 
     /**
@@ -38,8 +40,18 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        //
-        return \View::make('/calendar');
+        $dataAccess = new DataAccess();
+
+        $events = $dataAccess->getEvents();
+        $eventArray = array();
+        foreach($events as $event)
+        {
+            array_push($eventArray, array($event['event_id'], $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
+
+        }
+
+
+        return \View::make('/calendar')->with('events',$eventArray);
     }
 
     /**

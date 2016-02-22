@@ -16,6 +16,7 @@ $(document).ready(function() {
 
     var calendar = $('#calendar').fullCalendar(
         {
+
             /*
              header option will define our calendar header.
              left define what will be at left position in calendar
@@ -51,6 +52,7 @@ $(document).ready(function() {
                  */
                 var title = prompt('Event Title:');
                 var id = new Date().getTime().toString();
+                var user_name = user_info[0]+" "+user_info[1];
                 //alert(id);
                 /*
                  if title is enterd calendar will add title and event into fullCalendar.
@@ -63,18 +65,8 @@ $(document).ready(function() {
 
                 if (title) {
 
-                    calendar.fullCalendar('renderEvent',
-                        {
-                            id: id,
-                            title: title+" - Brian Griffin",
-                            start: start,
-                            end: end,
-                            //allDay: allDay
-                        },
-                        true // make the event "stick"
-
-
-                    );
+                    //attach event to calendar
+                    addEventToCalender(id, title, start, end, user_name);
 
                     //send event to controller
                     postEventToDB(id, title, start.toString(), end.toString());
@@ -90,7 +82,7 @@ $(document).ready(function() {
                 title = prompt('Update Title:');
 
                 if(title) {
-                    event.title = title + " - Brian Griffin";
+                    event.title = title;
 
                     $('#calendar').fullCalendar('updateEvent', event);
                     postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
@@ -131,6 +123,12 @@ $(document).ready(function() {
             editable: true,
         });
 
+    //get all events from db
+    for (i = 0; i < events.length; i++) {
+        addEventToCalender(events[i][0], events[i][1], events[i][2], events[i][3], "");
+    }
+
+
 
     function postEventToDB(id, title, start, end)
     {
@@ -145,6 +143,22 @@ $(document).ready(function() {
             .fail(function() {
                 alert( "error-lala" );
             });
+    }
+
+    function addEventToCalender(id, title, start, end, name)
+    {
+        calendar.fullCalendar('renderEvent',
+            {
+                id: id,
+                title: title+" - "+name,
+                start: start,
+                end: end,
+                //allDay: allDay
+            },
+            true // make the event "stick"
+
+
+        );
     }
 
 });

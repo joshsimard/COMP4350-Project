@@ -23,7 +23,6 @@
     {{--insert name of link--}}
     <?php $nav_link = "clientlist";?>
     @include('inc.navigation_link')
-    @include('inc.doctors_nav_links')
 @stop
 
 @section('content')
