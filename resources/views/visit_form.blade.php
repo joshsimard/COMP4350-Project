@@ -5,6 +5,7 @@
 @stop
 
 @section('custom_css')
+
     <style>
         #allergies {
             border: 0;
@@ -54,6 +55,10 @@
         p{
             font-size: medium;
         }
+
+        #content{background-color: #FFFFFF;}
+        .titleHeads{color: #000000;}
+
     </style>
 
     <!-- datepicker CSS -->
@@ -70,7 +75,7 @@
 @stop
 
 @section('content')
-    <h2 style="margin-left: 20px;">{{ $patient["firstName"] or 'firstname'  }} {{ $patient["lastName"] or 'lastname'  }}</h2>
+    <h2 style="margin-left: 20px;" class="titleHeads">{{ $patient["firstName"] or 'firstname'  }} {{ $patient["lastName"] or 'lastname'  }}</h2>
     <hr>
     <div class="container" id="new_visit">
         <div class="row">
@@ -134,7 +139,7 @@
         </div>
     </div>
     <div class="container" id="visits">
-        <h3>Previous Visits</h3>
+        <h3 class="titleHeads">Previous Visits</h3>
         <hr>
     </div>
 @stop
