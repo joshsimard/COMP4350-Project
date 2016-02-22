@@ -19,6 +19,7 @@ class CreateCalendarTable extends Migration
             $table->string('start_time');
             $table->string('end_time');
             $table->string('client_id');
+            $table->string('client_name');
             $table->timestamps();
         });
     }

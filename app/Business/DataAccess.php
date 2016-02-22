@@ -60,14 +60,15 @@ class DataAccess{
         }
     }
 
-    function eventSave($id, $title, $start, $end, $userEmail)
+    function eventSave($id, $title, $start, $end, $userEmail, $name)
     {
         $list = [
             'event_id' => $id,
             'title' => $title,
             'start_time' => $start,
             'end_time' => $end,
-            'client_id' => $userEmail
+            'client_id' => $userEmail,
+            'client_name' => $name
             ];
 
         try {

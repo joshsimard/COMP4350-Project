@@ -62,7 +62,7 @@
         <div class="row">
             <div class="col-xs-6">
                 <label id="year">Date of birth:&emsp;</label>
-                {{ Form::selectYear('year', null, []) }}
+                {{ Form::selectYear('year', 1930, date("Y")) }}
                 {{ Form::selectMonth('month', null, [], '%B') }}
                 {{ Form::selectRange('day', 1, 31, null, []) }}
             </div>
