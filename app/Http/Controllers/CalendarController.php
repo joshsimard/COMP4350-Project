@@ -56,7 +56,7 @@ class CalendarController extends Controller
         list($id, $title, $start, $end) = explode("&", $data);
 
         $dataAccess->eventSave($id, $title, $start, $end, Auth::user()->email);
-        echo $start, $end, $id;
+       // echo $start, $end, $id;
 
     }
 

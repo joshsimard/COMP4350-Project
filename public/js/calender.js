@@ -50,11 +50,15 @@ $(document).ready(function() {
                  after selection user will be promted for enter title for event.
                  */
                 var title = prompt('Event Title:');
-                var id = date.getTime();
+                var id = new Date().getTime().toString();
+                //alert(id);
                 /*
                  if title is enterd calendar will add title and event into fullCalendar.
                  */
-
+                //alert(start.format('yyyy-MM-ddTHH:mm:ssZ'));
+                //var start2 = start.toString();
+                //alert(start2);
+                //start2.format('yyyy-MM-ddTHH:mm:ssZ');
                 //determine what will be id
 
                 if (title) {
@@ -73,17 +77,7 @@ $(document).ready(function() {
                     );
 
                     //send event to controller
-                    $.post('calendar', {
-                            _token: $('meta[name="csrf-token"]').attr('content'),
-                            data: id +'&'+ title+'&'+ start +'&'+ end,
-                        })
-                        .done(function(data) {
-                            alert(data);
-                           // alert("succes");
-                        })
-                        .fail(function() {
-                            alert( "error-lala" );
-                        });
+                    postEventToDB(id, title, start.toString(), end.toString());
 
 
                 }
@@ -99,7 +93,7 @@ $(document).ready(function() {
                     event.title = title + " - Brian Griffin";
 
                     $('#calendar').fullCalendar('updateEvent', event);
-
+                    postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
                 }
             },
 
@@ -109,6 +103,10 @@ $(document).ready(function() {
 
                 if (!confirm("Are you sure about this change?")) {
                     revertFunc();
+                }
+                else
+                {
+                    postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
                 }
 
             },
@@ -120,6 +118,10 @@ $(document).ready(function() {
                 if (!confirm("Are you sure about this change?")) {
                     revertFunc();
                 }
+                else
+                {
+                    postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
+                }
 
             },
 
@@ -130,6 +132,20 @@ $(document).ready(function() {
         });
 
 
+    function postEventToDB(id, title, start, end)
+    {
+        $.post('calendar', {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                data: id +'&'+ title+'&'+ start +'&'+ end,
+            })
+            .done(function(data) {
+                //alert(data);
+                // alert("succes");
+            })
+            .fail(function() {
+                alert( "error-lala" );
+            });
+    }
 
 });
 

@@ -14,10 +14,10 @@ class CreateCalendarTable extends Migration
     {
         Schema::create('calendar', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('event_id');
+            $table->string('event_id');
             $table->string('title');
-            $table->double('start_time');
-            $table->double('end_time');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->string('client_id');
             $table->timestamps();
         });
