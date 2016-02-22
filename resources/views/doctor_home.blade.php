@@ -22,7 +22,6 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    @include('inc.doctors_nav_links')
 @stop
 
 @section('content')
@@ -36,8 +35,9 @@
                 </div>
                 <div class="panel-body">
                     <ul>
+                        <li><a href="/clientlist" style="color: rgb(0, 0, 0)">View Clients</a></li>
                         <li><a href="/calendar" style="color: rgb(0, 0, 0)">Calendar</a></li>
-                        <li><a href="/orders" style="color: rgb(0, 0, 0)">Order Medication</a></li>
+                        {{--<li><a href="/orders" style="color: rgb(0, 0, 0)">Order Medication</a></li>--}}
                         <li><a href="/notes" style="color: rgb(0, 0, 0)">Notes and Messages</a></li>
                     </ul>
                 </div>

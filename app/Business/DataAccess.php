@@ -84,4 +84,9 @@ class DataAccess{
 
         }
     }
+
+    function getEvents()
+    {
+        return calendar::all();
+    }
 }
