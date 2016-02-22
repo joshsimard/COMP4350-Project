@@ -7,6 +7,8 @@
 
     @yield('title')
 
+    <meta name="csrf-token" content="{!! Session::token() !!}">
+
     <!-- Favicon Link -->
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
@@ -102,8 +104,7 @@
     @yield('content')
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/jqery-1.10.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 @yield('custom_js')
 </body>
