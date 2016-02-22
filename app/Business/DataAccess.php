@@ -11,6 +11,7 @@ namespace App\Business;
 use Auth;
 use App\models\ClientList;
 use App\models\users;
+use App\models\calendar;
 
 class DataAccess{
 
@@ -56,6 +57,30 @@ class DataAccess{
             $user = users::where('email', '=', $userEmail)->firstOrFail();
             $user->firstEdit = 1;
             $user->save();
+        }
+    }
+
+    function eventSave($id, $title, $start, $end, $userEmail)
+    {
+        $list = [
+            'event_id' => $id,
+            'title' => $title,
+            'start_time' => $start,
+            'end_time' => $end,
+            'client_id' => $userEmail
+            ];
+
+        try {
+
+            $eventCheck = calendar::where('event_id', '=', $id)->firstOrFail();
+            //update saved event if no fail
+            calendar::where('event_id', $id)
+                ->update($list);
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+
+            //create new event
+            $event = calendar::firstOrCreate($list);
+
         }
     }
 }

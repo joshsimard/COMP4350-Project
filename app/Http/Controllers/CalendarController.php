@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Business\DataAccess;
 
 class CalendarController extends Controller
 {
@@ -48,10 +50,13 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
+        $dataAccess = new DataAccess();
 
         $data = $request->input('data');
         list($id, $title, $start, $end) = explode("&", $data);
-        //echo $title;
+
+        $dataAccess->eventSave($id, $title, $start, $end, Auth::user()->email);
+        echo $start, $end, $id;
 
     }
 

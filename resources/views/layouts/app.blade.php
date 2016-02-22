@@ -7,7 +7,7 @@
 
     @yield('title')
 
-    <meta name="csrf-token" content="{!! Session::token() !!}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon Link -->
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
