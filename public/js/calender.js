@@ -67,14 +67,34 @@ $(document).ready(function() {
 
             eventClick: function(event, element) {
 
-                title = prompt('Update Title:');
+                if(user_info[2] == 0) {
 
-                if(title) {
-                    event.title = title+' - '+user_name;
+                    //edit only ur event as client
+                    if(event.color.toString() == "") {
+                        title = prompt('Update Title:');
 
-                    $('#calendar').fullCalendar('updateEvent', event);
-                    postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
+                        if(title) {
+                            event.title = title+' - '+user_name;
+
+                            $('#calendar').fullCalendar('updateEvent', event);
+                            postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
+                        }
+                    }
                 }
+                else{
+
+                    //admin
+                    title = prompt('Update Title:');
+
+                    if(title) {
+                        event.title = title+' - '+user_name;
+
+                        $('#calendar').fullCalendar('updateEvent', event);
+                        postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
+                    }
+                }
+
+
             },
 
             eventDrop: function(event, delta, revertFunc) {
@@ -125,7 +145,8 @@ $(document).ready(function() {
             }
             else {
                 editable = false;
-                color = 'black';
+                color = '#5D4037';
+                events[i][2] = 'Not Available'
             }
             addEventToCalender(events[i][0], events[i][2], events[i][3], events[i][4],editable, color);
         }
@@ -161,6 +182,7 @@ $(document).ready(function() {
                 end: end,
                 editable:editable,
                 color:color,
+                textColor:color,
                 //allDay: allDay
             },
             true // make the event "stick"
