@@ -46,7 +46,7 @@ class CalendarController extends Controller
         $eventArray = array();
         foreach($events as $event)
         {
-            array_push($eventArray, array($event['event_id'], $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
+            array_push($eventArray, array($event['event_id'],$event['admin'], $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
 
         }
 
@@ -66,8 +66,9 @@ class CalendarController extends Controller
 
         $data = $request->input('data');
         list($id, $title, $start, $end) = explode("&", $data);
+        $name = Auth::user()->firstName.' '.Auth::user()->lastName;
 
-        $dataAccess->eventSave($id, $title, $start, $end, Auth::user()->email);
+        $dataAccess->eventSave($id, $title, $start, $end, Auth::user()->email, $name);
        // echo $start, $end, $id;
 
     }

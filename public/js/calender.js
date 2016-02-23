@@ -1,12 +1,7 @@
 $(document).ready(function() {
 
-    //***Remember to populate calender
 
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
+    var user_name = user_info[0]+" "+user_info[1];
     /*
      Initialize fullCalendar and store into variable.
      Why in variable?
@@ -52,21 +47,14 @@ $(document).ready(function() {
                  */
                 var title = prompt('Event Title:');
                 var id = new Date().getTime().toString();
-                var user_name = user_info[0]+" "+user_info[1];
-                //alert(id);
-                /*
-                 if title is enterd calendar will add title and event into fullCalendar.
-                 */
-                //alert(start.format('yyyy-MM-ddTHH:mm:ssZ'));
-                //var start2 = start.toString();
-                //alert(start2);
-                //start2.format('yyyy-MM-ddTHH:mm:ssZ');
-                //determine what will be id
+
 
                 if (title) {
 
+                    title = title+' - '+user_name;
+
                     //attach event to calendar
-                    addEventToCalender(id, title, start, end, user_name);
+                    addEventToCalender(id, title, start, end, true,"");
 
                     //send event to controller
                     postEventToDB(id, title, start.toString(), end.toString());
@@ -82,7 +70,7 @@ $(document).ready(function() {
                 title = prompt('Update Title:');
 
                 if(title) {
-                    event.title = title;
+                    event.title = title+' - '+user_name;
 
                     $('#calendar').fullCalendar('updateEvent', event);
                     postEventToDB(event.id, event.title, event.start.toString(), event.end.toString());
@@ -125,7 +113,24 @@ $(document).ready(function() {
 
     //get all events from db
     for (i = 0; i < events.length; i++) {
-        addEventToCalender(events[i][0], events[i][1], events[i][2], events[i][3], "");
+
+        var editable;
+        var color = "";
+
+        if(user_info[2] == 0) //if client
+        {
+            //edit only ur event as client
+            if(events[i][5].indexOf(user_info[3]) > -1) {
+                editable = true;
+            }
+            else {
+                editable = false;
+                color = 'black';
+            }
+            addEventToCalender(events[i][0], events[i][2], events[i][3], events[i][4],editable, color);
+        }
+        else
+            addEventToCalender(events[i][0], events[i][2], events[i][3], events[i][4], true, color);
     }
 
 
@@ -145,14 +150,17 @@ $(document).ready(function() {
             });
     }
 
-    function addEventToCalender(id, title, start, end, name)
+    function addEventToCalender(id, title, start, end, editable, color)
     {
+
         calendar.fullCalendar('renderEvent',
             {
                 id: id,
-                title: title+" - "+name,
+                title: title,
                 start: start,
                 end: end,
+                editable:editable,
+                color:color,
                 //allDay: allDay
             },
             true // make the event "stick"

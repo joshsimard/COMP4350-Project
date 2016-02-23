@@ -39,9 +39,7 @@
 @stop
 
 @section('content')
-    <?php
-        $user_info = array( Auth::user()->firstName, Auth::user()->lastName);
-    ?>
+    <?php $user_info = array( Auth::user()->firstName, Auth::user()->lastName, Auth::user()->admin,Auth::user()->email);?>
 
     <!-- Convert php arrays to javascript   -->
     <script type="text/javascript">
@@ -97,28 +95,6 @@
         </div>
     </div>
 
-    {{--<div class="container">--}}
-        {{--<div class="row">--}}
-            {{--<div class='col-sm-6'>--}}
-                {{--<div class="form-group">--}}
-                    {{--<div class='input-group date' id='datetimepicker3'>--}}
-                        {{--<input type='text' class="form-control" />--}}
-                    {{--<span class="input-group-addon">--}}
-                        {{--<span class="glyphicon glyphicon-time"></span>--}}
-                    {{--</span>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<script type="text/javascript">--}}
-                {{--$(function () {--}}
-{{--//                    $('#datetimepicker3').datetimepicker({--}}
-{{--//                        format: 'LT'--}}
-{{--//                    });--}}
-                    {{--$('#datetimepicker3').timepicker();--}}
-                {{--});--}}
-            {{--</script>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
 @stop
 
