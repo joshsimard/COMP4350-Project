@@ -62,17 +62,20 @@
         <div class="row">
             <div class="col-xs-6">
                 <label id="year">Date of birth:&emsp;</label>
-                {{ Form::selectYear('year', 1930, date("Y")) }}
-                {{ Form::selectMonth('month', null, [], '%B') }}
-                {{ Form::selectRange('day', 1, 31, null, []) }}
+                <?php
+                $dob = explode ( "-",  $patient["dob"]);
+                ?>
+                {{ Form::selectYear('year', 1938, 2016, ["selected" => $dob[0] ]) }}
+                {{ Form::selectMonth('month', $dob[1], [], '%B') }}
+                {{ Form::selectRange('day', 1, 31, $dob[2], []) }}
             </div>
             <div class="col-xs-6">
-                @if ($patient["gender"] === 1)
-                    {{ Form::radio('sex', 'male', true) }}&ensp;Male&emsp;&emsp;
-                    {{ Form::radio('sex', 'female') }}Female
+                @if ($patient["gender"] === "male")
+                    {{ Form::radio('gender', 'male', true) }}&ensp;Male&emsp;&emsp;
+                    {{ Form::radio('gender', 'female') }}Female
                 @else
-                    {{ Form::radio('sex', 'male') }}&ensp;Male&emsp;&emsp;
-                    {{ Form::radio('sex', 'female', true) }}&ensp;Female
+                    {{ Form::radio('gender', 'male') }}&ensp;Male&emsp;&emsp;
+                    {{ Form::radio('gender', 'female', true) }}&ensp;Female
                 @endif
             </div>
         </div>
