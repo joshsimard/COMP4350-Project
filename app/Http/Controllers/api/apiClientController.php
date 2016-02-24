@@ -1,27 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use Response;
 use Illuminate\Http\Request;
-
-use Auth;
+use App\Business\DataAccess;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Business\DataAccess;
 
-class CalendarController extends Controller
+class apiClientController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -29,8 +17,14 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        //$dataAccess = new DataAccess();
+        $dataAccess = new DataAccess();
+        $clients = $dataAccess->getClientsApi();
 
+        return Response::json(array(
+            'error' => false,
+            'urls' => array($clients)),
+            200
+        );
     }
 
     /**
@@ -40,18 +34,7 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        $dataAccess = new DataAccess();
-
-        $events = $dataAccess->getEvents();
-        $eventArray = array();
-        foreach($events as $event)
-        {
-            array_push($eventArray, array($event['event_id'],$event['admin'], $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
-
-        }
-
-
-        return \View::make('/calendar')->with('events',$eventArray);
+        //
     }
 
     /**
@@ -62,15 +45,7 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
-
-        $data = $request->input('data');
-        list($id, $title, $start, $end) = explode("&", $data);
-        $name = Auth::user()->firstName.' '.Auth::user()->lastName;
-
-        $dataAccess->eventSave($id, $title, $start, $end, Auth::user()->email, $name);
-       // echo $start, $end, $id;
-
+        //
     }
 
     /**
@@ -81,7 +56,14 @@ class CalendarController extends Controller
      */
     public function show($id)
     {
-        //
+        $dataAccess = new DataAccess();
+        $clients = $dataAccess->getDetailedClientsApi($id);
+
+        return Response::json(array(
+            'error' => false,
+            'urls' => array($clients)),
+            200
+        );
     }
 
     /**

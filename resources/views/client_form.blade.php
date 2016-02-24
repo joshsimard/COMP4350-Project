@@ -61,19 +61,10 @@
 
         <div class="row">
             <div class="col-xs-6">
-                <label id="year">Date of birth:&emsp;</label>
-                {{ Form::selectYear('year', 1930, date("Y")) }}
-                {{ Form::selectMonth('month', null, [], '%B') }}
-                {{ Form::selectRange('day', 1, 31, null, []) }}
+                {!! Form::text('dob', $patient["dob"], array('class'=>'form-control input-md', 'placeholder'=>'dob')) !!}
             </div>
             <div class="col-xs-6">
-                @if ($patient["gender"] === 1)
-                    {{ Form::radio('sex', 'male', true) }}&ensp;Male&emsp;&emsp;
-                    {{ Form::radio('sex', 'female') }}Female
-                @else
-                    {{ Form::radio('sex', 'male') }}&ensp;Male&emsp;&emsp;
-                    {{ Form::radio('sex', 'female', true) }}&ensp;Female
-                @endif
+                {!! Form::text('gender', $patient["gender"], array('class'=>'form-control input-md', 'placeholder'=>'gender')) !!}
             </div>
         </div>
 
