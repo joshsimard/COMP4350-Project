@@ -78,11 +78,11 @@
     <h2 style="margin-left: 20px;" class="titleHeads">{{ $patient["firstName"] or 'firstname'  }} {{ $patient["lastName"] or 'lastname'  }}</h2>
     <hr>
     <div class="container" id="new_visit">
+        {!! Form::open(array('action' => 'VisitFormEditController@store')) !!}
         <div class="row">
             {{-- for some reason VisitFormEditController@store is not defined?--}}
-            {!! Form::open(array('action' => 'ClientFormEditController@store')) !!}
             <div class="col-sm-6">
-                <p>&emsp;{{ $patient["email"] or 'email@example.com'  }}</p>
+                {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md', 'hidden')) !!}
                 <p>&emsp;{{ $patient["mobileNum"] or $patient["homeNum"] }}</p>
                 <p>&emsp;{{ $patient["address"] or 'Address'  }},</p>
                 <p>&emsp;{{ $patient["city"] or 'city'  }}&emsp;{{ $patient["postalCode"] or 'Postal Code'  }}</p>
@@ -118,8 +118,8 @@
         </div>
         <div class="row">
             <label id="year">Date:&emsp;</label>
-            {{ Form::selectYear('year', null, []) }}&emsp;
-            {{ Form::selectMonth('month', null, [], '%B') }}&emsp;
+            {{ Form::selectYear('year', 1900, 2016, []) }}
+            {{ Form::selectMonth('month', null, [], '%B') }}
             {{ Form::selectRange('day', 1, 31, null, []) }}
         </div>
         <div class="row">
@@ -137,6 +137,7 @@
                 {!! Form::submit('Record Visit', array('class'=>'btn btn-default','style'=>"border-radius:0;"))!!}
             </div>
         </div>
+        {!! Form::close() !!}
     </div>
     <div class="container" id="visits">
         <h3 class="titleHeads">Previous Visits</h3>

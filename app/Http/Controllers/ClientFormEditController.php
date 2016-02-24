@@ -32,7 +32,8 @@ class ClientFormEditController extends Controller
     public function index()
     {
         $dataAccess = new DataAccess();
-        $patient = $dataAccess->getPatient(Auth::user()->email);
+        $id = $dataAccess->currentUserID();
+        $patient = $dataAccess->getPatient($id);
 
 //        if(Auth::user()->firstEdit)
 //        {
@@ -68,12 +69,14 @@ class ClientFormEditController extends Controller
      */
     public function store(Request $request)
     {
-       // $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
         $dataAccess = new DataAccess();
-        $patient = $dataAccess->getPatient(Auth::user()->email);
+        $id = $dataAccess->currentUserID();
+       // $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
 
-        $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
-        $id = $user->id;
+        $patient = $dataAccess->getPatient($id);
+
+        //$user = users::where('email', '=', Auth::user()->email)->firstOrFail();
+
 
         $list = [
             'userid' => $id,

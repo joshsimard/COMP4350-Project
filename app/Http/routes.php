@@ -46,6 +46,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/clientlist', 'ClientListController@index');
         Route::get('/client_form', 'ClientFormEditController@index');
         Route::get('/visit_form', 'VisitFormEditController@index');
+        Route::resource('/visit_form', 'VisitFormEditController');
         Route::resource('client_info', 'ClientFormEditController');
         Route::get('calendar', 'CalendarController@create');
         Route::post('calendar', 'CalendarController@store');
