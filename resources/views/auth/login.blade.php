@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>DC-Portal</title>
+@stop
+
 @section('custom_css')
 <style>
     .top-buffer {
