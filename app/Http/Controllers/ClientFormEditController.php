@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
 use App\Business\DataAccess;
 use App\models\ClientList;
@@ -20,7 +21,7 @@ class ClientFormEditController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -71,7 +72,11 @@ class ClientFormEditController extends Controller
         $dataAccess = new DataAccess();
         $patient = $dataAccess->getPatient(Auth::user()->email);
 
+        $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
+        $id = $user->id;
+
         $list = [
+            'userid' => $id,
             'firstName' => $patient["firstName"],
             'lastName' => $patient["lastName"],
             'dob' => $request->dob,
