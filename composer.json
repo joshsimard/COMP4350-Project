@@ -10,7 +10,8 @@
         "barryvdh/laravel-ide-helper": "v2.1.2",
         "laravelcollective/html": "v5.2.3",
         "illuminate/html": "^5.0",
-        "codeception/codeception": "2.1.5"
+        "codeception/codeception": "2.1.5",
+        "facebook/webdriver": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

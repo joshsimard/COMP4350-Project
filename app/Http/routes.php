@@ -22,6 +22,11 @@ Route::get('/db', function () {
     return DB::table('users')->get();
 });
 
+Route::get('/tests', function () {
+    //selenium test
+    return view('selenium/test');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
