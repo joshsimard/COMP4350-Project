@@ -12,6 +12,7 @@ use Auth;
 use App\models\ClientList;
 use App\models\users;
 use App\models\calendar;
+use DB;
 
 class DataAccess{
 
@@ -88,5 +89,31 @@ class DataAccess{
     function getEvents()
     {
         return calendar::all();
+    }
+
+    function getClientsApi()
+    {
+
+        $users = DB::table('users')
+            ->select('id', 'firstName', 'lastName', 'email')
+            ->where('admin', '0')
+            ->get();
+
+        return $users;
+    }
+
+    function getDetailedClientsApi($id)
+    {
+
+        try {
+
+            $userDet = ClientList::where('userid', '=', $id)->firstOrFail();
+
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+
+            $userDet = users::where('id', '=', $id)->select('id', 'firstName', 'lastName', 'email')->firstOrFail();
+        }
+
+        return $userDet;
     }
 }
