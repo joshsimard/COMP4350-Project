@@ -141,8 +141,10 @@ class UserTest extends TestCase
             ->seePageIs('/home')
             ->click('Edit Information')
             ->seePageIs('/client_form')
-            ->type('female', 'gender')
-            ->type('1993-02-13', 'dob')
+            ->select('female', 'sex')
+            ->select('1993','year')
+            ->select('02','month')
+            ->select('13','day')
             ->type('92', 'height')
             ->type('200', 'weight')
             ->type('2043918349', 'phone')
@@ -193,19 +195,14 @@ class UserTest extends TestCase
         //now test all the links
         $this->visit('/home')
             ->click('Calendar')
-            ->seePageIs('/calendar')
-            ->click("add")
-            ->seePageIs('/add/event');
+            ->seePageIs('/calendar');
 
-        $this->visit('/home')
-            ->click('Order Medication')
-            ->seePageIs('/orders');
 
         $this->visit('/home')
             ->click('Notes and Messages')
             ->seePageIs('/notes')
-            ->click("add_note")
-            ->seePageIs('/add/note')
+            //->click("add_note")
+            //->seePageIs('/add/note')
             ->click('Logout')
             ->seePageIs('/login');
 
@@ -217,12 +214,8 @@ class UserTest extends TestCase
             ->seePageIs('/home')
 
         //now test all the links
-            ->click('View Appointments')
-            ->seePageIs('/appointments_list');
-
-        $this->visit('/home')
-            ->click('Schedule Appointment')
-            ->seePageIs('/add/appointment');
+            ->click('View/Set Appointment')
+            ->seePageIs('/calendar');
     }
 
 }

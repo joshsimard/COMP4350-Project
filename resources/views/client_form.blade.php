@@ -71,11 +71,11 @@
             </div>
             <div class="col-xs-6">
                 @if ($patient["gender"] === "male")
-                    {{ Form::radio('gender', 'male', true) }}&ensp;Male&emsp;&emsp;
-                    {{ Form::radio('gender', 'female') }}Female
+                    {{ Form::radio('sex', 'male', true) }}&ensp;Male&emsp;&emsp;
+                    {{ Form::radio('sex', 'female') }}Female
                 @else
-                    {{ Form::radio('gender', 'male') }}&ensp;Male&emsp;&emsp;
-                    {{ Form::radio('gender', 'female', true) }}&ensp;Female
+                    {{ Form::radio('sex', 'male') }}&ensp;Male&emsp;&emsp;
+                    {{ Form::radio('sex', 'female', true) }}&ensp;Female
                 @endif
             </div>
         </div>
