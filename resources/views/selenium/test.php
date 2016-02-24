@@ -8,11 +8,11 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 include(__DIR__.'/helper.php');
 
 // start Chrome with 5 second timeout
-//$firefox = 'http://localhost:4444/wd/hub';
+$firefox = 'http://localhost:4444/wd/hub';
 $chrome = 'http://localhost:9515';
 
-$host = $chrome; // this is the default
-$capabilities = DesiredCapabilities::chrome();
+$host = $firefox; // this is the default
+$capabilities = DesiredCapabilities::firefox();
 $driver = RemoteWebDriver::create($host, $capabilities, 5000);
 
 // int url
