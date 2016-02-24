@@ -63,9 +63,12 @@
             <div class="col-xs-6">
                 <label id="year">Date of birth:&emsp;</label>
                 <?php
-                $dob = explode ( "-",  $patient["dob"]);
+                    if($patient["dob"])
+                        $dob = explode ( "-",  $patient["dob"]);
+                    else
+                        $dob = explode ( "-",  "1900-01-01");
                 ?>
-                {{ Form::selectYear('year', 1938, 2016, ["selected" => $dob[0] ]) }}
+                {{ Form::selectYear('year', 1930, 2016, ["selected" => $dob[0]]) }}
                 {{ Form::selectMonth('month', $dob[1], [], '%B') }}
                 {{ Form::selectRange('day', 1, 31, $dob[2], []) }}
             </div>
