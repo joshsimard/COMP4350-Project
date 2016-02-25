@@ -68,11 +68,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['auth.basic']], function () {
 
     Route::group(array('prefix' => 'api'), function(){
-        Route::get('/', function () {
-            return 'Hello World';
-        });
         Route::resource('/clients', 'api\apiClientController');
         Route::resource('/events', 'api\apiEventController');
+        Route::resource('/visits', 'api\apiVisitsController');
+        Route::resource('/notes', 'api\apiNotesController');
     });
 
     //Route::get('/home', 'HomeController@index');

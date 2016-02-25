@@ -1,51 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
-use Auth;
+use Response;
 use Illuminate\Http\Request;
-use App\models\users;
+use App\Business\DataAccess;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Business\DataAccess;
-use App\models\Note;
-use App\models\Note_Tags;
 
-class AddNoteController extends Controller
+class apiNotesController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-       // $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
-        //get client list
-//        $users = users::all();
-//        $clients = [];
-//
-//        foreach($users as $patient)
-//        {
-//            //check if the user is apatient
-//            if(!$patient["admin"])
-//                $clients[] = $patient;
-//        }
 
-        $dataAccess = new DataAccess();
-        $clients = $dataAccess->getClientsFromUsers();
-
-        return \View::make('add/add_note')->with('clients',$clients);
     }
 
     /**
@@ -55,7 +27,7 @@ class AddNoteController extends Controller
      */
     public function create()
     {
-//        return View('add/add_note');
+        //
     }
 
     /**
@@ -66,21 +38,7 @@ class AddNoteController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
-
-        $doctor = users::where('id','=', Auth::user()->id)->firstOrFail();
-
-        $list = [
-            'doctor_id' => $doctor["id"],
-            'subject' => $request->subject,
-            'body' => $request->body
-        ];
-
-        $dataAccess->saveNotes($list);
-
-
-
-        return redirect('/notes');
+        //
     }
 
     /**
@@ -91,7 +49,14 @@ class AddNoteController extends Controller
      */
     public function show($id)
     {
-        //
+        $dataAccess = new DataAccess();
+        $notes = $dataAccess->getNotes($id);
+
+        return Response::json(array(
+            'error' => false,
+            'urls' => array($notes)),
+            200
+        );
     }
 
     /**

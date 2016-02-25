@@ -19,6 +19,6 @@ class visits extends Model
      * @var array
      */
     protected $fillable = [
-        'email', 'symptoms', 'allergies', 'height', 'weight', 'date', 'time', 'end_time'
+        'userid', 'email', 'symptoms', 'allergies', 'height', 'weight', 'date', 'time', 'end_time'
     ];
 }

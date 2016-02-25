@@ -15,6 +15,7 @@ class CreateVisitsTable extends Migration
         //
         Schema::create('visits', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userid');
             $table->string('email');
             $table->string('symptoms');
             $table->string('allergies');

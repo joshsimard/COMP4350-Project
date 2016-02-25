@@ -64,8 +64,10 @@ class VisitFormEditController extends Controller
     public function store(Request $request)
     {
         $dataAccess = new DataAccess();
+        $userid = $dataAccess->userIdByEmail($request->email);
 
         $list = [
+            'userid' => $userid,
             'email' => $request->email,
             'height' => $request->height,
             'weight' => $request->weight,
@@ -78,7 +80,7 @@ class VisitFormEditController extends Controller
 
         $dataAccess->visitSave($list, Auth::user()->email);
 
-        return redirect('home');
+        return redirect('/clientlist');
     }
 
     /**

@@ -13,6 +13,7 @@ use App\models\ClientList;
 use App\models\users;
 use App\models\calendar;
 use App\models\visits;
+use App\models\Note;
 use DB;
 
 class DataAccess{
@@ -136,4 +137,22 @@ class DataAccess{
         $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
         return $user->id;
     }
+
+    function userIdByEmail($userEmail)
+    {
+        $user = users::where('email', '=', $userEmail)->firstOrFail();
+        return $user->id;
+    }
+
+    function saveNotes($list)
+    {
+        $note = Note::firstOrCreate($list);
+    }
+
+    function getNotes($id)
+    {
+        $notes = Note::where('doctor_id', '=', $id)->get();
+        return $notes;
+    }
+
 }
