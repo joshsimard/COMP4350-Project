@@ -24,6 +24,7 @@ class databaseCalendarTest extends TestCase
             'start_time' => 'Wed Feb 26 2016 10:00:00 GMT+0000',
             'end_time' => 'Wed Feb 26 2016 12:30:00 GMT+0000',
             'client_id' => 'john@doe.com',
+            'client_name' => 'John Doe'
         ];
 
         $list2 = [
@@ -32,6 +33,7 @@ class databaseCalendarTest extends TestCase
             'start_time' => 'Fri Mar 11 2016 10:00:00 GMT+0000',
             'end_time' => 'Fri Mar 11 2016 10:30:00 GMT+0000',
             'client_id' => 'jane@doe.com',
+            'client_name' => 'Jane Doe'
         ];
 
         $list3 = [
@@ -40,6 +42,7 @@ class databaseCalendarTest extends TestCase
             'start_time' => 'Wed Mar 02 2016 10:00:00 GMT+0000',
             'end_time' => 'Wed Mar 02 2016 11:00:00 GMT+0000',
             'client_id' => 'john@doe.com',
+            'client_name' => 'John Doe'
         ];
 
         $testUser = calendar::firstOrCreate($list1);
