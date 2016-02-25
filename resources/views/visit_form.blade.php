@@ -71,8 +71,8 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    @include('inc.order_medication_link')
-    @include('inc.notes_link')
+    {{--@include('inc.order_medication_link')--}}
+     {{--@include('inc.notes_link')--}}
 @stop
 
 @section('content')
