@@ -160,7 +160,7 @@ $(document).ready(function() {
     {
         $.post('calendar', {
                 _token: $('meta[name="csrf-token"]').attr('content'),
-                data: id +'&'+ title+'&'+ start +'&'+ end,
+                data: id +'&'+ title+'&'+ start +'&'+ end +'&'+ user_info[2] +'&'+user_name,
             })
             .done(function(data) {
                 //alert(data);

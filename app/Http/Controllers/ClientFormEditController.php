@@ -76,12 +76,12 @@ class ClientFormEditController extends Controller
         $id = $user->id;
 
         $list = [
-            'userid' => $id,
+            'id' => $id,
             'firstName' => $patient["firstName"],
             'lastName' => $patient["lastName"],
             'dob' => "{$request->year}-{$request->month}-{$request->day}",
             'email' => $patient["email"],
-            'gender' => $request->gender,
+            'gender' => $request->sex,
             'height' => $request->height,
             'weight' => $request->weight,
             'mobileNum' => $request->phone,
