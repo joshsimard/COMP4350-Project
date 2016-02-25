@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\models\ClientList;
 use App\models\Note;
 use App\models\users;
@@ -30,22 +31,13 @@ class NotesController extends Controller
      */
     public function index()
     {
-        //get client list
-        $notes = Note::all();
-        $clients = [];
-
-        /*foreach($notes as $patient)
-        {
-            //check if the user is apatient
-            if(!$patient["admin"])
-                $clients[] = $patient;
-        }*/
+        //get note list
+        $notes = Note::where('doctor_id', '=', Auth::user()->id)->get();
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
             $results = Note::where('subject', 'LIKE', '%'.$query.'%')
-                /*->orWhere('lastName', 'LIKE', '%'.$query.'%')*/
                 ->get();
 
             return \View::make('notes')->with('notes', $results);
