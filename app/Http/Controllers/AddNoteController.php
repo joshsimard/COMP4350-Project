@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\models\users;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Business\DataAccess;
+use App\models\Note;
+use App\models\Note_Tags;
 
 class AddNoteController extends Controller
 {
@@ -63,7 +66,17 @@ class AddNoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doctor = users::where('id','=', Auth::user()->id)->firstOrFail();
+
+        $list = [
+            'doctor_id' => $doctor["id"],
+            'subject' => $request->subject,
+            'body' => $request->body
+        ];
+
+        $note = Note::firstOrCreate($list);
+
+        return redirect('/notes');
     }
 
     /**

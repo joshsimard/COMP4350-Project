@@ -1,3 +1,4 @@
+{{--Now in Iteration 2--}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +23,25 @@
     @yield('custom_css')
 
     <style>
+
         /*Color brand name and bold it*/
         .navbar-brand .brand-name{
             color: #000000;
             font-weight: bold;
             height: auto;
         }
+
         .navbar-toggle {
             margin: 10px 0;
         }
+
         .centered-form .panel{
             background: rgba(255, 255, 255, 0.8);
             box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
             color: #4e5d6c;
             border-radius: 4px;
         }
+
         #home-button {
             font-size: 1.5em;
             margin: 5px 1px;
@@ -44,6 +49,11 @@
         .top-buffer{
             margin-top: 110px;
         }
+
+        .btn-circle {
+            border-radius: 4px;
+        }
+
     </style>
 
 </head>
