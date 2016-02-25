@@ -77,9 +77,8 @@ class databaseCalendarTest extends TestCase
         $list2 = [
             'title' => 'No More Meds',
             'start_time' => 'Fri Mar 11 2016 09:30:00 GMT+0000',
-            'end_time' => 'Fri Mar 11 2016 10:00:00 GMT+0000'
+            'end_time' => 'Fri Mar 11 2016 10:00:00 GMT+0000',
         ];
-
         calendar::where('event_id', '64893021765')
             ->update($list2);
 
