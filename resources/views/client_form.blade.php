@@ -66,7 +66,7 @@
                     if($patient["dob"])
                         $dob = explode ( "-",  $patient["dob"]);
                     else
-                        $dob = explode ( "-",  "1900-01-01");
+                        $dob = explode ( "-",  "1930-01-01");
                 ?>
                 {{ Form::selectYear('year', 1930, 2016, ["selected" => $dob[0]]) }}
                 {{ Form::selectMonth('month', $dob[1], [], '%B') }}

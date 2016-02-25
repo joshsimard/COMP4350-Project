@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\models\ClientList;
 use App\models\users;
+use App\Business\DataAccess;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -62,47 +63,22 @@ class VisitFormEditController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
+        $dataAccess = new DataAccess();
 
         $list = [
-            'firstName' => $patient["firstName"],
-            'lastName' => $patient["lastName"],
-            'dob' => $request->dob,
-            'email' => $patient["email"],
-            'gender' => $request->gender,
+            'email' => $request->email,
             'height' => $request->height,
             'weight' => $request->weight,
-            'mobileNum' => $request->phone,
-            'homeNum' => $request->home_phone,
-            'address' => $request->address,
-            'city' => $request->city,
-            'postalCode' => $request->postal_code,
-            'state' => $request->state,
-            'country' => $request->country,
-            'occupation' => $request->occupation,
-            'maritalStatus' => $request->status,
-            'nextOfKin' => $request->next_kin
+            'date' => "{$request->year}-{$request->month}-{$request->day}",
+            'symptoms' => $request->symptoms,
+            'allergies' => $request->allergies,
+            'time' => $request->time,
+            'end_time' => $request->end_time,
         ];
 
-        try {
-            $clientCheck = ClientList::where('email', '=', Auth::user()->email)->firstOrFail();
-            ClientList::where('email', Auth::user()->email)
-                ->update($list);
-        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-            $client = ClientList::firstOrCreate($list);
-
-            //change auth::firstedit to true !!!
-
-            $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
-            $user->firstEdit = 1;
-            $user->save();
-        }
-
-
-
+        $dataAccess->visitSave($list, Auth::user()->email);
 
         return redirect('home');
-        //return $request;
     }
 
     /**
@@ -111,9 +87,14 @@ class VisitFormEditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($userid)
     {
-        //
+        $dataAccess = new DataAccess();
+        $patient = $dataAccess->getPatient($userid);
+        $visits = $dataAccess->getVisits($userid);
+
+        $data = array('patient'=>$patient, 'visits'=>$visits);
+        return \View::make('visit_form')->with($data);
     }
 
     /**

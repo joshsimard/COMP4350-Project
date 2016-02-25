@@ -12,6 +12,7 @@ use Auth;
 use App\models\ClientList;
 use App\models\users;
 use App\models\calendar;
+use App\models\visits;
 use DB;
 
 class DataAccess{
@@ -32,15 +33,16 @@ class DataAccess{
         return $clients;
     }
 
-    function getPatient($userEmail)
+    function getPatient($id)
     {
-        if(Auth::user()->firstEdit)
+        $firstEdit = users::where('id', '=', $id)->select('firstEdit')->firstOrFail();
+        if($firstEdit->firstEdit)
         {
-            return ClientList::where('email', '=', $userEmail)->firstOrFail();
+            return ClientList::where('userid', '=', $id)->firstOrFail();
         }
         else
         {
-            return users::where('email','=', $userEmail)->firstOrFail();
+            return users::where('id','=', $id)->firstOrFail();
         }
     }
 
@@ -70,7 +72,7 @@ class DataAccess{
             'end_time' => $end,
             'client_id' => $userEmail,
             'client_name' => $name
-            ];
+        ];
 
         try {
 
@@ -84,6 +86,18 @@ class DataAccess{
             $event = calendar::firstOrCreate($list);
 
         }
+    }
+
+    function visitSave($list, $userEmail)
+    {
+        visits::create($list);
+    }
+
+    function getVisits($id)
+    {
+        $email = users::where('id', '=', $id)->select('email')->firstOrFail();
+        $email = $email->email;
+        return visits::where('email', '=', $email)->get();
     }
 
     function getEvents()
@@ -115,5 +129,11 @@ class DataAccess{
         }
 
         return $userDet;
+    }
+
+    function currentUserID()
+    {
+        $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
+        return $user->id;
     }
 }

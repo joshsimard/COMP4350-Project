@@ -43,7 +43,7 @@
                          //populate
                          foreach($clients as $patient)
                          {
-                             echo '<a href="#" class="list-group-item">
+                             echo '<a href="/visit_form/'.$patient["id"].'" class="list-group-item">
                                     <h4 class="left items right-align">ID: '.$patient["id"].'</h4>
                                     <h4 class="items">Name: '.$patient["firstName"].' '.$patient["lastName"].'</h4>
                                     <h4 class="items"> Email: '.$patient["email"].'</h4>

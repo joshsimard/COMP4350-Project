@@ -46,6 +46,7 @@
         }
         #visits {
             padding : 10px;
+            color: black;
             width: 80%;
             min-height: 250px;
         }
@@ -78,11 +79,11 @@
     <h2 style="margin-left: 20px;" class="titleHeads">{{ $patient["firstName"] or 'firstname'  }} {{ $patient["lastName"] or 'lastname'  }}</h2>
     <hr>
     <div class="container" id="new_visit">
+        {!! Form::open(array('action' => 'VisitFormEditController@store')) !!}
         <div class="row">
             {{-- for some reason VisitFormEditController@store is not defined?--}}
-            {!! Form::open(array('action' => 'ClientFormEditController@store')) !!}
             <div class="col-sm-6">
-                <p>&emsp;{{ $patient["email"] or 'email@example.com'  }}</p>
+                <p>&emsp;{{ $patient["email"] or "email" }}</p>{{ Form::hidden('email', $patient["email"]) }}
                 <p>&emsp;{{ $patient["mobileNum"] or $patient["homeNum"] }}</p>
                 <p>&emsp;{{ $patient["address"] or 'Address'  }},</p>
                 <p>&emsp;{{ $patient["city"] or 'city'  }}&emsp;{{ $patient["postalCode"] or 'Postal Code'  }}</p>
@@ -118,9 +119,9 @@
         </div>
         <div class="row">
             <label id="year">Date:&emsp;</label>
-            {{ Form::selectYear('year', null, []) }}&emsp;
-            {{ Form::selectMonth('month', null, [], '%B') }}&emsp;
-            {{ Form::selectRange('day', 1, 31, null, []) }}
+            {{ Form::selectYear('year', 1900, date("Y"), ["selected" => date("Y")]) }}
+            {{ Form::selectMonth('month', date("m"), [], '%B') }}
+            {{ Form::selectRange('day', 1, 31, date("d"), []) }}
         </div>
         <div class="row">
             <label id="time" title="The period of the visit. Start and end times">Period: &emsp;</label>
@@ -137,9 +138,30 @@
                 {!! Form::submit('Record Visit', array('class'=>'btn btn-default','style'=>"border-radius:0;"))!!}
             </div>
         </div>
+        {!! Form::close() !!}
     </div>
     <div class="container" id="visits">
         <h3 class="titleHeads">Previous Visits</h3>
         <hr>
+        <?php
+        if(count($visits) < 1)
+            echo '<a href="#" class="list-group-item"><h4 class="items">No Visits!</h4><span class="left items"></span></a>';
+        else
+        {
+            //populate
+            //echo $visits;
+            foreach($visits as $visit)
+            {
+                echo '<a href="#'.$visit["id"].'" class="list-group-item">
+                                    <h4 class="left items right-align">Date: '.$visit["date"].'</h4>
+                                    <h4 class="items">Height: '.$visit["height"].'&emsp;Weight:'.$visit["weight"].'</h4>
+                                    <h4 class="items"> Symptoms: '.$visit["symptoms"].'</h4>
+                                    <h4 class="items"> Allergies: '.$visit["allergies"].'</h4>
+                                    </a>
+                                    <br>';
+            }
+        }
+
+        ?>
     </div>
 @stop
