@@ -23,8 +23,10 @@
 
         .list-group-item {
             background-color: #dddddd;
+            color: #000000;
             width: inherit;
             margin-bottom: 5px;
+            text-wrap: normal;
         }
         .list-group-item .items{color: #000000;}
 
@@ -73,12 +75,14 @@
 
             <div class="panel panel-default">
                 <div class="panel-body" style="background-color: #2e3436">
-                    @if(count($clients) < 1)
+                    @if(count($notes) < 1)
                         <a href="#" class="list-group-item"><h4 class="items">No Clients!</h4><span class="left items"></span></a>
                     @else
-                        @foreach($clients as $patient)
-                            <a href="#" class="list-group-item">
-                                <p class="items">{!! $patient["firstName"].' '.$patient["lastName"]!!}</p>
+                        <?php $patient_info = array(); ?>
+                        @foreach($notes as $note)
+                            <?php array_push ($patient_info, array( $note["id"], $note["subject"], $note["body"])); ?> <!-- Make an array of all the clients to send to jquery -->
+                            <a href="#" class="list-group-item" id="{!! $note["id"]!!}" style="color: #000000;" wrap="true"> <!-- Should be note id -->
+                                {!! $note["subject"]!!}
                             </a>
                         @endforeach
                     @endif
@@ -94,5 +98,31 @@
         {
             location.reload(true);
         }
+
+        $(".list-group-item").click(function() {
+
+            var patients = <?php echo json_encode($patient_info) ?>;
+            var id = parseInt(this.id);   //the id of the note
+            var patient_info = new Array();
+            var found = 0;
+            var curPatient = new Array();
+
+            //first find the note from the list
+            for (var i=0; i<patients.length && found==0; i++)
+            {
+                curPatient = patients[i];
+                if(curPatient[0]==(id))  //if the current id is equal to the id of the note in array
+                {
+                    found = 1;
+                    patient_info = patients[i];    //set the note info to the correct one given the note id matched
+                }
+            }
+
+            //then swap the text!
+            if ($(this).text() == patient_info[2])
+                $(this).text(patient_info[1]);
+            else
+                $(this).text(patient_info[2]);
+        });
     </script>
 @stop

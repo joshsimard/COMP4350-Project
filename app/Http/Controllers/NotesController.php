@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\ClientList;
+use App\models\Note;
 use App\models\users;
 use Illuminate\Http\Request;
 
@@ -30,26 +31,26 @@ class NotesController extends Controller
     public function index()
     {
         //get client list
-        $users = users::all();
+        $notes = Note::all();
         $clients = [];
 
-        foreach($users as $patient)
+        /*foreach($notes as $patient)
         {
             //check if the user is apatient
             if(!$patient["admin"])
                 $clients[] = $patient;
-        }
+        }*/
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = ClientList::where('firstName', 'LIKE', '%'.$query.'%')
-                ->orWhere('lastName', 'LIKE', '%'.$query.'%')
+            $results = Note::where('subject', 'LIKE', '%'.$query.'%')
+                /*->orWhere('lastName', 'LIKE', '%'.$query.'%')*/
                 ->get();
 
-            return \View::make('notes')->with('clients', $results);
+            return \View::make('notes')->with('notes', $results);
         }
-        return \View::make('notes')->with('clients',$clients);
+        return \View::make('notes')->with('notes',$notes);
 
     }
 

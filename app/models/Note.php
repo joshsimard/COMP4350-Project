@@ -19,6 +19,6 @@ class Note extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'doctor_id', 'name', 'body', 'timestamp'
+        'doctor_id', 'subject', 'body'
     ];
 }
