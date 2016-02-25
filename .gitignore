@@ -4,3 +4,5 @@ Homestead.yaml
 Homestead.json
 
 tests/_output/*
+.idea
+.env
