@@ -63,9 +63,7 @@
                             </button>
                         </span>
                         <div class="reset-btn">
-                            <button class="btn btn-xs btn-info btn-circle" onclick="reset()">
-                                Reset
-                            </button>
+                            <button class="btn btn-xs btn-info btn-circle" onclick="reset()">Reset</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

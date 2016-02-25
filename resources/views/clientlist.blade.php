@@ -16,6 +16,24 @@
 
         .right-align{text-align: right;}
 
+        .panel-heading {
+            min-height: 60px;
+        }
+
+        .name {
+            float:left;
+        }
+
+        .reset-btn {
+            margin-left: 5px;
+            float:right;
+        }
+
+        .input-group {
+            margin-left: 75px;
+            float: right;
+        }
+
     </style>
 @stop
 
@@ -31,9 +49,24 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="panel-title">Client List</div>
-                </div>
+                    <h4 class="name">Client List</h4>
 
+                    {!! Form::open(['method'=>'GET','url'=>'clientlist','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default-sm" type="submit">
+                                <i class="fa fa-search"><!--<span class="hiddenGrammarError" pre="" data-mce-bogus="1"--></i>
+                            </button>
+                        </span>
+                        <div class="reset-btn">
+                            <button class="btn btn-xs btn-info btn-circle" onclick="reset()">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
                 <div class="panel-body" style="background-color: #4e5d6c">
                     <?php
                      if(count($clients) < 1)

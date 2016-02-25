@@ -40,6 +40,23 @@ class ClientListController extends Controller
         $dataAccess = new DataAccess();
         $clients = $dataAccess->getClientsFromUsers();
 
+        if (\Request::has('search')) {
+            $query = \Request::get('search');
+
+            //$full_name = DB::raw('CONCAT(First_Name, " ", Last_Name) AS full_name');
+            $results = users::where('firstName', 'LIKE', '%'.$query.'%')
+                ->orWhere('lastName', 'LIKE', '%'.$query.'%')
+                ->orWhere('email', 'LIKE', '%'.$query.'%')
+                ->get();
+
+            if(count($results) < 1) {
+                $results = users::whereRaw("concat(firstName, ' ', lastName) like '%$query%'")
+                ->get();
+            }
+
+            return \View::make('clientlist')->with('clients', $results);
+        }
+
         return \View::make('clientlist')->with('clients',$clients);
     }
 
