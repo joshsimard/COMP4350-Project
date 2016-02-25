@@ -24,7 +24,7 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    @include('inc.doctors_nav_links')
+    {{--@include('inc.doctors_nav_links')--}}
 @stop
 
 @section('content')

@@ -55,8 +55,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/appointments_list', 'ViewAppointmentsController@create');
         Route::get('/add/appointment', 'ScheduleAppointmentController@create');
         Route::get('/orders', 'OrdersController@create');
-        Route::get('/notes', 'NotesController@create');
+        Route::get('/notes', 'NotesController@index');
         Route::get('/add/note', 'AddNoteController@index');
+        Route::resource('add_note', 'AddNoteController');
         Route::get('/settings', 'SettingsController@create');
     });
 });
