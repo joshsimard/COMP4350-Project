@@ -167,7 +167,7 @@ $(document).ready(function() {
                 // alert("succes");
             })
             .fail(function() {
-                alert( "error-lala" );
+                //alert( "error-lala" );
             });
     }
 
