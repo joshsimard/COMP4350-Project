@@ -91,13 +91,10 @@ class VisitFormEditController extends Controller
     {
         $dataAccess = new DataAccess();
         $patient = $dataAccess->getPatient($userid);
-        //return $patient;
-        //$patient = ClientList::where('userid','=', $userid)->firstOrFail();
+        $visits = $dataAccess->getVisits($userid);
 
-        //get client list
-        //$clients = ClientList::all();
-
-        return \View::make('visit_form')->with('patient',$patient);
+        $data = array('patient'=>$patient, 'visits'=>$visits);
+        return \View::make('visit_form')->with($data);
     }
 
     /**

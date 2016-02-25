@@ -36,7 +36,7 @@ class DataAccess{
     function getPatient($id)
     {
         $firstEdit = users::where('id', '=', $id)->select('firstEdit')->firstOrFail();
-        if($firstEdit)
+        if($firstEdit->firstEdit)
         {
             return ClientList::where('userid', '=', $id)->firstOrFail();
         }
@@ -93,9 +93,11 @@ class DataAccess{
         visits::create($list);
     }
 
-    function getVisits($email)
+    function getVisits($id)
     {
-        return calendar::where('email', '=', $email);
+        $email = users::where('id', '=', $id)->select('email')->firstOrFail();
+        $email = $email->email;
+        return visits::where('email', '=', $email)->get();
     }
 
     function getEvents()

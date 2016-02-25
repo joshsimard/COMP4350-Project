@@ -46,6 +46,7 @@
         }
         #visits {
             padding : 10px;
+            color: black;
             width: 80%;
             min-height: 250px;
         }
@@ -82,7 +83,7 @@
         <div class="row">
             {{-- for some reason VisitFormEditController@store is not defined?--}}
             <div class="col-sm-6">
-                {!! Form::text('email', $patient["email"], array('class'=>'form-control input-md', 'hidden')) !!}
+                <p>&emsp;{{ $patient["email"] or "email" }}</p>{{ Form::hidden('email', $patient["email"]) }}
                 <p>&emsp;{{ $patient["mobileNum"] or $patient["homeNum"] }}</p>
                 <p>&emsp;{{ $patient["address"] or 'Address'  }},</p>
                 <p>&emsp;{{ $patient["city"] or 'city'  }}&emsp;{{ $patient["postalCode"] or 'Postal Code'  }}</p>
@@ -118,9 +119,9 @@
         </div>
         <div class="row">
             <label id="year">Date:&emsp;</label>
-            {{ Form::selectYear('year', 1900, 2016, []) }}
-            {{ Form::selectMonth('month', null, [], '%B') }}
-            {{ Form::selectRange('day', 1, 31, null, []) }}
+            {{ Form::selectYear('year', 1900, date("Y"), ["selected" => date("Y")]) }}
+            {{ Form::selectMonth('month', date("m"), [], '%B') }}
+            {{ Form::selectRange('day', 1, 31, date("d"), []) }}
         </div>
         <div class="row">
             <label id="time" title="The period of the visit. Start and end times">Period: &emsp;</label>
@@ -142,5 +143,25 @@
     <div class="container" id="visits">
         <h3 class="titleHeads">Previous Visits</h3>
         <hr>
+        <?php
+        if(count($visits) < 1)
+            echo '<a href="#" class="list-group-item"><h4 class="items">No Visits!</h4><span class="left items"></span></a>';
+        else
+        {
+            //populate
+            //echo $visits;
+            foreach($visits as $visit)
+            {
+                echo '<a href="#'.$visit["id"].'" class="list-group-item">
+                                    <h4 class="left items right-align">Date: '.$visit["date"].'</h4>
+                                    <h4 class="items">Height: '.$visit["height"].'&emsp;Weight:'.$visit["weight"].'</h4>
+                                    <h4 class="items"> Symptoms: '.$visit["symptoms"].'</h4>
+                                    <h4 class="items"> Allergies: '.$visit["allergies"].'</h4>
+                                    </a>
+                                    <br>';
+            }
+        }
+
+        ?>
     </div>
 @stop
