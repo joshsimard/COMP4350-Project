@@ -23,10 +23,7 @@ TO RUN THE INTEGRATION AND UNIT TESTS:
   3. Now run the tests with the command: vendor/bin/phpunit
 
 TO RUN SELENIUM TESTS:
-  1. Download and install Chrome browser if you do not already have it:
-             * https://www.google.com/chrome/browser/desktop/
-  2. Download Chromedriver:
-             * http://chromedriver.storage.googleapis.com/index.html?path=2.21/
+  1. Download and install Chrome browser if you do not already have it: https://www.google.com/chrome/browser/desktop/
+  2. Download Chromedriver: http://chromedriver.storage.googleapis.com/index.html?path=2.21/
   3. Run the Chrome driver
-  4. Enter the url (This will test the website on AWS):
-             * http://localhost:8000/tests
+  4. Enter the url (This will test the website on AWS): http://localhost:8000/tests
