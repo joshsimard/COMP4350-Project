@@ -12,7 +12,10 @@
             background-color: #dddddd;
             margin-bottom: 5px;
         }
-        .list-group-item .items{color: #000000;}
+
+        .list-group-item .items{
+            color: #000000;
+        }
 
         .right-align{text-align: right;}
 
@@ -34,6 +37,19 @@
             float: right;
         }
 
+        .fa-search{
+            color: #000000;
+        }
+
+        .panel-body{
+            margin-top: 40px;
+        }
+
+        .reset-btn {
+            margin-left: 5px;
+            float:right;
+        }
+
     </style>
 @stop
 
@@ -47,12 +63,12 @@
 
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="background-color: #485563">
                 <div class="panel-heading">
-                    <h4 class="name">Client List</h4>
+                    <h4 class="name">Client List</h4><br>
 
                     {!! Form::open(['method'=>'GET','url'=>'clientlist','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
-                    <div class="input-group custom-search-form">
+                    <div class="input-group custom-search-form" style="margin-left:0" >
                         <input type="text" class="form-control" name="search" placeholder="Search...">
                         <span class="input-group-btn">
                             <button class="btn btn-default-sm" type="submit">
