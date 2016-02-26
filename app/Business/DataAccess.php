@@ -14,6 +14,7 @@ use App\models\users;
 use App\models\calendar;
 use App\models\visits;
 use App\models\Note;
+use App\User;
 use DB;
 
 class DataAccess{
@@ -89,7 +90,23 @@ class DataAccess{
         }
     }
 
-    function visitSave($list, $userEmail)
+    function apiEventSave($list)
+    {
+        try {
+
+            $eventCheck = calendar::where('event_id', '=', $list['event_id'])->firstOrFail();
+            //update saved event if no fail
+            calendar::where('event_id', $list['event_id'])
+                ->update($list);
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+
+            //create new event
+            $event = calendar::firstOrCreate($list);
+
+        }
+    }
+
+    function visitSave($list)
     {
         visits::create($list);
     }
@@ -153,6 +170,11 @@ class DataAccess{
     {
         $notes = Note::where('doctor_id', '=', $id)->get();
         return $notes;
+    }
+
+    function register($list)
+    {
+        User::create($list);
     }
 
 }

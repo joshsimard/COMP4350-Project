@@ -78,7 +78,7 @@ class VisitFormEditController extends Controller
             'end_time' => $request->end_time,
         ];
 
-        $dataAccess->visitSave($list, Auth::user()->email);
+        $dataAccess->visitSave($list);
 
         return redirect('/clientlist');
     }

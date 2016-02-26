@@ -22,7 +22,7 @@ class apiClientController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'urls' => array($clients)),
+            'data' => array($clients)),
             200
         );
     }
@@ -45,7 +45,16 @@ class apiClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$request->merge(json_decode($request->getContent(),true));
+        $dataAccess = new DataAccess();
+        $dataAccess->clientInfoSave($request->data, $request->data['email']);
+
+
+        return Response::json(array(
+            'error' => false,
+            'data' => array('Data Saved')),
+            200
+        );
     }
 
     /**
@@ -61,7 +70,7 @@ class apiClientController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'urls' => array($clients)),
+            'data' => array($clients)),
             200
         );
     }

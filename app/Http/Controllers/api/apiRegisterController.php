@@ -8,7 +8,7 @@ use App\Business\DataAccess;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class apiEventController extends Controller
+class apiRegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,7 @@ class apiEventController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
-        $events = $dataAccess->getEvents();
-
-        return Response::json(array(
-            'error' => false,
-            'data' => array($events)),
-            200
-        );
+        //
     }
 
     /**
@@ -45,23 +38,21 @@ class apiEventController extends Controller
      */
     public function store(Request $request)
     {
-        //expected array
-//        $list = [
-//            'event_id' => $id,
-//            'title' => $title,
-//            'start_time' => $start,
-//            'end_time' => $end,
-//            'client_id' => $userEmail,
-//            'client_name' => $name
-//        ];
+        //expected request
+        $list =  [
+            'firstName' => $request->data['firstName'],
+            'lastName' => $request->data['lastName'],
+            'email' => $request->data['email'],
+            'password' => bcrypt($request->data['password']),
+        ];
 
         $dataAccess = new DataAccess();
-        $dataAccess->apiEventSave($request->data);
+        $dataAccess->register($list);
 
 
         return Response::json(array(
             'error' => false,
-            'data' => array('Data Saved')),
+            'data' => array('User Created')),
             200
         );
     }
@@ -74,7 +65,14 @@ class apiEventController extends Controller
      */
     public function show($id)
     {
-        //
+//        $dataAccess = new DataAccess();
+//        $userid = $dataAccess->userIdByEmail($request->email);
+//
+//        return Response::json(array(
+//            'error' => false,
+//            'data' => array($notes)),
+//            200
+//        );
     }
 
     /**

@@ -68,6 +68,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['auth.basic']], function () {
 
     Route::group(array('prefix' => 'api'), function(){
+        Route::resource('/register', 'api\apiRegisterController');
         Route::resource('/clients', 'api\apiClientController');
         Route::resource('/events', 'api\apiEventController');
         Route::resource('/visits', 'api\apiVisitsController');
