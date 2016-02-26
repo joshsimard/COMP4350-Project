@@ -2,11 +2,6 @@
 
 @section('custom_css')
     <style>
-
-        .top-buffer {
-            margin-top: 60px;
-        }
-
          /*Color list background and text*/
         .list-group-item {
             background-color: #dddddd;

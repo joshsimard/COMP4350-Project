@@ -64,7 +64,6 @@ Route::group(['middleware' => ['web']], function () {
 
 
 //API
-//Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth.basic', 'auth.admin']], function() {});
 Route::group(['middleware' => ['auth.basic']], function () {
 
     Route::group(array('prefix' => 'api'), function(){
@@ -74,6 +73,4 @@ Route::group(['middleware' => ['auth.basic']], function () {
         Route::resource('/visits', 'api\apiVisitsController');
         Route::resource('/notes', 'api\apiNotesController');
     });
-
-    //Route::get('/home', 'HomeController@index');
 });

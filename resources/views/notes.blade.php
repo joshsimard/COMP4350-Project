@@ -7,10 +7,6 @@
 @section('custom_css')
     <style>
 
-        .top-buffer {
-            margin-top: 60px;
-        }
-
         .logout-button  {
             text-align: right;
             float: right;
@@ -80,7 +76,7 @@
                         <?php $patient_info = array(); ?>
                         @foreach($notes as $note)
                             <?php array_push ($patient_info, array( $note["id"], $note["subject"], $note["body"])); ?> <!-- Make an array of all the clients to send to jquery -->
-                            <a href="#" class="list-group-item" id="{!! $note["id"]!!}" style="color: #000000;" wrap="true"> <!-- Should be note id -->
+                            <a href="#" class="list-group-item" id="{!! $note["id"]!!}" style="color: #000000;" wrap="true">
                                 {!! $note["subject"]!!}
                             </a>
                         @endforeach

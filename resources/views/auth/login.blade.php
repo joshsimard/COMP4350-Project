@@ -1,15 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>DC-Portal</title>
+    <title>Portal | Login</title>
 @stop
 
 @section('custom_css')
 <style>
-    .top-buffer {
-        margin-top: 60px;
-    }
-
     .form-control {
         border-radius: 4px;
     }
@@ -73,7 +69,7 @@
                                     <i class="fa fa-btn fa-sign-in"> Login</i>
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                                <!--<a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>-->
                             </div>
                         </div>
                     </form>

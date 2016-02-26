@@ -71,8 +71,6 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    {{--@include('inc.order_medication_link')--}}
-     {{--@include('inc.notes_link')--}}
 @stop
 
 @section('content')
@@ -149,7 +147,6 @@
         else
         {
             //populate
-            //echo $visits;
             foreach($visits as $visit)
             {
                 echo '<a href="#'.$visit["id"].'" class="list-group-item">

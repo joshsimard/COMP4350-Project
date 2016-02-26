@@ -6,11 +6,6 @@
 
 @section('custom_css')
     <style>
-
-        .top-buffer {
-            margin-top: 60px;
-        }
-
         .logout-button  {
             text-align: right;
             float: right;
@@ -25,12 +20,6 @@
 @stop
 
 @section('content')
-    <style>
-        .logout-button {
-            text-align: right;
-            float: right;
-        }
-    </style>
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">

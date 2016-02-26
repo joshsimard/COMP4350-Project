@@ -54,5 +54,23 @@ class NotesTableSeeder extends Seeder
             'subject' => 'Client #85748',
             'body' => 'A young boy I saved in the ER last week came to me today. He thanked me and gave me a hug. Maybe I am doing the right thing.',
         ]);
+
+        DB::table('notes')->insert([
+            'doctor_id' => '4',
+            'subject' => 'Patient Thought',
+            'body' => 'If her DNA was off by one percentage point, she\'d be a dolphin.',
+        ]);
+
+        DB::table('notes')->insert([
+            'doctor_id' => '3',
+            'subject' => 'Captain\'s Log #4239',
+            'body' => 'He\'s dead Jim.',
+        ]);
+
+        DB::table('notes')->insert([
+            'doctor_id' => '5',
+            'subject' => '@!*#^@*$',
+            'body' => 'HOW CAN I BE CALM WHEN I HOLD ANOTHER PERSON\'S LIFE IN MY HANDS!?',
+        ]);
     }
 }

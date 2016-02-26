@@ -19,7 +19,7 @@ class CalendarController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth');
+        //
     }
 
     /**
@@ -29,7 +29,7 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        //$dataAccess = new DataAccess();
+        //
 
     }
 
@@ -69,7 +69,6 @@ class CalendarController extends Controller
         $name = Auth::user()->firstName.' '.Auth::user()->lastName;
 
         $dataAccess->eventSave($id, $title, $start, $end, Auth::user()->email, $name);
-       // echo $start, $end, $id;
 
     }
 

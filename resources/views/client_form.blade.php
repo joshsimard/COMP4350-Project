@@ -23,7 +23,6 @@
         .row{
             padding: 6px;
         }
-
     </style>
 
     <!-- datepicker CSS -->

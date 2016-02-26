@@ -20,7 +20,7 @@ class VisitFormEditController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        //
     }
 
     /**
@@ -38,8 +38,6 @@ class VisitFormEditController extends Controller
         {
             $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
         }
-        //get client list
-        //$clients = ClientList::all();
 
         return \View::make('visit_form')->with('patient',$patient);
     }

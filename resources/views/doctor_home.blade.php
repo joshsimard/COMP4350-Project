@@ -6,11 +6,6 @@
 
 @section('custom_css')
     <style>
-
-        .top-buffer {
-            margin-top: 60px;
-        }
-
         .logout-button  {
             text-align: right;
             float: right;
@@ -37,7 +32,6 @@
                     <ul>
                         <li><a href="/clientlist" style="color: rgb(0, 0, 0)">View Clients</a></li>
                         <li><a href="/calendar" style="color: rgb(0, 0, 0)">Calendar</a></li>
-                        {{--<li><a href="/orders" style="color: rgb(0, 0, 0)">Order Medication</a></li>--}}
                         <li><a href="/notes" style="color: rgb(0, 0, 0)">Notes and Messages</a></li>
                     </ul>
                 </div>

@@ -32,8 +32,8 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'firstName' => 'Leonard',
-            'lastName' => 'Nimoy',
-            'email' => 'leonard@nimoy.com',
+            'lastName' => 'McCoy',
+            'email' => 'leonard@mccoy.com',
             'password' => bcrypt('password'),
             'admin' => '1',
             'firstEdit' => '0',
@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'firstName' => 'Gregory',
             'lastName' => 'House',
-            'email' => 'gregory@doe.com',
+            'email' => 'gregory@house.com',
             'password' => bcrypt('password'),
             'admin' => '1',
             'firstEdit' => '0',
@@ -141,7 +141,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'firstName' => 'Misato',
             'lastName' => 'Katsuragi',
-            'email' => 'katsuragi@misato.com',
+            'email' => 'misato@katsuragi.com',
             'password' => bcrypt('password'),
             'admin' => '0',
             'firstEdit' => '0',

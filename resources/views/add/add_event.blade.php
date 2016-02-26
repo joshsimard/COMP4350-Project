@@ -10,10 +10,6 @@
             /*background-image: url("http://books.maxoffsky.com/img/stardust.png");*/
         }
 
-        .top-buffer {
-            margin-top: 60px;
-        }
-
         ::selection {
             margin-top: 200px;
             background: black;

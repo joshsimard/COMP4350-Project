@@ -50,10 +50,6 @@
             margin-top: 110px;
         }
 
-        .btn-circle {
-            border-radius: 4px;
-        }
-
     </style>
 
 </head>
@@ -97,7 +93,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/settings') }}"><h5><i class="fa fa-btn fa-gear"> Settings</i></h5></a></li>
+                            <!--<li><a href="{{ url('/settings') }}"><h5><i class="fa fa-btn fa-gear"> Settings</i></h5></a></li>-->
                             <li><a href="{{ url('/logout') }}"><h5><i class="fa fa-btn fa-sign-out"> Logout</i></h5></a></li>
                         </ul>
                     </li>

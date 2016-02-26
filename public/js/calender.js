@@ -42,26 +42,33 @@ $(document).ready(function() {
              allDay means if events is for entire day or not.
              */
             select: function (start, end, allDay) {
-                /*
-                 after selection user will be promted for enter title for event.
-                 */
-                var title = prompt('Event Title:');
-                var id = new Date().getTime().toString();
+                var check = start._d.toJSON().slice(0,10);
+                var today = new Date().toJSON().slice(0,10);
+
+                if (check < today)  //Previous day
+                {
+                    //make not clickable
+                } else {
+                    /*
+                     after selection user will be promted for enter title for event.
+                     */
+                    var title = prompt('Event Title:');
+                    var id = new Date().getTime().toString();
+
+                    if (title) {
+
+                        title = title + ' - ' + user_name;
+
+                        //attach event to calendar
+                        addEventToCalender(id, title, start, end, true, "");
+
+                        //send event to controller
+                        postEventToDB(id, title, start.toString(), end.toString());
 
 
-                if (title) {
-
-                    title = title+' - '+user_name;
-
-                    //attach event to calendar
-                    addEventToCalender(id, title, start, end, true,"");
-
-                    //send event to controller
-                    postEventToDB(id, title, start.toString(), end.toString());
-
-
+                    }
+                    calendar.fullCalendar('unselect');
                 }
-                calendar.fullCalendar('unselect');
             },
 
 

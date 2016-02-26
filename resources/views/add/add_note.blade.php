@@ -8,11 +8,6 @@
     <link media="all" type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.default.css">
     <link media="all" type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.css">
     <style>
-
-        .top-buffer {
-            margin-top: 60px;
-        }
-
         .logout-button  {
             text-align: right;
             float: right;
@@ -24,7 +19,6 @@
     {{--insert name of link--}}
     <?php $nav_link = "home";?>
     @include('inc.navigation_link')
-    {{--@include('inc.doctors_nav_links')--}}
 @stop
 
 @section('content')
@@ -46,6 +40,7 @@
                             {!! Form::text('body', null, array('class'=>'form-control input-md', 'placeholder'=>'Enter a message (Under 250 characters)...', 'cols'=>'50', 'rows'=>'10', 'wrap'=>'true')) !!}
                         </div>
 
+                        <!-- Maybe Later (add tags to notes) -->
                         {{--<div class="form-group">
                             <label for="tags">Tag Patient</label>
                             <select id="tags-menu" name="tags[]" multiple="multiple">

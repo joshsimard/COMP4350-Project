@@ -21,7 +21,7 @@ class ClientFormEditController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        //
     }
 
     /**
@@ -34,19 +34,6 @@ class ClientFormEditController extends Controller
         $dataAccess = new DataAccess();
         $id = $dataAccess->currentUserID();
         $patient = $dataAccess->getPatient($id);
-
-//        if(Auth::user()->firstEdit)
-//        {
-//
-//            $patient = $dataAccess->getPatient(Auth::user()->email);
-//            //$patient = ClientList::where('email','=', Auth::user()->email)->firstOrFail();
-//        }
-//        else
-//        {
-//            //$patient = users::where('email','=', Auth::user()->email)->firstOrFail();
-//        }
-        //get client list
-        //$clients = ClientList::all();
 
         return \View::make('client_form')->with('patient',$patient);
     }
@@ -71,12 +58,8 @@ class ClientFormEditController extends Controller
     {
         $dataAccess = new DataAccess();
         $id = $dataAccess->currentUserID();
-       // $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
 
         $patient = $dataAccess->getPatient($id);
-
-        //$user = users::where('email', '=', Auth::user()->email)->firstOrFail();
-
 
         $list = [
             'userid' => $id,
@@ -100,25 +83,8 @@ class ClientFormEditController extends Controller
         ];
 
         $dataAccess->clientInfoSave($list, Auth::user()->email);
-//        try {
-//            $clientCheck = ClientList::where('email', '=', Auth::user()->email)->firstOrFail();
-//            ClientList::where('email', Auth::user()->email)
-//                ->update($list);
-//        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-//            $client = ClientList::firstOrCreate($list);
-//
-//            //change auth::firstedit to true !!!
-//
-//            $user = users::where('email', '=', Auth::user()->email)->firstOrFail();
-//            $user->firstEdit = 1;
-//            $user->save();
-//        }
-
-
-
 
         return redirect('home');
-        //return $request;
     }
 
     /**
