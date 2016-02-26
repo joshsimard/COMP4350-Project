@@ -16,8 +16,17 @@ Setup:
 9. After these, run form terminal php artisan key:generate
 10.Lastly, run "php artisan serve" to run Nginx Server
 
-TO RUN THE TESTS:
+TO RUN THE INTEGRATION AND UNIT TESTS:
   1. CD into the project main directory.
   2. Seed the database (creates default users) by using the command: php artisan migrate:refresh --seed
     * NOTE: You must do this everytime you want to run the tests (currently).
   3. Now run the tests with the command: vendor/bin/phpunit
+
+TO RUN SELENIUM TESTS:
+  1. Download and install Chrome browser if you do not already have it
+            -> https://www.google.com/chrome/browser/desktop/
+  2. Download Chromedriver
+            -> http://chromedriver.storage.googleapis.com/index.html?path=2.21/
+  3. Run the Chrome driver
+  4. Enter the url
+            -> http://localhost:8000/tests (This will test the website on AWS)
