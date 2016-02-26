@@ -179,23 +179,59 @@ class UserTest extends TestCase
         $this->seeInDatabase('clients', ['nextOfKin' => 'Mom']);
     }
 
-    /*public function testCalendar()
+    public function testViewAppointments()
     {
-        //test on client side
+        //from doctors side
         $this->visit('/')
-            ->type('jane@doe.com', 'email')
+            ->type('john@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->click('Calendar')
+            ->seePageIs('/calendar');
+    }
+
+    public function testAddDoctorsNote()
+    {
+        $this->visit('/')
+            ->type('john@doe.com', 'email')
             ->type('password', 'password')
             ->press('Login')
             ->seePageIs('/home')
-            ->click('View/Set Appointment')
-            ->seePageIs('/calendar')
+            ->click('Notes and Messages')
+            ->seePageIs('/notes')
+            ->click('addNote')
+            ->type('Integration Test','subject')
+            ->select('Just so we get our marks and pass Comp 4350, hopefully an A-A+', 'body')
+            ->press('Submit')
+            ->seePageIs('/notes');
 
-            ->click('month')
-            ->click('26')
-            ->submitForm('OK',array('a_hidden_field'=>'123'));
+        //check the database
+        $this->seeInDatabase('notes', ['subject' => 'Integration Test']);
+        $this->seeInDatabase('notes', ['body' => 'Just so we get our marks and pass Comp 4350, hopefully an A-A+']);
+    }
 
-        $this->seeInDatabase('calendar', ['title' => '123']);
-    }*/
+    public function testViewDoctorsNotes()
+    {
+        //view 5 doctor notes
+        $this->visit('/')
+            ->type('john@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+            ->click('Notes and Messages')
+            ->seePageIs('/notes')
+            ->click('1')
+            ->click('1')
+            ->click('2')
+            ->click('2')
+            ->click('3')
+            ->click('3')
+            ->click('4')
+            ->click('4')
+            ->click('5')
+            ->click('5')
+            ->seePageIs('/notes');
+    }
 
     public function testNavigation()
     {
@@ -204,11 +240,8 @@ class UserTest extends TestCase
             ->type('john@doe.com', 'email')
             ->type('password', 'password')
             ->press('Login')
-            ->seePageIs('/home')
+            ->seePageIs('/home');
 
-        //test the settings
-            ->click('Settings')
-            ->seePageIs('/settings');
 
         //now test all the links
         $this->visit('/home')

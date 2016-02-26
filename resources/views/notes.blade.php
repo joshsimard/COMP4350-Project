@@ -47,7 +47,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h5 class="panel-title">Notes<div class="add-button"><a href="/add/note" name="add_note"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h5>
+                    <h5 class="panel-title">Notes<div class="add-button"><a href="/add/note" name="add_note" id="addNote"><span class="glyphicon glyphicon-plus" style="color: rgb(91, 192, 222)"></span></a></div></h5>
                 </div>
                 <div class="panel-body" style="background-color: #2e3436; ">
                     {!! Form::open(['method'=>'GET','url'=>'notes','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
