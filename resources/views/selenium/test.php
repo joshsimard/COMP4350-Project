@@ -17,11 +17,11 @@ include(__DIR__.'/helper.php');
  *********************************************************/
 
 //start broswer with 5 second timeout
-//$chrome = 'http://localhost:9515';
+$chrome = 'http://localhost:9515';
 $firefox = 'http://localhost:4444/wd/hub';
 
 
-$host = $firefox;//$chrome; // this is the default
+$host = $chrome; // this is the default
 $capabilities = DesiredCapabilities::firefox();
 $driver = RemoteWebDriver::create($host, $capabilities, 5000);
 $driver->manage()->timeouts()->implicitlyWait(60);

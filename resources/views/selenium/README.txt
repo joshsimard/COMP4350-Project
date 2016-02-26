@@ -8,8 +8,8 @@ To run the Selenium Test:
 
 3. Run the Chrome driver
 
-4. Developers: Enter the url -> 'http://localhost:8000/tests'
-   TA: 'http://ec2-52-32-93-246.us-west-2.compute.amazonaws.com/tests'
+4. Enter the url
+                -> 'http://localhost:8000/tests'
 
 
             ----------------- The End :) ------------------------
