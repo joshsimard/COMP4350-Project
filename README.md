@@ -27,3 +27,7 @@ TO RUN SELENIUM TESTS:
   2. Download Chromedriver: http://chromedriver.storage.googleapis.com/index.html?path=2.21/
   3. Run the Chrome driver
   4. Enter the url (This will test the website on AWS): http://localhost:8000/tests
+
+
+LINK TO PROJECT ON AWS:
+http://ec2-52-32-93-246.us-west-2.compute.amazonaws.com
