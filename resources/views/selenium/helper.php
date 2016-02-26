@@ -1,13 +1,12 @@
 <?php
-// An example of using php-webdriver.
 
 namespace Facebook\WebDriver;
 
-use Facebook\WebDriver\Remote\DesiredCapabilities;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Facebook\WebDriver\Exception\ExpectedException;
-use Facebook\WebDriver\Exception\UnexpectedAlertOpenException;
-
+/********************************************************
+ *
+ * DEFINE HELPER FUNCTIONS FOR SELENIUM TEST
+ *
+ *********************************************************/
 
 function login($driver, $email, $password)
 {
@@ -57,13 +56,21 @@ function registerClient($driver, $firstName, $lastName, $email, $password)
   $register->click();
 }
 
-function viewClients($driver)
+function viewClientList($driver)
 {
-  //view calendar page
-  $calendar= $driver->findElement(WebDriverBy::linkText('View Clients'));
-  $calendar->click();
+  //view client list page
+  $clientList= $driver->findElement(WebDriverBy::linkText('View Clients'));
+  $clientList->click();
   $driver->wait(65);
 }
+
+function viewClient($driver, $id)
+{
+  //view specific client record
+  $clientList= $driver->findElement(WebDriverBy::cssSelector('a[href="/visit_form/'.$id.'"]'));
+  $clientList->click();
+}
+
 
 function goHome($driver)
 {
@@ -99,6 +106,45 @@ function editClientInfo($driver, $country, $state, $phone, $occupation, $status)
   $save = $driver->findElement(WebDriverBy::className('btn'));
   $save->click();
 
+
+}
+
+function addDoctorNotes($driver, $subject, $body)
+{
+  //view notes page
+  $notes= $driver->findElement(WebDriverBy::cssSelector('a[href="/notes"]'));
+  $notes->click();
+  $driver->wait(65);
+
+  //view add note page
+  $clickAdd= $driver->findElement(WebDriverBy::className('glyphicon-plus'));
+  $clickAdd->click();
+
+  //fill in text fields
+  $driver->findElement(WebDriverBy::name("subject"))->sendKeys($subject.''.rand());
+  $driver->findElement(WebDriverBy::name("body"))->sendKeys($body);
+
+  //save note
+  $save = $driver->findElement(WebDriverBy::className('btn'));
+  $save->click();
+
+}
+
+function viewDoctorNotes($driver, $max)
+{
+
+  //navigate to notes page
+  $notes= $driver->findElement(WebDriverBy::cssSelector('a[href="/notes"]'));
+  $notes->click();
+  $driver->wait(65);
+
+  for($i = 1; $i < $max; $i++)
+  {
+    $clickNote= $driver->findElement(WebDriverBy::cssSelector('a[id="'.$i.'"]'));
+    $clickNote->click(); //open note
+    $driver->wait(65);
+    $clickNote->click(); //collapse note
+  }
 
 }
 
