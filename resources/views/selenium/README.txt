@@ -9,7 +9,7 @@ To run the Selenium Test:
 3. Run the Chrome driver
 
 4. Enter the url
-                -> 'http://localhost:8000/tests'
+                -> 'http://localhost:8000/tests' (This will test the website on AWS)
 
 
             ----------------- The End :) ------------------------
