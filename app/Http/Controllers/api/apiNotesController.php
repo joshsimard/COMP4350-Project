@@ -38,7 +38,18 @@ class apiNotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$request->merge(json_decode($request->getContent(),true));
+
+        $dataAccess = new DataAccess();
+        $dataAccess->saveNotes($request->data);
+
+
+        return Response::json(array(
+            'error' => false,
+            'data' => array('Data Saved')),
+            200
+        );
+
     }
 
     /**
@@ -54,7 +65,7 @@ class apiNotesController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'urls' => array($notes)),
+            'data' => array($notes)),
             200
         );
     }

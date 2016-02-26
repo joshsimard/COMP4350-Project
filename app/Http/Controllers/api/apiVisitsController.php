@@ -38,7 +38,15 @@ class apiVisitsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataAccess = new DataAccess();
+        $dataAccess->visitSave($request->data);
+
+
+        return Response::json(array(
+            'error' => false,
+            'data' => array('Data Saved')),
+            200
+        );
     }
 
     /**
@@ -54,7 +62,7 @@ class apiVisitsController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'urls' => array($visits)),
+            'data' => array($visits)),
             200
         );
     }
