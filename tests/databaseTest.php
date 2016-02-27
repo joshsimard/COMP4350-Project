@@ -139,12 +139,11 @@ class databaseTest extends TestCase
      */
     public function testDelete()
     {
-        users::where('email', 'test@user3.com')
-            ->delete();
+        users::where('email', 'test@user3.com')->delete();
+        users::where('email', 'test@user4.com')->delete();
 
-        users::where('email', 'test@user4.com')
-            ->delete();
-
+        $this->dontSeeInDatabase('users', ['email' => 'test@user3.com']);
+        $this->dontSeeInDatabase('users', ['email' => 'test@user4.com']);
 
     }
 }

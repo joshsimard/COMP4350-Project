@@ -107,12 +107,11 @@ class databaseCalendarTest extends TestCase
      */
     public function testDelete()
     {
-        calendar::where('event_id', '64893021765')
-            ->delete();
+        calendar::where('event_id', '64893021765')->delete();
+        calendar::where('event_id', '83746284054')->delete();
 
-        calendar::where('event_id', '83746284054')
-            ->delete();
-
+        $this->dontSeeInDatabase('calendar', ['event_id' => '64893021765']);
+        $this->dontSeeInDatabase('calendar', ['event_id' => '83746284054']);
 
     }
 }
