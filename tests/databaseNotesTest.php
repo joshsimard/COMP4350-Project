@@ -1,6 +1,7 @@
 <?php
 
 use App\models\Note;
+use App\Business\DataAccess;
 
 class databaseNotesTest extends TestCase
 {
@@ -107,6 +108,20 @@ class databaseNotesTest extends TestCase
         $this->assertEquals('Doctor Truth', $testNote->subject);
         $this->assertEquals('In any case, its a very interesting course', $testNote->body);
 
+    }
+
+
+    /**
+     * test for getting notes with doctor id
+     *
+     * @return void
+     */
+    public function testGetNoteWithID()
+    {
+        $dataAccess = new DataAccess();
+
+        //Dr john Doe's notes
+        $this->assertNotEquals(null, $dataAccess->getNotes(1));
     }
 
     /**

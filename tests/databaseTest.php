@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\models\users;
+use App\Business\DataAccess;
 
 class databaseTest extends TestCase
 {
@@ -107,6 +105,31 @@ class databaseTest extends TestCase
 
         $testUser = users::where('email', '=', 'test@user2.com')->firstOrFail();
         $this->assertEquals("UsserD2", $testUser->lastName);
+    }
+
+    /**
+     * test for saving events through data access
+     *
+     * @return void
+     */
+    public function testDataAccessEventMethod()
+    {
+        $dataAccess = new DataAccess();
+
+        //save event to database
+        $dataAccess->eventSave($dataAccess->userIdByEmail("test@user1.com"), "Test1", "Sat Mar 12 2016 11:30:00 GMT+0000",
+            "Sat Mar 12 2016 11:30:00 GMT+0000", "test@user1.com", "user1");
+
+        $dataAccess->eventSave($dataAccess->userIdByEmail("test@user2.com"), "Test2", "Sun Mar 13 2016 11:30:00 GMT+0000",
+            "Sun Mar 13 2016 11:30:00 GMT+0000", "test@user2.com", "user1");
+
+        $dataAccess->eventSave($dataAccess->userIdByEmail("test@user3.com"), "Test3","Mon Mar 14 2016 11:30:00 GMT+0000",
+            "Mon Mar 14 2016 11:30:00 GMT+0000", "test@user3.com", "user1");
+
+        $this->seeInDatabase('calendar', ['title' => 'Test1']);
+        $this->seeInDatabase('calendar', ['title' => 'Test2']);
+        $this->seeInDatabase('calendar', ['title' => 'Test3']);
+
     }
 
     /**

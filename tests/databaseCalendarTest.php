@@ -1,13 +1,12 @@
 <?php
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 use App\models\calendar;
+use App\Business\DataAccess;
 
 class databaseCalendarTest extends TestCase
 {
     /**
-     * Test to insert 4 new users
+     * Test to insert 3 new events
      *
      * @return void
      */
@@ -45,9 +44,9 @@ class databaseCalendarTest extends TestCase
             'client_name' => 'John Doe'
         ];
 
-        $testUser = calendar::firstOrCreate($list1);
-        $testUser = calendar::firstOrCreate($list2);
-        $testUser = calendar::firstOrCreate($list3);
+        $testEvent = calendar::firstOrCreate($list1);
+        $testEvent = calendar::firstOrCreate($list2);
+        $testEvent = calendar::firstOrCreate($list3);
 
         $this->seeInDatabase('calendar', ['event_id' => '19483726503']);
         $this->seeInDatabase('calendar', ['event_id' => '64893021765']);
@@ -86,6 +85,19 @@ class databaseCalendarTest extends TestCase
         $this->assertEquals("No More Meds", $testUser->title);
         $this->assertEquals('Fri Mar 11 2016 09:30:00 GMT+0000', $testUser->start_time);
         $this->assertEquals('Fri Mar 11 2016 10:00:00 GMT+0000', $testUser->end_time);
+    }
+
+    /**
+     * test for getting events through RESTFUL API
+     *
+     * @return void
+     */
+    public function testGetEvents()
+    {
+        $dataAccess = new DataAccess();
+
+        //assert that it does not return an empty lists
+        $this->assertNotEquals(null, $dataAccess->getEvents());
     }
 
     /**
