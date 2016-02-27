@@ -14,6 +14,41 @@ class UserTest extends TestCase
     }
 
     /**
+     * test only access through login
+     *
+     * @return void
+     */
+    public function testAccess()
+    {
+        $this->visit('/')
+            ->seePageIs('/login')
+            ->visit('/home')
+            ->seePageIs('/login')
+            ->visit('/clientlist')
+            ->seePageIs('/login')
+            ->visit('/client_form')
+            ->seePageIs('/login')
+            ->visit('/visit_form')
+            ->seePageIs('/login')
+            ->visit('/client_info')
+            ->seePageIs('/login')
+            ->visit('/calendar')
+            ->seePageIs('/login')
+            ->visit('/add/event')
+            ->seePageIs('/login')
+            ->visit('/appointments_list')
+            ->seePageIs('/login')
+            ->visit('/orders')
+            ->seePageIs('/login')
+            ->visit('/notes')
+            ->seePageIs('/login')
+            ->visit('/add/note')
+            ->seePageIs('/login')
+            ->visit('/settings')
+            ->seePageIs('/login');
+    }
+
+    /**
      * A basic test for login.
      *
      * User Story: Enable authentication of Clients and
