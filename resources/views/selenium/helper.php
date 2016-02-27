@@ -161,16 +161,15 @@ function addAppointment($driver, $title, $admin)
 
 
   $month= date("m");
+  $day_s = date("d");
 
   //click day in calendar
   if($admin == 1)
   {
-    $day_s = date("d");
     $day = $driver->findElement(WebDriverBy::cssSelector('td[data-date="2016-'.$month.'-'.$day_s.'"]'));
   }
   else
   {
-    $day_s = date("d")+1;
     $day = $driver->findElement(WebDriverBy::cssSelector('td[data-date="2016-'.$month.'-'.$day_s.'"]'));
   }
   $day->click();
