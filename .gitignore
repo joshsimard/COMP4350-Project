@@ -6,3 +6,5 @@ Homestead.json
 tests/_output/*
 .idea
 .env
+
+composer.phar
