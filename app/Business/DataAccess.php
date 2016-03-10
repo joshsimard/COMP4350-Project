@@ -175,7 +175,7 @@ class DataAccess{
 
     function getTerms()
     {
-        $terms = Term::all();
+        $terms = Term::all()->sortBy('name');
         return $terms;
     }
 
