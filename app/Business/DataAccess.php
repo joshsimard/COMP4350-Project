@@ -13,6 +13,7 @@ use App\models\ClientList;
 use App\models\users;
 use App\models\calendar;
 use App\models\visits;
+use App\models\requests;
 use App\models\Note;
 use App\User;
 use DB;
@@ -37,15 +38,17 @@ class DataAccess{
 
     function getPatient($id)
     {
+        $data = null;
         $firstEdit = users::where('id', '=', $id)->select('firstEdit')->firstOrFail();
         if($firstEdit->firstEdit)
         {
-            return ClientList::where('userid', '=', $id)->firstOrFail();
+            $data = ClientList::where('userid', '=', $id)->firstOrFail();
         }
         else
         {
-            return users::where('id','=', $id)->firstOrFail();
+            $data = users::where('id','=', $id)->firstOrFail();
         }
+        return $data;
     }
 
     function clientInfoSave($list, $userEmail)
@@ -116,6 +119,23 @@ class DataAccess{
         $email = users::where('id', '=', $id)->select('email')->firstOrFail();
         $email = $email->email;
         return visits::where('email', '=', $email)->get();
+    }
+
+    function requestSave($list)
+    {
+        requests::create($list);
+    }
+
+    function getRequests($email)
+    {
+        $data = null;
+        if ($email) {
+            $data = requests::where('email', '=', $email)->get();
+        }
+        else{
+            $data = requests::all();
+        }
+        return $data;
     }
 
     function getEvents()
