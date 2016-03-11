@@ -14,6 +14,7 @@ use App\models\users;
 use App\models\calendar;
 use App\models\visits;
 use App\models\Note;
+use App\models\Term;
 use App\User;
 use DB;
 
@@ -170,6 +171,12 @@ class DataAccess{
     {
         $notes = Note::where('doctor_id', '=', $id)->get();
         return $notes;
+    }
+
+    function getTerms()
+    {
+        $terms = Term::all()->sortBy('name');
+        return $terms;
     }
 
     function register($list)

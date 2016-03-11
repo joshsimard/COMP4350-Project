@@ -59,6 +59,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/add/note', 'AddNoteController@index');
         Route::resource('add_note', 'AddNoteController');
         Route::get('/settings', 'SettingsController@create');
+        Route::get('/terms','TermsController@index');
     });
 });
 
