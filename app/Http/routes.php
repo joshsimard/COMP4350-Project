@@ -60,6 +60,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::resource('add_note', 'AddNoteController');
         Route::get('/settings', 'SettingsController@create');
         Route::get('/terms','TermsController@index');
+        Route::get('/medications','MedicationController@index');
+        Route::resource('update_medication','MedicationController');
     });
 });
 

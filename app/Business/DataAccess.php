@@ -179,6 +179,16 @@ class DataAccess{
         return $terms;
     }
 
+    function getMedications()
+    {
+        return Medication::all()->sortBy('name');
+    }
+
+    function saveMedication($list)
+    {
+        $medication = Medication::firstOrCreate($list);
+    }
+
     function register($list)
     {
         User::create($list);
