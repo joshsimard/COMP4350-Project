@@ -126,14 +126,27 @@ class DataAccess{
         requests::create($list);
     }
 
+    function requestUpdate($list, $id)
+    {
+        try {
+
+            $requestCheck = requests::where('id', '=', $id)->firstOrFail();
+            requests::where('id', $id)
+                ->update($list);
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            //create new request
+            $request = requests::firstOrCreate($list);
+        }
+    }
+
     function getRequests($email)
     {
         $data = null;
         if ($email) {
-            $data = requests::where('email', '=', $email)->get();
+            $data = requests::where('email', '=', $email)->orderBy('created_at', 'desc')->get();
         }
         else{
-            $data = requests::all();
+            $data = requests::where('status', '=', "pending")->orderBy('created_at', 'desc')->get();
         }
         return $data;
     }
