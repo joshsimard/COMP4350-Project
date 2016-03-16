@@ -47,7 +47,10 @@ class MedicationController extends Controller
      */
     public function create()
     {
-        return \View::make('order_medication');
+        $dataAccess = new DataAccess();
+        $medications = $dataAccess->getMedications();
+
+        return \View::make('order_medication')->with('medications',$medications);
     }
 
     public function store(Request $request)

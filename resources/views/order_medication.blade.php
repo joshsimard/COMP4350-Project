@@ -44,7 +44,6 @@
 @section('content')
     <div class="container-fluid">
         <h1>Order Medication</h1>
-        Order Medication.
         <hr>
         {!! Form::open(array('action' => 'MedicationController@store')) !!}
         <div class="row">
@@ -52,7 +51,7 @@
                 {!! Form::number('quantity', '', array('class'=>'form-control input-md', 'placeholder'=>'Quantity')) !!}
             </div>
             <div class="col-sm-6">
-                {!! Form::text('name', '', array('class'=>'form-control input-md', 'placeholder'=>'Medication Name')) !!}
+                {!! Form::text('name', '', array('class'=>'form-control input-md','placeholder'=>'Medication Name')) !!}
             </div>
         </div>
         <div class="row">

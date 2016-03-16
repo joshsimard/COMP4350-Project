@@ -49,9 +49,10 @@
                 <div class="panel-heading">
                     <h4 class="name">Medication list</h4><br>
                     <div class="order-btn">
-                        <button class="btn btn-default" onclick="location.href = '{{ url('order_medication') }}'">
-                            Order Medication
-                        </button>
+                        <form method="get" action="/order_medication">
+                            <button class="btn btn-default" >Order Medication</button>
+                        </form>
+
                     </div>
                 </div>
                 <div class="panel-body" style="background-color: #4e5d6c">
