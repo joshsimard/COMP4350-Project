@@ -80,7 +80,6 @@ class RequestsController extends Controller
             'notes' => $request->notes
         ];
         $dataAccess->requestUpdate($list, $request->id);
-        alert('request has been '.$status);
         return back();
     }
 

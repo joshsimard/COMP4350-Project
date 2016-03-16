@@ -57,8 +57,8 @@
                             echo Form::number("quantity", $request["quantity"], array("min" => 0));
                             echo '<br><br>'.Form::text("notes", $request["notes"]);
                             echo '<br><br>';
-                            echo Form::submit('declined', ['name' => 'action', 'class' => 'btn btn-danger']);
-                            echo '&emsp;'.Form::submit('approved', ['name' => 'action', 'class' => 'btn btn-info']);
+                            echo Form::submit('approved', ['name' => 'action', 'class' => 'btn btn-info']);
+                            echo '&emsp;'.Form::submit('declined', ['name' => 'action', 'class' => 'btn btn-danger']);
                             echo Form::close();
                             echo '</a>
                                     <br>';
