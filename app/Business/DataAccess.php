@@ -15,6 +15,7 @@ use App\models\calendar;
 use App\models\visits;
 use App\models\Note;
 use App\models\Term;
+use App\models\Medication;
 use App\User;
 use DB;
 
@@ -184,7 +185,7 @@ class DataAccess{
         return Medication::all()->sortBy('name');
     }
 
-    function saveMedication($list)
+    function saveMedications($list)
     {
         $medication = Medication::firstOrCreate($list);
     }

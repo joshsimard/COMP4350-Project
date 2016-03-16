@@ -61,7 +61,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/settings', 'SettingsController@create');
         Route::get('/terms','TermsController@index');
         Route::get('/medications','MedicationController@index');
-        Route::resource('update_medication','MedicationController');
+        Route::resource('order_medication','MedicationController');
+        Route::get('/order_medication','MedicationController@create');
     });
 });
 

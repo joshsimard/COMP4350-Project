@@ -33,13 +33,13 @@ class MedicationController extends Controller
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = Term::where('name', 'LIKE', '%'.$query.'%')
+            $results = Medication::where('name', 'LIKE', '%'.$query.'%')
                 ->get();
 
-            return \View::make('termslist')->with('terms', $results);
+            return \View::make('medications')->with('medications', $results);
         }
 
-        return \View::make('medicationlist')->with('medications',$medications);
+        return \View::make('medications')->with('medications',$medications);
     }
 
     /*
@@ -47,7 +47,7 @@ class MedicationController extends Controller
      */
     public function create()
     {
-
+        return \View::make('order_medication');
     }
 
     public function store(Request $request)
@@ -60,8 +60,6 @@ class MedicationController extends Controller
         ];
 
         $dataAccess->saveMedications($list);
-
-
 
         return redirect('/medications');
     }
