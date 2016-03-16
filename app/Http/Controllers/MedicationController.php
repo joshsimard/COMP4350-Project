@@ -54,12 +54,7 @@ class MedicationController extends Controller
     {
         $dataAccess = new DataAccess();
 
-        $list = [
-            'quantity' => $request->quantity,
-            'name' => $request->name,
-        ];
-
-        $dataAccess->saveMedications($list);
+        $dataAccess->saveMedications($request->name,$request->quantity);
 
         return redirect('/medications');
     }

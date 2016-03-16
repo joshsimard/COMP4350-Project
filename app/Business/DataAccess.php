@@ -185,9 +185,21 @@ class DataAccess{
         return Medication::all()->sortBy('name');
     }
 
-    function saveMedications($list)
+    function saveMedications($name,$quantity)
     {
-        $medication = Medication::firstOrCreate($list);
+        $list = [
+            'name' => $name,
+            'quantity' => $quantity
+        ];
+        try{
+            $medication = Medication::where('name','=',$name)->firstOrFail();
+            $medication->quantity += $quantity;
+            $medication->save();
+        }
+        catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            $medication = Medication::firstOrCreate($list);
+        }
+
     }
 
     function register($list)

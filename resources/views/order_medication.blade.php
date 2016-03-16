@@ -49,10 +49,10 @@
         {!! Form::open(array('action' => 'MedicationController@store')) !!}
         <div class="row">
             <div class="col-sm-6">
-                {!! Form::number('quantity', '0') !!}
+                {!! Form::number('quantity', '', array('class'=>'form-control input-md', 'placeholder'=>'Quantity')) !!}
             </div>
             <div class="col-sm-6">
-                {!! Form::text('name', '', array('class'=>'form-control input-md')) !!}
+                {!! Form::text('name', '', array('class'=>'form-control input-md', 'placeholder'=>'Medication Name')) !!}
             </div>
         </div>
         <div class="row">
