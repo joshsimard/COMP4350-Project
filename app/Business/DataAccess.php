@@ -13,6 +13,7 @@ use App\models\ClientList;
 use App\models\users;
 use App\models\calendar;
 use App\models\visits;
+use App\models\requests;
 use App\models\Note;
 use App\models\Term;
 use App\User;
@@ -38,15 +39,17 @@ class DataAccess{
 
     function getPatient($id)
     {
+        $data = null;
         $firstEdit = users::where('id', '=', $id)->select('firstEdit')->firstOrFail();
         if($firstEdit->firstEdit)
         {
-            return ClientList::where('userid', '=', $id)->firstOrFail();
+            $data = ClientList::where('userid', '=', $id)->firstOrFail();
         }
         else
         {
-            return users::where('id','=', $id)->firstOrFail();
+            $data = users::where('id','=', $id)->firstOrFail();
         }
+        return $data;
     }
 
     function clientInfoSave($list, $userEmail)
@@ -117,6 +120,36 @@ class DataAccess{
         $email = users::where('id', '=', $id)->select('email')->firstOrFail();
         $email = $email->email;
         return visits::where('email', '=', $email)->get();
+    }
+
+    function requestSave($list)
+    {
+        requests::create($list);
+    }
+
+    function requestUpdate($list, $id)
+    {
+        try {
+
+            $requestCheck = requests::where('id', '=', $id)->firstOrFail();
+            requests::where('id', $id)
+                ->update($list);
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            //create new request
+            $request = requests::firstOrCreate($list);
+        }
+    }
+
+    function getRequests($email)
+    {
+        $data = null;
+        if ($email) {
+            $data = requests::where('email', '=', $email)->orderBy('created_at', 'desc')->get();
+        }
+        else{
+            $data = requests::where('status', '=', "pending")->orderBy('created_at', 'desc')->get();
+        }
+        return $data;
     }
 
     function getEvents()

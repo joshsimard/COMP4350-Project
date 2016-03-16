@@ -56,10 +56,12 @@
         p{
             font-size: medium;
         }
-
-        #content{background-color: #FFFFFF;}
-        .titleHeads{color: #000000;}
-
+        #content{
+            background-color: #FFFFFF;
+        }
+        .titleHeads{
+            color: #000000;
+        }
     </style>
 
     <!-- datepicker CSS -->
