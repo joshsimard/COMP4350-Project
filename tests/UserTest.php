@@ -45,6 +45,10 @@ class UserTest extends TestCase
             ->visit('/add/note')
             ->seePageIs('/login')
             ->visit('/settings')
+            ->seePageIs('/login')
+            ->visit('/terms')
+            ->seePageIs('/login')
+            ->visit('/medications')
             ->seePageIs('/login');
     }
 
@@ -261,6 +265,39 @@ class UserTest extends TestCase
             ->click('5')
             ->click('5')
             ->seePageIs('/notes');
+    }
+
+    public function testTerms()
+    {
+        $this->visit('/')
+            ->type('jane@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+            ->click('Medical Terms')
+            ->seePageIs('/terms')
+            ->click('Asphyxia')
+            ->see('Too little oxygen')
+            ->click('Cancer')
+            ->see('Cancer is');
+    }
+
+    public function testMedications()
+    {
+        $this->visit('/')
+            ->type('john@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+            ->click('Medication List')
+            ->seePageIs('/medications')
+            ->press('Order Medication')
+            ->seePageIs('/order_medication')
+            ->type('23','quantity')
+            ->type('test1','name')
+            ->press('Save')
+            ->seePageIs('/medications')
+            ->see('test1');
     }
 
     public function testNavigation()

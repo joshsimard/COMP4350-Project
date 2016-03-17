@@ -16,6 +16,7 @@ use App\models\visits;
 use App\models\requests;
 use App\models\Note;
 use App\models\Term;
+use App\models\Medication;
 use App\User;
 use DB;
 
@@ -210,6 +211,28 @@ class DataAccess{
     {
         $terms = Term::all()->sortBy('name');
         return $terms;
+    }
+
+    function getMedications()
+    {
+        return Medication::all()->sortBy('name');
+    }
+
+    function saveMedications($name,$quantity)
+    {
+        $list = [
+            'name' => $name,
+            'quantity' => $quantity
+        ];
+        try{
+            $medication = Medication::where('name','=',$name)->firstOrFail();
+            $medication->quantity += $quantity;
+            $medication->save();
+        }
+        catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            $medication = Medication::firstOrCreate($list);
+        }
+
     }
 
     function register($list)
