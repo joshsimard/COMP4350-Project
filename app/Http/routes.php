@@ -71,8 +71,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
 //API
-//Register should be out of auth.basic middleware
-Route::resource('api/register', 'api\apiRegisterController');
+
 //Route::resource('api/client_save', 'api\apiClientSaveController');
 
 //Route::group(['middleware' => ['auth.basic']], function () {
@@ -80,12 +79,12 @@ Route::resource('api/register', 'api\apiRegisterController');
     Route::group(array('prefix' => 'api'), function(){
         //Route::resource('/register', 'api\apiRegisterController');
         //Route::post('/clients', 'api\apiClientController@store');
-
+        Route::resource('register', 'api\apiRegisterController');
+        Route::resource('login', 'api\apiLoginController');
         Route::resource('/clients', 'api\apiClientController');
         Route::resource('/events', 'api\apiEventController');
         Route::resource('/visits', 'api\apiVisitsController');
         Route::resource('/notes', 'api\apiNotesController');
-        Route::resource('/login', 'api\apiLoginController');
         Route::resource('/terms', 'api\apiTermsController');
         Route::resource('/medication', 'api\apiMedicationController');
         Route::resource('/requests', 'api\apiRequestController');
