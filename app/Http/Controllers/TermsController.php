@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Business\DataAccess;
+use App\Business\MedMng;
 use App\models\Term;
 use Illuminate\Http\Request;
 
@@ -27,14 +28,13 @@ class TermsController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
         $terms = $dataAccess->getTerms();
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = Term::where('name', 'LIKE', '%'.$query.'%')
-                ->get();
+            $results = $dataAccess->search($query);
 
             return \View::make('termslist')->with('terms', $results);
         }

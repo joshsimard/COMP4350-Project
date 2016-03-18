@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\NotesMng;
 use Auth;
 use App\models\ClientList;
 use App\models\Note;
@@ -34,6 +35,7 @@ class NotesController extends Controller
     {
         //get note list
         //$notes = Note::where('doctor_id', '=', Auth::user()->id)->get();
+        $dataAccess = new NotesMng();
 
         $request = Request::create('/api/notes/'. Auth::user()->id, 'GET');
 
@@ -44,8 +46,7 @@ class NotesController extends Controller
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = Note::where('subject', 'LIKE', '%'.$query.'%')
-                ->get();
+            $results = $dataAccess->search($query);
 
             return \View::make('notes')->with('notes', $results);
         }

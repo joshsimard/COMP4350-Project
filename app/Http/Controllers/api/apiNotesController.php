@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Response;
 use Illuminate\Http\Request;
-use App\Business\DataAccess;
+use App\Business\NotesMng;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -40,7 +40,7 @@ class apiNotesController extends Controller
     {
         //$request->merge(json_decode($request->getContent(),true));
 
-        $dataAccess = new DataAccess();
+        $dataAccess = new NotesMng();
         $dataAccess->saveNotes($request->data);
 
 
@@ -60,7 +60,7 @@ class apiNotesController extends Controller
      */
     public function show($id)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new NotesMng();
         $notes = $dataAccess->getNotes($id);
 
         return Response::json(array(

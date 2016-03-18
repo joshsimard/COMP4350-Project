@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Response;
 use Illuminate\Http\Request;
-use App\Business\DataAccess;
+use App\Business\ClientMng;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ class apiClientController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new ClientMng();
         $clients = $dataAccess->getClientsApi();
 
         return Response::json(array(
@@ -46,8 +46,8 @@ class apiClientController extends Controller
     public function store(Request $request)
     {
         //$request->merge(json_decode($request->getContent(),true));
-        //$dataAccess = new DataAccess();
-        //$dataAccess->clientInfoSave($request["data"], $request->data['email']);
+        $dataAccess = new ClientMng();
+        $dataAccess->clientInfoSave($request["data"], $request->data['email']);
         $content = $request->getContent();
         //$pieces = explode("&", $content);
 
@@ -66,7 +66,7 @@ class apiClientController extends Controller
      */
     public function show($id)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new ClientMng();
         $clients = $dataAccess->getDetailedClientsApi($id);
 
         return Response::json(array(

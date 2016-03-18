@@ -8,6 +8,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Business\DataAccess;
+use App\Business\EventMng;
 use Route;
 
 class CalendarController extends Controller
@@ -72,7 +73,7 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new EventMng();
 
         $data = $request->input('data');
         list($id, $title, $start, $end) = explode("&", $data);

@@ -1,6 +1,8 @@
 # COMP4350-Project
 A web application made for Software Engineering 2 class at UofM.
 
+Android Project: https://github.com/joshsimard/COMP4350-Android.git
+
 For our document handins for all iterations, check the corresponding iteration folder in the documentation directory.
 
 Setup:

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Business\MedMng;
 use Response;
 use Illuminate\Http\Request;
-use App\Business\VisitsMng;
+use App\Business\ClientMng;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class apiVisitsController extends Controller
+class apiTermsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +18,14 @@ class apiVisitsController extends Controller
      */
     public function index()
     {
+        $dataAccess = new MedMng();
+        $terms = $dataAccess->getTerms();
 
+        return Response::json(array(
+            'error' => false,
+            'data' => $terms),
+            200
+        );
     }
 
     /**
@@ -38,15 +46,7 @@ class apiVisitsController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new VisitsMng();
-        $dataAccess->visitSave($request->data);
-
-
-        return Response::json(array(
-            'error' => false,
-            'data' => array('Data Saved')),
-            200
-        );
+        //
     }
 
     /**
@@ -57,14 +57,7 @@ class apiVisitsController extends Controller
      */
     public function show($id)
     {
-        $dataAccess = new VisitsMng();
-        $visits = $dataAccess->getVisits($id);
-
-        return Response::json(array(
-            'error' => false,
-            'data' => $visits),
-            200
-        );
+        //
     }
 
     /**

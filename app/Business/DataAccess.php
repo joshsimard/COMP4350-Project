@@ -121,7 +121,7 @@ class DataAccess{
     {
 //        $email = users::where('id', '=', $id)->select('email')->firstOrFail();
 //        $email = $email->email;
-        return visits::where('id', '=', $id)->get();
+        return visits::where('userid', '=', $id)->get();
     }
 
     function requestSave($list)
@@ -264,9 +264,9 @@ class DataAccess{
 
             if(Hash::check($password, $user->password)) {
                 if ($user->admin)
-                    return "Doctor";
+                    return $user;
                 else
-                    return "client";
+                    return $user;
             }
             else
                 return "Invalid";

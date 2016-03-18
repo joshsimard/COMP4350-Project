@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\Business\DataAccess;
+use App\Business\ClientMng;
 use App\models\ClientList;
 use App\models\users;
 use Illuminate\Http\Request;
@@ -65,8 +66,9 @@ class ClientFormEditController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
-        $id = $dataAccess->currentUserID();
+        $dataAccess = new ClientMng();
+        $dataAccess1 = new DataAccess();
+        $id = $dataAccess1->currentUserID();
 
         $patient = $dataAccess->getPatient($id);
 

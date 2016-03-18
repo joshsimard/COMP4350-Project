@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Route;
-use App\Business\DataAccess;
+use App\Business\ClientMng;
 use App\models\ClientList;
 use App\models\users;
 use Illuminate\Http\Request;
@@ -29,8 +29,8 @@ class ClientListController extends Controller
      */
     public function index()
     {
-//        $dataAccess = new DataAccess();
-//        $clients = $dataAccess->getClientsFromUsers();
+        $dataAccess = new ClientMng();
+        //$clients = $dataAccess->getClientsFromUsers();
 
         $request = Request::create('/api/clients', 'GET');
 
@@ -42,14 +42,10 @@ class ClientListController extends Controller
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = users::where('firstName', 'LIKE', '%'.$query.'%')
-                ->orWhere('lastName', 'LIKE', '%'.$query.'%')
-                ->orWhere('email', 'LIKE', '%'.$query.'%')
-                ->get();
+            $results = $dataAccess->search($query);
 
             if(count($results) < 1) {
-                $results = users::whereRaw("concat(firstName, ' ', lastName) like '%$query%'")
-                ->get();
+                $results = $dataAccess->searchRaw($query);
             }
 
             return \View::make('clientlist')->with('clients', $results);

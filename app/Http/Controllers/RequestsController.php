@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\MedMng;
 use Auth;
 use App\Http\Requests;
 use App\Business\DataAccess;
@@ -26,7 +27,7 @@ class RequestsController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
         if (Auth::user()->admin == true) {
             $requests = $dataAccess->getRequests(null);
             $data = array('requests'=>$requests);
@@ -46,7 +47,7 @@ class RequestsController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
         $client = Auth::user()->firstName." ".Auth::user()->lastName;
         $list = [
             'name' => $request->name,
@@ -67,7 +68,7 @@ class RequestsController extends Controller
      */
     public function update(Request $request)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
         $status = 'pending';
         if($request->action == 'approved') {
             $status = 'approved';

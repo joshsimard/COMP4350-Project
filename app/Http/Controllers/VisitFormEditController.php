@@ -6,6 +6,7 @@ use Auth;
 use App\models\ClientList;
 use App\models\users;
 use App\Business\DataAccess;
+use App\Business\VisitsMng;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -69,6 +70,7 @@ class VisitFormEditController extends Controller
     public function store(Request $request)
     {
         $dataAccess = new DataAccess();
+        $dataAccessVisit = new VisitsMng();
         $userid = $dataAccess->userIdByEmail($request->email);
 
         $list = [
@@ -83,7 +85,7 @@ class VisitFormEditController extends Controller
             'end_time' => $request->end_time,
         ];
 
-        $dataAccess->visitSave($list);
+        $dataAccessVisit->visitSave($list);
 
         return redirect('/clientlist');
     }
@@ -99,6 +101,7 @@ class VisitFormEditController extends Controller
 //        $dataAccess = new DataAccess();
 //        $patient = $dataAccess->getPatient($userid);
 //        $visits = $dataAccess->getVisits($userid);
+
 
         //patient
         $request1 = Request::create('/api/clients/'. $userid, 'GET');
