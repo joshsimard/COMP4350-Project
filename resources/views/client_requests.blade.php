@@ -58,8 +58,8 @@
                         <br>
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('request', array('class'=>'btn btn-info')) !!}
-                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">cancel</button>
+                    {!! Form::submit('Request', array('class'=>'btn btn-info')) !!}
+                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <div class="panel-heading">
                    <span class="panel-title">
                         <p>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</p>
-                       <button class="btn btn-info" onclick="$('#myModal').modal({show: 'true'});">add request</button>
+                       <button class="btn btn-info" onclick="$('#myModal').modal({show: 'true'});">Add Request</button>
                     </span>
                 </div>
                 <div class="panel-body">
