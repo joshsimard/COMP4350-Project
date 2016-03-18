@@ -8,6 +8,7 @@ use App\models\users;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Business\DataAccess;
+use App\Business\NotesMng;
 use App\models\Note;
 use App\models\Note_Tags;
 use Route;
@@ -63,7 +64,7 @@ class AddNoteController extends Controller
      */
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new NotesMng();
 
         //$doctor = users::where('id','=', Auth::user()->id)->firstOrFail();
 

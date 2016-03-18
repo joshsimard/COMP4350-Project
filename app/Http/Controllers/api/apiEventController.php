@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Response;
 use Illuminate\Http\Request;
-use App\Business\DataAccess;
+use App\Business\EventMng;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ class apiEventController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new EventMng();
         $events = $dataAccess->getEvents();
 
         return Response::json(array(
@@ -55,7 +55,7 @@ class apiEventController extends Controller
 //            'client_name' => $name
 //        ];
 
-        $dataAccess = new DataAccess();
+        $dataAccess = new EventMng();
         $dataAccess->apiEventSave($request->data);
 
 

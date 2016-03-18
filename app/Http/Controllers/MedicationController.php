@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Business\DataAccess;
+use App\Business\MedMng;
 use App\models\Medication;
 use Illuminate\Http\Request;
 
@@ -27,14 +27,13 @@ class MedicationController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
         $medications = $dataAccess->getMedications();
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = Medication::where('name', 'LIKE', '%'.$query.'%')
-                ->get();
+            $results = $dataAccess->search($query);
 
             return \View::make('medications')->with('medications', $results);
         }
@@ -47,7 +46,7 @@ class MedicationController extends Controller
      */
     public function create()
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
         $medications = $dataAccess->getMedications();
 
         return \View::make('order_medication')->with('medications',$medications);
@@ -55,7 +54,7 @@ class MedicationController extends Controller
 
     public function store(Request $request)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = new MedMng();
 
         $dataAccess->saveMedications($request->name,$request->quantity);
 

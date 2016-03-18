@@ -121,7 +121,7 @@ class DataAccess{
     {
 //        $email = users::where('id', '=', $id)->select('email')->firstOrFail();
 //        $email = $email->email;
-        return visits::where('id', '=', $id)->get();
+        return visits::where('userid', '=', $id)->get();
     }
 
     function requestSave($list)
