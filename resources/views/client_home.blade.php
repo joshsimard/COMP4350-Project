@@ -33,7 +33,7 @@
                         <li><a href="/calendar" style="color: rgb(0, 0, 0)">View/Set Appointment</a></li>
                         <li><a href="/client_info" style="color: rgb(0, 0, 0)">Edit Information</a></li>
                         <li><a href="/terms" style="color: rgb(0, 0, 0)">Medical Terms</a></li>
-                        <li><a href="/requests" style="color: rgb(0, 0, 0)">requests</a></li>
+                        <li><a href="/requests" style="color: rgb(0, 0, 0)">Requests</a></li>
                     </ul>
                 </div>
             </div>

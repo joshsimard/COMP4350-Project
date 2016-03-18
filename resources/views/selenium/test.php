@@ -21,7 +21,7 @@ $chrome = 'http://localhost:9515';
 $firefox = 'http://localhost:4444/wd/hub';
 
 
-$host = $chrome; // this is the default
+$host = $firefox; // this is the default
 $capabilities = DesiredCapabilities::firefox();
 $driver = RemoteWebDriver::create($host, $capabilities, 5000);
 $driver->manage()->timeouts()->implicitlyWait(60);
@@ -68,6 +68,36 @@ function testViewDetailedClient($driver)
     viewClient($driver, '2');
     goHome($driver);
     echo "Passed Test - View Detailed Record of a Client <br>";
+}
+
+function testViewMedicalTerms($driver)
+{
+    viewTerms($driver);
+    echo "Passed Test - View Medical Terms <br>";
+}
+
+function testViewMedications($driver)
+{
+    viewMedications($driver);
+    echo "Passed Test - View Medication List <br>";
+}
+
+function testOrderMedication($driver)
+{
+    orderMedications($driver, "test1234");
+    echo "Passed Test - Order Medication <br>";
+}
+
+function testCreateRequest($driver)
+{
+    createRequest($driver, "help");
+    echo "Passed Test - Create Request <br>";
+}
+
+function testViewRequest($driver)
+{
+    viewRequest($driver, "help");
+    echo "Passed Test - View Request <br>";
 }
 
 function testAddDoctorsNote($driver)
@@ -128,16 +158,35 @@ testAddDoctorsNote($driver);
 
 //Test 6 - View some Doctors Notes
 testViewDoctorNotes($driver);
+
+//Test 7 - View Medication List
+testViewMedications($driver);
+
+//Test 8 - Order Medications
+testOrderMedication($driver);
 logout($driver);
 
-//Test 7 - Login as Client
+//Test 9 - Login as Client
 loginAsClient($driver);
 
-//Test 8 - Edit Client info
+//Test 10 - Edit Client info
 testEditClientInfo($driver);
 
-//Test 9 - View and Set Appointment with doctor
+//Test 11 - View and Set Appointment with doctor
 testViewSetClientAppointment($driver);
+
+//Test 12 - View Medical Terms
+testViewMedicalTerms($driver);
+logout($driver);
+
+//Test 13 - Create Requests
+loginAsClient($driver);
+testCreateRequest($driver);
+logout($driver);
+
+//Test 14 - View Requests
+loginAsDoctor($driver);
+testViewRequest($driver);
 logout($driver);
 
 //close browser
