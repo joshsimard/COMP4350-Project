@@ -55,7 +55,7 @@ class MedMng
 
     function getTerms()
     {
-        $terms = Term::all()->sortBy('name');
+        $terms = Term::all();
         return $terms;
     }
 
