@@ -96,13 +96,11 @@ class databaseMedicationTest extends TestCase
      */
     public function testDelete()
     {
-        Medication::where('name','test1.com')
-            ->delete();
+        Medication::where('name','test1')->delete();
 
-        Medication::where('name','test2.com')
-            ->delete();
+        Medication::where('name','test2')->delete();
 
-        Medication::where('name','test3.com')
-            ->delete();
+        Medication::where('name','test3')->delete();
+
     }
 }

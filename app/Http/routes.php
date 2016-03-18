@@ -75,7 +75,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::resource('api/register', 'api\apiRegisterController');
 //Route::resource('api/client_save', 'api\apiClientSaveController');
 
-Route::group(['middleware' => ['auth.basic']], function () {
+//Route::group(['middleware' => ['auth.basic']], function () {
 
     Route::group(array('prefix' => 'api'), function(){
         //Route::resource('/register', 'api\apiRegisterController');
@@ -85,5 +85,6 @@ Route::group(['middleware' => ['auth.basic']], function () {
         Route::resource('/events', 'api\apiEventController');
         Route::resource('/visits', 'api\apiVisitsController');
         Route::resource('/notes', 'api\apiNotesController');
+        Route::resource('/login', 'api\apiLoginController');
     });
-});
+//});

@@ -8,6 +8,7 @@
 
 namespace App\Business;
 
+use Hash;
 use Auth;
 use App\models\ClientList;
 use App\models\users;
@@ -254,6 +255,25 @@ class DataAccess{
     function register($list)
     {
         User::create($list);
+    }
+
+    function checkLogin($email, $password)
+    {
+        try{
+            $user = User::where('email', $email)->firstOrFail();
+
+            if(Hash::check($password, $user->password)) {
+                if ($user->admin)
+                    return "Doctor";
+                else
+                    return "client";
+            }
+            else
+                return "Invalid";
+        }
+        catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return "Invalid";
+        }
     }
 
 }
