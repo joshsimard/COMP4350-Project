@@ -264,9 +264,9 @@ class DataAccess{
 
             if(Hash::check($password, $user->password)) {
                 if ($user->admin)
-                    return "Doctor";
+                    return $user;
                 else
-                    return "client";
+                    return $user;
             }
             else
                 return "Invalid";
