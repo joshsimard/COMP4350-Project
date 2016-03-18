@@ -43,6 +43,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/home', 'HomeController@index');
+        Route::get('/requests', 'RequestsController@index');
+        Route::post('/requests', 'RequestsController@store');
+        Route::post('/request', 'RequestsController@update');
         Route::get('/clientlist', 'ClientListController@index');
         //Route::get('/client_form', 'ClientFormEditController@index');
         Route::get('/visit_form', 'VisitFormEditController@index');
@@ -60,6 +63,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::resource('add_note', 'AddNoteController');
         //Route::get('/settings', 'SettingsController@create');
         Route::get('/terms','TermsController@index');
+        Route::get('/medications','MedicationController@index');
+        Route::resource('order_medication','MedicationController');
+        Route::get('/order_medication','MedicationController@create');
     });
 });
 

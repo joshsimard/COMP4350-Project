@@ -33,6 +33,8 @@
                         <li><a href="/clientlist" style="color: rgb(0, 0, 0)">View Clients</a></li>
                         <li><a href="/calendar" style="color: rgb(0, 0, 0)">Calendar</a></li>
                         <li><a href="/notes" style="color: rgb(0, 0, 0)">Notes and Messages</a></li>
+                        <li><a href="/requests" style="color: rgb(0, 0, 0)">requests</a></li>
+                        <li><a href="/medications" style="color: rgb(0, 0, 0)">Medication List</a></li>
                     </ul>
                 </div>
             </div>
