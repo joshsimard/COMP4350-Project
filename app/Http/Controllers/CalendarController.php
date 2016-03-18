@@ -8,6 +8,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Business\DataAccess;
+use Route;
 
 class CalendarController extends Controller
 {
@@ -40,15 +41,24 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        $dataAccess = new DataAccess();
+//        $dataAccess = new DataAccess();
+//
+//        $events = $dataAccess->getEvents();
 
-        $events = $dataAccess->getEvents();
+        $request = Request::create('/api/events', 'GET');
+
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $events = $obj["data"];
+
         $eventArray = array();
         foreach($events as $event)
         {
-            array_push($eventArray, array($event['event_id'],$event['admin'], $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
-
+            //array_push($eventArray, array($event['event_id'],$event['admin'], $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
+            array_push($eventArray, array($event['event_id'], 0, $event['title'], $event['start_time'], $event['end_time'], $event['client_id']));
         }
+
+        //echo print_r($eventArray);
 
 
         return \View::make('/calendar')->with('events',$eventArray);

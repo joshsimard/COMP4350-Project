@@ -65,7 +65,7 @@ class apiNotesController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'data' => array($notes)),
+            'data' => $notes),
             200
         );
     }

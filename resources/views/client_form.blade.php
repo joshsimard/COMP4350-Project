@@ -41,6 +41,7 @@
         Edit client information.
         <hr>
         {!! Form::open(array('action' => 'ClientFormEditController@store')) !!}
+        {{--{!! Form::open(array('url' => 'client_info', 'method' => 'post')) !!}--}}
         <div class="row">
             <div class="col-sm-6">
                 {!! Form::text('first_name', $patient["firstName"], array('class'=>'form-control input-md', 'disabled')) !!}

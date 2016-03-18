@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Business\DataAccess;
 use App\models\Note;
 use App\models\Note_Tags;
+use Route;
 
 class AddNoteController extends Controller
 {
@@ -31,8 +32,15 @@ class AddNoteController extends Controller
 
     public function index()
     {
-        $dataAccess = new DataAccess();
-        $clients = $dataAccess->getClientsFromUsers();
+//        $dataAccess = new DataAccess();
+//        $clients = $dataAccess->getClientsFromUsers();
+
+        //get clients
+        $request = Request::create('/api/clients', 'GET');
+
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $clients = $obj["data"];
 
         return \View::make('add/add_note')->with('clients',$clients);
     }
@@ -57,10 +65,10 @@ class AddNoteController extends Controller
     {
         $dataAccess = new DataAccess();
 
-        $doctor = users::where('id','=', Auth::user()->id)->firstOrFail();
+        //$doctor = users::where('id','=', Auth::user()->id)->firstOrFail();
 
         $list = [
-            'doctor_id' => $doctor["id"],
+            'doctor_id' => Auth::user()->id,
             'subject' => $request->subject,
             'body' => $request->body
         ];

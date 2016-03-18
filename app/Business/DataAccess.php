@@ -114,9 +114,9 @@ class DataAccess{
 
     function getVisits($id)
     {
-        $email = users::where('id', '=', $id)->select('email')->firstOrFail();
-        $email = $email->email;
-        return visits::where('email', '=', $email)->get();
+//        $email = users::where('id', '=', $id)->select('email')->firstOrFail();
+//        $email = $email->email;
+        return visits::where('id', '=', $id)->get();
     }
 
     function getEvents()
@@ -142,9 +142,25 @@ class DataAccess{
 
             $userDet = ClientList::where('userid', '=', $id)->firstOrFail();
 
-        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            $extraInfo = [
+                'dob' => "",
+                'gender' => "",
+                'height' => "",
+                'weight' => "",
+                'mobileNum' => "",
+                'homeNum' => "",
+                'address' => "",
+                'city' => "",
+                'postalCode' => "",
+                'state' => "",
+                'country' => "",
+                'occupation' => "",
+                'maritalStatus' => "",
+                'nextOfKin' => ""
+            ];
             $userDet = users::where('id', '=', $id)->select('id', 'firstName', 'lastName', 'email')->firstOrFail();
+            $userDet = array_merge((array) $userDet["attributes"], $extraInfo);
         }
 
         return $userDet;

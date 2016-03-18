@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Route;
+use Illuminate\Support\Facades\Input;
+
 
 class ClientFormEditController extends Controller
 {
@@ -31,9 +34,15 @@ class ClientFormEditController extends Controller
      */
     public function index()
     {
-        $dataAccess = new DataAccess();
-        $id = $dataAccess->currentUserID();
-        $patient = $dataAccess->getPatient($id);
+//        $dataAccess = new DataAccess();
+//        $id = $dataAccess->currentUserID();
+//        $patient = $dataAccess->getPatient($id);
+
+        $request = Request::create('/api/clients/'. Auth::user()->id, 'GET');
+
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $patient = $obj["data"];
 
         return \View::make('client_form')->with('patient',$patient);
     }
@@ -83,6 +92,60 @@ class ClientFormEditController extends Controller
         ];
 
         $dataAccess->clientInfoSave($list, Auth::user()->email);
+
+        $json = json_encode(array("data"=>$list));
+//
+//        $server = ['Content-Type'=>"application/json"];
+//        //"$uri, $method = 'GET', $parameters = array(), $cookies = array(), $files = array(), $server = array(), $content = null"
+//
+        $postRequest = Request::create('/api/clients', 'POST', [], [], [], [], $json);
+        $headers = $postRequest->headers;
+        $headers->set('Content-Type', 'application/json');
+        $headers->set('Accept', 'application/json');
+
+        //echo print_r($headers);
+        $response = Route::dispatch($postRequest);
+
+//        $postRequest->headers = array('CONTENT_TYPE'=> 'application/json');
+//        $postRequest->attributes = $json;
+//        $response = Route::dispatch($postRequest);
+
+         //echo print_r($postRequest);
+        echo $postRequest;
+
+////
+//        $headers = array();
+//        $headers[] = 'Content-Type: application/json';
+//        $username = "john@doe.com";
+//        $password = "password";
+//
+//        // create a new cURL resource
+//        $ch = curl_init();
+//
+//        // set URL and other appropriate options
+//        curl_setopt($ch, CURLOPT_URL, "http://localhost:8000/api/clients");
+//        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//        curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+//        curl_setopt($ch, CURLOPT_POST, 1);
+//        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+//        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+//        curl_setopt ($ch, CURLOPT_PORT , 8089);
+//
+//        // grab URL and pass it to the browser
+//        $response = curl_exec($ch);
+//        echo print_r($response);
+//        $info = curl_getinfo($ch);
+//        echo print_r($info["http_code"]);
+//
+////        if ($response === false)
+////        {
+////            // throw new Exception('Curl error: ' . curl_error($crl));
+////            print_r('Curl error: ' . curl_error($response));
+////        }
+//        //echo $response;
+//
+//        // close cURL resource, and free up system resources
+//        curl_close($ch);
 
         return redirect('home');
     }

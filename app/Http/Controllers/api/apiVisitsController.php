@@ -62,7 +62,7 @@ class apiVisitsController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'data' => array($visits)),
+            'data' => $visits),
             200
         );
     }

@@ -82,15 +82,15 @@
             {{-- for some reason VisitFormEditController@store is not defined?--}}
             <div class="col-sm-6">
                 <p>&emsp;{{ $patient["email"] or "email" }}</p>{{ Form::hidden('email', $patient["email"]) }}
-                <p>&emsp;{{ $patient["mobileNum"] or $patient["homeNum"] }}</p>
-                <p>&emsp;{{ $patient["address"] or 'Address'  }},</p>
+                <p>&emsp;Mobile:&emsp;{{ $patient["mobileNum"] or $patient["homeNum"] }}</p>
+                <p>&emsp;Address:&emsp;{{ $patient["address"] or 'Address'  }},</p>
                 <p>&emsp;{{ $patient["city"] or 'city'  }}&emsp;{{ $patient["postalCode"] or 'Postal Code'  }}</p>
                 <p>&emsp;{{ $patient["state"] or 'state'  }},&ensp;{{ $patient["country"] or 'country'  }}</p>
             </div>
             <div class="col-sm-6">
-                <p>&emsp;{{ $patient["occupation"] or 'occupation'  }}</p>
-                <p>&emsp;{{ $patient["gender"] or 'male/female'  }}</p>
-                <p>&emsp;{{ $patient["maritalStatus"] or 'marital status'  }}</p>
+                <p>&emsp;Occupation:&emsp;{{ $patient["occupation"] or 'occupation'  }}</p>
+                <p>&emsp;Gender:&emsp;{{ $patient["gender"] or 'male/female'  }}</p>
+                <p>&emsp;Marital Status:&emsp;{{ $patient["maritalStatus"] or 'marital status'  }}</p>
                 <p>&emsp;Next of kin:&emsp;{{ $patient["nextOfKin"] or '&ensp;n/a'  }}</p>
                 <p>&emsp;Date of birth:&emsp;{{ $patient["dob"] or 'MM/DD/YY'  }}</p>
             </div>
@@ -98,9 +98,11 @@
         <div class="row">
             <br>
             <div class="col-sm-6">
+                <label>Height</label>
                 {!! Form::text('height', $patient["height"], array('class'=>'form-control input-sm','placeholder'=>'height(cm)')) !!}
             </div>
             <div class="col-sm-6">
+                <label>Weight</label>
                 {!! Form::text('weight', $patient["weight"], array('class'=>'form-control input-sm','placeholder'=>'weight(kg)')) !!}
             </div>
         </div>
@@ -111,7 +113,7 @@
             </div>
             <div class="col-sm-6">
                 <p>Allergies: </p>
-                {{ Form::textarea('allergies', $patient["allergies"] , ['class' => 'field', 'placeholder'=>'n/a']) }}
+                {{ Form::textarea('allergies', "" , ['class' => 'field', 'placeholder'=>'n/a']) }}
                 <br><br>
             </div>
         </div>

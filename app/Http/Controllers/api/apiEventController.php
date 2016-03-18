@@ -22,7 +22,7 @@ class apiEventController extends Controller
 
         return Response::json(array(
             'error' => false,
-            'data' => array($events)),
+            'data' => $events),
             200
         );
     }

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Route;
 
 class VisitFormEditController extends Controller
 {
@@ -30,16 +31,22 @@ class VisitFormEditController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->firstEdit)
-        {
-            $patient = ClientList::where('email','=', Auth::user()->email)->firstOrFail();
-        }
-        else
-        {
-            $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
-        }
+//        if(Auth::user()->firstEdit)
+//        {
+//            $patient = ClientList::where('email','=', Auth::user()->email)->firstOrFail();
+//        }
+//        else
+//        {
+//            $patient = users::where('email','=', Auth::user()->email)->firstOrFail();
+//        }
 
-        return \View::make('visit_form')->with('patient',$patient);
+//        $request = Request::create('/api/clients/'. Auth::user()->id, 'GET');
+//
+//        $response = Route::dispatch($request);
+//        $obj = json_decode($response->content(), true);
+//        $patient = $obj["data"];
+//
+//        return \View::make('visit_form')->with('patient',$patient);
     }
 
     /**
@@ -89,9 +96,21 @@ class VisitFormEditController extends Controller
      */
     public function show($userid)
     {
-        $dataAccess = new DataAccess();
-        $patient = $dataAccess->getPatient($userid);
-        $visits = $dataAccess->getVisits($userid);
+//        $dataAccess = new DataAccess();
+//        $patient = $dataAccess->getPatient($userid);
+//        $visits = $dataAccess->getVisits($userid);
+
+        //patient
+        $request1 = Request::create('/api/clients/'. $userid, 'GET');
+        $response = Route::dispatch($request1);
+        $obj1 = json_decode($response->content(), true);
+        $patient = $obj1["data"];
+
+        //visits
+        $request2 = Request::create('/api/visits/'. $userid, 'GET');
+        $response = Route::dispatch($request2);
+        $obj2 = json_decode($response->content(), true);
+        $visits = $obj2["data"];
 
         $data = array('patient'=>$patient, 'visits'=>$visits);
         return \View::make('visit_form')->with($data);

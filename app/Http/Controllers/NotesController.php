@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use Route;
 
 class NotesController extends Controller
 {
@@ -32,7 +33,13 @@ class NotesController extends Controller
     public function index()
     {
         //get note list
-        $notes = Note::where('doctor_id', '=', Auth::user()->id)->get();
+        //$notes = Note::where('doctor_id', '=', Auth::user()->id)->get();
+
+        $request = Request::create('/api/notes/'. Auth::user()->id, 'GET');
+
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $notes = $obj["data"];
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
