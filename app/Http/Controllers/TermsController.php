@@ -34,7 +34,7 @@ class TermsController extends Controller
         if (\Request::has('search')) {
             $query = \Request::get('search');
 
-            $results = $dataAccess->search($query);
+            $results = $dataAccess->searchTerms($query);
 
             return \View::make('termslist')->with('terms', $results);
         }

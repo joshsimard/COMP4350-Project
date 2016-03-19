@@ -86,4 +86,10 @@ class MedMng
         return Medication::where('name', 'LIKE', '%'.$query.'%')
             ->get();
     }
+
+    function searchTerms($query)
+    {
+        return Term::where('name', 'LIKE', '%'.$query.'%')
+            ->get();
+    }
 }
