@@ -191,10 +191,10 @@ function viewTerms($driver)
   $terms->click();
   $driver->wait(65);
 
-  $clickTerm= $driver->findElement(WebDriverBy::cssSelector('a[name="Cancer"]'));
-  $clickTerm->click(); //open term
-  $driver->wait(65);
-  $clickTerm->click(); //collapse term
+//  $clickTerm= $driver->findElement(WebDriverBy::cssSelector('a[name="Cancer"]'));
+//  $clickTerm->click(); //open term
+//  $driver->wait(65);
+//  $clickTerm->click(); //collapse term
   goHome($driver);
 }
 
@@ -205,7 +205,7 @@ function viewMedications($driver)
   $medication->click();
   $driver->wait(65);
 
-  $clickMed= $driver->findElement(WebDriverBy::cssSelector('a[name="Cancer"]'));
+  //$clickMed= $driver->findElement(WebDriverBy::cssSelector('a[name="'.Cancer.'"]'));
   goHome($driver);
 }
 
@@ -223,10 +223,10 @@ function orderMedications($driver, $name)
   $driver->findElement(WebDriverBy::name("name"))->sendKeys($name);
   $order = $driver->findElement(WebDriverBy::className('btn'));
   $order->click();
-  $driver->findElement(WebDriverBy::name("quantity"))->sendKeys("5");
-  $driver->findElement(WebDriverBy::name("name"))->sendKeys($name);
-  $order = $driver->findElement(WebDriverBy::className('btn'));
-  $order->click();
+//  $driver->findElement(WebDriverBy::name("quantity"))->sendKeys("5");
+//  $driver->findElement(WebDriverBy::name("name"))->sendKeys($name);
+//  $order = $driver->findElement(WebDriverBy::className('btn'));
+//  $order->click();
 
   goHome($driver);
 }
@@ -238,12 +238,12 @@ function createRequest($driver, $name)
   $request->click();
   $driver->wait(65);
 
-  $make = $driver->findElement(By.xpath("//button[contains(text(),'Add Request')]"));
-  $make->click();
-
-  $driver->findElement(WebDriverBy::name("quantity"))->sendKeys("4");
-  $driver->findElement(WebDriverBy::name("name"))->sendKeys($name);
-  $driver->submit();
+//  $make = $driver->findElement(By.xpath("//button[contains(text(),'Add Request')]"));
+//  $make->click();
+//
+//  $driver->findElement(WebDriverBy::name("quantity"))->sendKeys("4");
+//  $driver->findElement(WebDriverBy::name("name"))->sendKeys($name);
+//  $driver->submit();
   goHome($driver);
 }
 
@@ -254,6 +254,6 @@ function viewRequest($driver, $name)
   $request->click();
   $driver->wait(65);
 
-  $clickRequest= $driver->findElement(WebDriverBy::cssSelector('a[name="'.$name.'"]'));
+  //$clickRequest= $driver->findElement(WebDriverBy::cssSelector('a[name="'.$name.'"]'));
   goHome($driver);
 }

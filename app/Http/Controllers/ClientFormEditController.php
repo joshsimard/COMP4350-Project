@@ -113,7 +113,7 @@ class ClientFormEditController extends Controller
 //        $response = Route::dispatch($postRequest);
 
          //echo print_r($postRequest);
-        echo $postRequest;
+        //echo $postRequest;
 
 ////
 //        $headers = array();
