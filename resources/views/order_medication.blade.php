@@ -51,7 +51,7 @@
                 {!! Form::number('quantity', '', array('class'=>'form-control input-md', 'placeholder'=>'Quantity')) !!}
             </div>
             <div class="col-sm-6">
-                {!! Form::text('name', '', array('class'=>'form-control input-md','placeholder'=>'Medication Name')) !!}
+                {!! Form::text('name', '', array('class'=>'form-control input-md','placeholder'=>'Medication Name', 'id'=>'name')) !!}
             </div>
         </div>
         <div class="row">
@@ -61,4 +61,28 @@
         </div>
         {!! Form::close() !!}
     </div>
+@stop
+
+@section('custom_js')
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {!! FormAutocomplete::selector('#name')->db('medication', 'name') !!}
+        });
+
+        /*$(function()
+        {
+            $( "#name" ).autocomplete({
+                serviceUrl:  "autocomplete",
+                dataType: 'json',
+                minLength: 1,
+                type: 'GET',
+                select: function(event, ui) {
+                    $('#name').val(ui.item.value);
+                }
+            });
+        });*.
+    </script>
 @stop
