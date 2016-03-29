@@ -50,7 +50,7 @@
                 <div class="modal-body">
                         {!! Form::open(array('url'=>'/requests', 'method'=>'post', 'action' => 'RequestsController@store')) !!}
                         <div class="form-group">
-                            {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'drug name')) !!}
+                            {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'drug name', 'id'=>'name')) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::number('quantity', null, array('required', 'class'=>'form-control', 'style'=>'width: 100px', 'placeholder'=>'0', 'min'=>'0')) !!}
@@ -71,7 +71,7 @@
                 <div class="panel-heading">
                    <span class="panel-title">
                         <p>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</p>
-                       <button class="btn btn-info" onclick="$('#myModal').modal({show: 'true'});">Add Request</button>
+                       <button class="btn btn-info" onclick="$('#myModal').modal({show:'true'});">Add Request</button>
                     </span>
                 </div>
                 <div class="panel-body">
@@ -103,7 +103,27 @@
 @stop
 
 @section('custom_js')
-    <script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
 
+        $(document).ready(function(){
+            {!! FormAutocomplete::selector('#name')->db('medication', 'name') !!}
+        });
+
+        $(function()
+        {
+            $( "#name" ).autocomplete({
+                serviceUrl:  "autocomplete",
+                dataType: 'json',
+                minLength: 1,
+                type: 'GET',
+                select: function(event, ui) {
+                    $('#name').val(ui.item.value);
+                }
+            });
+        });
+        jQuery.noConflict();
     </script>
 @stop

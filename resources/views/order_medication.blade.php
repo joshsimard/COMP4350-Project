@@ -47,8 +47,8 @@
         <hr>
         {!! Form::open(array('action' => 'MedicationController@store')) !!}
         <div class="row">
-            <div class="col-sm-6">
-                {!! Form::number('quantity', '', array('class'=>'form-control input-md', 'placeholder'=>'Quantity')) !!}
+            <div class="col-sm-6" style="float: right">
+                {!! Form::number('quantity', '', array('class'=>'form-control input-md', 'style'=>'width: 150px', 'placeholder'=>'Quantity')) !!}
             </div>
             <div class="col-sm-6">
                 {!! Form::text('name', '', array('class'=>'form-control input-md','placeholder'=>'Medication Name', 'id'=>'name')) !!}
@@ -72,7 +72,7 @@
             {!! FormAutocomplete::selector('#name')->db('medication', 'name') !!}
         });
 
-        /*$(function()
+        $(function()
         {
             $( "#name" ).autocomplete({
                 serviceUrl:  "autocomplete",
@@ -83,6 +83,6 @@
                     $('#name').val(ui.item.value);
                 }
             });
-        });*.
+        });
     </script>
 @stop
