@@ -45,7 +45,16 @@ class apiRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataAccess = new MedMng();
+        $dataAccess->requestSave($request["data"]);
+
+
+        return Response::json(array(
+            'error' => false,
+            'data' => array("Data Saved")),
+            200
+        );
+
     }
 
     /**
@@ -56,7 +65,14 @@ class apiRequestController extends Controller
      */
     public function show($id)
     {
-        //
+        $dataAccess = new MedMng();
+        $requests = $dataAccess->getRequests($dataAccess->userEmailbyID($id));
+
+        return Response::json(array(
+            'error' => false,
+            'data' => $requests),
+            200
+        );
     }
 
     /**
@@ -80,6 +96,15 @@ class apiRequestController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $dataAccess = new MedMng();
+        $dataAccess->requestUpdate($request["data"], $id);
+
+        return Response::json(array(
+            'error' => false,
+            'data' => array("Data Saved")),
+            200
+        );
+
     }
 
     /**

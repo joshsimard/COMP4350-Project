@@ -92,4 +92,10 @@ class MedMng
         return Term::where('name', 'LIKE', '%'.$query.'%')
             ->get();
     }
+
+    function userEmailbyID($id)
+    {
+        $user = users::where('id', '=', $id)->firstOrFail();
+        return $user->email;
+    }
 }
