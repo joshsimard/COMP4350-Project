@@ -61,7 +61,7 @@ class MedMng
 
     function getMedications()
     {
-        return Medication::all()->sortBy('name');
+        return Medication::all();
     }
 
     function saveMedications($name,$quantity)
