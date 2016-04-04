@@ -61,7 +61,7 @@ class MedMng
 
     function getMedications()
     {
-        return Medication::all()->sortBy('name');
+        return Medication::all();
     }
 
     function saveMedications($name,$quantity)
@@ -91,5 +91,11 @@ class MedMng
     {
         return Term::where('name', 'LIKE', '%'.$query.'%')
             ->get();
+    }
+
+    function userEmailbyID($id)
+    {
+        $user = users::where('id', '=', $id)->firstOrFail();
+        return $user->email;
     }
 }

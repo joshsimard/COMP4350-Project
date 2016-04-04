@@ -48,12 +48,12 @@ class apiClientController extends Controller
         //$request->merge(json_decode($request->getContent(),true));
         $dataAccess = new ClientMng();
         $dataAccess->clientInfoSave($request["data"], $request->data['email']);
-        $content = $request->getContent();
+        //$content = $request->getContent();
         //$pieces = explode("&", $content);
 
         return Response::json(array(
             'error' => false,
-            'data' => []),
+            'data' => array("Data saved")),
             200
         );
     }

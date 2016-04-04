@@ -213,6 +213,12 @@ class DataAccess{
         return $user->id;
     }
 
+    function userEmailbyID($id)
+    {
+        $user = users::where('id', '=', $id)->firstOrFail();
+        return $user->email;
+    }
+
     function saveNotes($list)
     {
         $note = Note::firstOrCreate($list);
@@ -232,7 +238,7 @@ class DataAccess{
 
     function getMedications()
     {
-        return Medication::all()->sortBy('name');
+        return Medication::all();
     }
 
     function saveMedications($name,$quantity)

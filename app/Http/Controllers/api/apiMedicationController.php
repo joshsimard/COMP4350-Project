@@ -45,7 +45,19 @@ class apiMedicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataAccess = new MedMng();
+        $data = $request["data"];
+        $dataAccess->saveMedications($data["name"],$data["quantity"]);
+
+
+        return Response::json(array(
+            'error' => false,
+            'data' => array("Data Saved")),
+            200
+        );
+
+        //'name: example'
+        //'quantitiy: 2'
     }
 
     /**
