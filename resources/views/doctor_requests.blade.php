@@ -47,7 +47,9 @@
                         //populate
                         foreach($requests as $request)
                         {
-                            $date = date_format($request["created_at"],"Y/m/d");
+                            $date = $request["created_at"];
+                           // $date = date_format($request["created_at"],"Y/m/d");
+
                             echo '<a class="list-group-item">
                                     <p class="left items right-align">Date: '.$date.'
                                     </p><h4 class="items">Client: '.$request["client"].'</h4>

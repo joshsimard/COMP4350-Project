@@ -83,7 +83,8 @@
                         //populate
                         foreach($requests as $request)
                         {
-                            $date = date_format($request["created_at"],"Y/m/d");
+                            $date = $request["created_at"];
+                            //$date = date_format($request["created_at"],"Y/m/d");
                             echo '<a class="list-group-item '.$request["status"].'">
                                     <h4 class="left items right-align">Date: '.$date.'</h4>
                                     <h4 class="items">Drug Name: '.$request["name"].'</h4>

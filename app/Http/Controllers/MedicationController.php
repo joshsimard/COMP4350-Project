@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Route;
 
 class MedicationController extends Controller
 {
@@ -28,7 +29,12 @@ class MedicationController extends Controller
     public function index()
     {
         $dataAccess = new MedMng();
-        $medications = $dataAccess->getMedications();
+
+        $request = Request::create('/api/medication', 'GET');
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $medications = $obj["data"];
+        //$medications = $dataAccess->getMedications();
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
@@ -47,7 +53,11 @@ class MedicationController extends Controller
     public function create()
     {
         $dataAccess = new MedMng();
-        $medications = $dataAccess->getMedications();
+        //$medications = $dataAccess->getMedications();
+        $request = Request::create('/api/medication', 'GET');
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $medications = $obj["data"];
 
         return \View::make('order_medication')->with('medications',$medications);
     }
