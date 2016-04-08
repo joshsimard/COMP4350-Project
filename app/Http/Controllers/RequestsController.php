@@ -7,6 +7,7 @@ use Auth;
 use App\Http\Requests;
 use App\Business\DataAccess;
 use Illuminate\Http\Request;
+use Route;
 
 class RequestsController extends Controller
 {
@@ -29,12 +30,20 @@ class RequestsController extends Controller
     {
         $dataAccess = new MedMng();
         if (Auth::user()->admin == true) {
-            $requests = $dataAccess->getRequests(null);
+            $request = Request::create('/api/requests', 'GET');
+            $response = Route::dispatch($request);
+            $obj = json_decode($response->content(), true);
+            $requests = $obj["data"];
+           // $requests = $dataAccess->getRequests(null);
             $data = array('requests'=>$requests);
             return View('doctor_requests')->with($data);
         }
         else {
-            $requests = $dataAccess->getRequests(Auth::user()->email);
+            $request = Request::create('/api/requests/'.Auth::user()->id, 'GET');
+            $response = Route::dispatch($request);
+            $obj = json_decode($response->content(), true);
+            $requests = $obj["data"];
+            //$requests = $dataAccess->getRequests(Auth::user()->email);
             $data = array('requests'=>$requests);
             return View('client_requests')->with($data);
         }

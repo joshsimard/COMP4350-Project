@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Route;
 
 class TermsController extends Controller
 {
@@ -28,8 +29,14 @@ class TermsController extends Controller
      */
     public function index()
     {
+
         $dataAccess = new MedMng();
-        $terms = $dataAccess->getTerms();
+
+        $request = Request::create('/api/terms', 'GET');
+        $response = Route::dispatch($request);
+        $obj = json_decode($response->content(), true);
+        $terms = $obj["data"];
+        //$terms = $dataAccess->getTerms();
 
         if (\Request::has('search')) {
             $query = \Request::get('search');
