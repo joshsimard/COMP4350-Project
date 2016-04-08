@@ -87,6 +87,15 @@ class MedMng
             ->get();
     }
 
+    function autoComplete($term)
+    {
+//        DB::table('medication')
+//            ->where('name', 'LIKE', '%'.$term.'%')
+//            ->take(5)->get();
+        return Medication::where('name', 'LIKE', '%'.$term.'%')->take(5)-get();
+
+    }
+
     function searchTerms($query)
     {
         return Term::where('name', 'LIKE', '%'.$query.'%')

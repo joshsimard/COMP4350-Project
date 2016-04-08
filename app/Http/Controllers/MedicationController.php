@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Route;
+use Symfony\Component\Console\Input\Input;
 
 class MedicationController extends Controller
 {
@@ -73,13 +74,16 @@ class MedicationController extends Controller
 
     public function autocomplete()
     {
+        $dataAccess = new MedMng();
         $term = Input::get('term');
 
         $results = array();
 
-        $queries = DB::table('medication')
-            ->where('name', 'LIKE', '%'.$term.'%')
-            ->take(5)->get();
+        $queries = $dataAccess->autoComplete($term);
+
+//        DB::table('medication')
+//            ->where('name', 'LIKE', '%'.$term.'%')
+//            ->take(5)->get();
 
         foreach ($queries as $query)
         {

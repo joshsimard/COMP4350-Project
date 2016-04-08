@@ -66,7 +66,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/medications','MedicationController@index');
         Route::resource('order_medication','MedicationController');
         Route::get('/order_medication','MedicationController@create');
-        Route::get('/autocomplete','MedicationController@autocomplete');
+        //Route::get('/autocomplete','MedicationController@autocomplete');
     });
 });
 
