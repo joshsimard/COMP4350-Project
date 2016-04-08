@@ -72,25 +72,25 @@ class MedicationController extends Controller
         return redirect('/medications');
     }
 
-    public function autocomplete()
-    {
-        $dataAccess = new MedMng();
-        $term = Input::get('term');
-
-        $results = array();
-
-        $queries = $dataAccess->autoComplete($term);
-
-//        DB::table('medication')
-//            ->where('name', 'LIKE', '%'.$term.'%')
-//            ->take(5)->get();
-
-        foreach ($queries as $query)
-        {
-            $results[] = [ 'id' => $query->id, 'value' => $query->name ];
-        }
-        return Response::json($results);
-    }
+//    public function autocomplete()
+//    {
+//        $dataAccess = new MedMng();
+//        $term = Input::get('term');
+//
+//        $results = array();
+//
+//        $queries = $dataAccess->autoComplete($term);
+//
+////        DB::table('medication')
+////            ->where('name', 'LIKE', '%'.$term.'%')
+////            ->take(5)->get();
+//
+//        foreach ($queries as $query)
+//        {
+//            $results[] = [ 'id' => $query->id, 'value' => $query->name ];
+//        }
+//        return Response::json($results);
+//    }
 
     /**
      * Display the specified resource.

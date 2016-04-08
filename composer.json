@@ -12,8 +12,8 @@
         "illuminate/html": "^5.0",
         "codeception/codeception": "2.1.5",
         "facebook/webdriver": "^1.1",
-        "guzzlehttp/guzzle": "~6.0",
-        "sukohi/form-autocomplete": "2.*"
+        "guzzlehttp/guzzle": "~6.0"
+        //"sukohi/form-autocomplete": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -160,7 +160,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         //Illuminate\Html\HtmlServiceProvider::class,
-        Sukohi\FormAutocomplete\FormAutocompleteServiceProvider::class,
+        //Sukohi\FormAutocomplete\FormAutocompleteServiceProvider::class,
     ],
 
     /*
@@ -213,7 +213,7 @@ return [
 
         //'HTML'      => Illuminate\Html\HtmlFacade::class,
         //'Form'      => Illuminate\Html\FormFacade::class,
-        'FormAutocomplete'   => Sukohi\FormAutocomplete\Facades\FormAutocomplete::class
+        //'FormAutocomplete'   => Sukohi\FormAutocomplete\Facades\FormAutocomplete::class
     ],
 
 ];
