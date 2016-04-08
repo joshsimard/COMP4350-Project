@@ -41,6 +41,8 @@ class UserTest extends TestCase
             ->visit('/terms')
             ->seePageIs('/login')
             ->visit('/medications')
+            ->seePageIs('/login')
+            ->visit('/requests')
             ->seePageIs('/login');
     }
 
@@ -290,6 +292,30 @@ class UserTest extends TestCase
             ->press('Save')
             ->seePageIs('/medications')
             ->see('test1');
+    }
+
+    public function testRequests()
+    {
+        $this->visit('/')
+            ->type('jane@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+            ->click('Requests')
+            ->press('Add Request')
+            ->type('Cialis','name')
+            ->type('2','quantity')
+            ->press('Request')
+            ->see('Drug Name: Cialis')
+            ->click('Logout');
+
+        $this->visit('/')
+            ->type('john@doe.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home')
+            ->click('Requests')
+            ->see('Drug Name: Cialis');
     }
 
     public function testNavigation()

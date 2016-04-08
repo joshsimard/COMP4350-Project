@@ -13,8 +13,8 @@ include(__DIR__.'/helper.php');
 //start broswer with 5 second timeout
 $chrome = 'http://localhost:9515';
 $firefox = 'http://localhost:4444/wd/hub';
-$host = $chrome; // this is the default
-$capabilities = DesiredCapabilities::chrome();
+$host = $firefox; // this is the default
+$capabilities = DesiredCapabilities::firefox();
 $driver = RemoteWebDriver::create($host, $capabilities, 5000);
 $driver->manage()->timeouts()->implicitlyWait(60);
 $driver->get('http://ec2-52-32-93-246.us-west-2.compute.amazonaws.com/login');
